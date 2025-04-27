@@ -16,4 +16,5 @@ use App\Http\Controllers\BuyRequestController;
 */
 
 Route::get('/',[ProductController::class,'index']);
-Route::post('/product/buy/{id}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
+Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
+Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');;
