@@ -1,22 +1,32 @@
-FROM php:8.0-fpm
+# Используем официальный образ PHP с Apache
+FROM php:8.1-apache
 
-# Install dependencies
+# Устанавливаем зависимости
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    git
 
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Install PHP extensions
+# Устанавливаем расширения PHP для работы с Laravel
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-# Get latest Composer
+# Копируем Composer из официального образа
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Expose port 9000 and start php-fpm server
-EXPOSE 9000
-CMD ["php-fpm"]
+# Копируем проект в контейнер
+COPY . /var/www/html/
+
+# Устанавливаем правильные права на папки Laravel
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Включаем mod_rewrite для Apache (для чистых URL в Laravel)
+RUN a2enmod rewrite
+
+# Открываем порт 80
+EXPOSE 80
+
+# Запускаем Apache
+CMD ["apache2-foreground"]
