@@ -1,32 +1,31 @@
-# Используем официальный образ PHP с Apache
-FROM php:8.1-apache
+FROM php:8.1-fpm
 
-# Устанавливаем зависимости
+# Установка зависимостей и расширений
 RUN apt-get update && apt-get install -y \
     libpng-dev \
-    libonig-dev \
-    libxml2-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
     zip \
-    unzip \
-    git
+    git \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd pdo pdo_mysql
 
-# Устанавливаем расширения PHP для работы с Laravel
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+# Настройка рабочей директории
+WORKDIR /var/www/html
 
-# Копируем Composer из официального образа
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Копирование файлов проекта
+COPY . .
 
-# Копируем проект в контейнер
-COPY . /var/www/html/
-
-# Устанавливаем правильные права на папки Laravel
+# Создание директорий и установка прав
+RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Включаем mod_rewrite для Apache (для чистых URL в Laravel)
-RUN a2enmod rewrite
+# Установка зависимостей с помощью Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install
 
-# Открываем порт 80
-EXPOSE 80
+# Настройка пользователя для приложения
+USER www-data
 
-# Запускаем Apache
-CMD ["apache2-foreground"]
+# Запуск приложения
+CMD ["php-fpm"]
