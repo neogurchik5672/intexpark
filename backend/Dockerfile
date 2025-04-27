@@ -1,38 +1,22 @@
-FROM php:8.0-apache
-
-# Install necessary libraries
-RUN apt-get update && apt-get install -y \
-    libonig-dev \
-    libzip-dev
-
-# Install PHP extensions
-RUN docker-php-ext-install \
-    mbstring \
-    zip
-
-# Copy Laravel application
-COPY . /var/www/html
-
-# Set working directory
-WORKDIR /var/www/html
-
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+FROM php:8.0-fpm
 
 # Install dependencies
-RUN composer install
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip
 
-# Change ownership of our applications
-RUN chown -R www-data:www-data /var/www/html
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install mbstring
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-COPY .env.example .env
-RUN php artisan key:generate
+# Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Expose port 5000
-EXPOSE 5000
-
-# Adjusting Apache configurations
-RUN a2enmod rewrite
-COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+# Expose port 9000 and start php-fpm server
+EXPOSE 9000
+CMD ["php-fpm"]
