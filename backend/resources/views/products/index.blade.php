@@ -12,7 +12,7 @@
         <div class="item">
             <h1>{{$item->title}}</h1>
             <p>{{$item->desc}}</p>
-            {{$item->img}}<br>
+            <div class="img"><img src="{{$item->img !== 'null' ? Storage::url($item->img->first()->path) : asset('storage/products/default.png') }}" alt="{{$product->name}}"></div>  
             <span>{{$item->price}} коинов</span>
             <form action="{{route('buyRequest.buy',$item->id)}}" method="post">
                 @csrf

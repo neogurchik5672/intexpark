@@ -12,7 +12,7 @@
         <div class="item">
             <h1>{{$item->product->title}}</h1>
             <p>{{$item->product->desc}}</p>
-            {{$item->product->img}}<br>
+            <div class="img"><img src="{{$item->product->img !== 'null' ? Storage::url($item->product->img->first()) : asset('storage/products/default.png') }}" alt="{{$item->product->name}}"></div>  
             <span>{{$item->product->price}} коинов</span>
         </div>
     @endforeach
