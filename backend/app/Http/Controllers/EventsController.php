@@ -28,6 +28,7 @@ class EventsController extends Controller
         'time'=>'required|string',
    ]);
     $events = Events::create([
+        'user_id' => 1,
         'type' => $request['type'],
         'name' => $request['name'],
         'desc' => $request['desc'],
