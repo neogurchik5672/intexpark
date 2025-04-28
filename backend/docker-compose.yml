@@ -23,7 +23,8 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "13306:3306"
+      -"80:80"
+      - "443:443"
     environment:
       MYSQL_DATABASE: laravel
       MYSQL_USER: user
