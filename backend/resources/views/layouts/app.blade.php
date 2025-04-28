@@ -12,6 +12,9 @@
         <ul>
             <li><a href='/'>главная</a></li>
             <li><a href={{route('buyRequest.index')}}>заявки</a></li>
+            <li><a href={{route('user.index')}}>пользователи</a></li>
+            <li><a href={{route('user.show')}}>ЛК</a></li>
+            {{-- временная навигация --}}
         </ul>
     </footer>
 </body>
