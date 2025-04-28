@@ -11,4 +11,36 @@ class EventsController extends Controller
         $query = Events::query()->get();
         return view('events.index', compact('query'));
     }
+        public function create(){
+
+        
+        return view('events.create');
+    }
+   public function store(Request $request){
+    $request->validate( [
+        'type'=>'required|string',
+        'name'=>'required|string',
+        'desc'=>'required|string',
+        'count'=>'required|string',
+        'subject'=>'required|string',
+        'salary'=>'required|string',
+        'data'=>'required|string',
+        'time'=>'required|string',
+   ]);
+    $events = Events::create([
+        'type' => $request['type'],
+        'name' => $request['name'],
+        'desc' => $request['desc'],
+        'count' => $request['count'],
+        'subject' => $request['subject'],
+        'salary' => $request['salary'],
+        'data' => $request['data'],
+        'time' => $request['time'],
+    ]); 
+    return redirect('/');
+   }
+
+
+
 }
+
