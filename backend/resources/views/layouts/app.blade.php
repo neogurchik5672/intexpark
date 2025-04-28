@@ -14,6 +14,7 @@
             <li><a href={{route('buyRequest.index')}}>заявки</a></li>
             <li><a href={{route('user.index')}}>пользователи</a></li>
             <li><a href={{route('user.show')}}>ЛК</a></li>
+            <li><a href={{route('events.index')}}>события и задания</a></li>
             {{-- временная навигация --}}
         </ul>
     </footer>

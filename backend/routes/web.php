@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BuyRequestController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,5 @@ Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name(
 Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');
 Route::get('/user/show',[UserController::class,'show'])->name('user.show');
 Route::get('/user/index',[UserController::class,'index'])->name('user.index');
+Route::get('/events/index',[EventsController::class,'index'])->name('events.index');
+Route::post('/member/store/{events}',[MemberController::class,'store'])->name('member.store');
