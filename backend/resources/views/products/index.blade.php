@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+<div class="error">
+    {{isset($error) ? $error : ''}}
+</div>
     <div class="items">
     @foreach ($query as $item)
         <div class="item">

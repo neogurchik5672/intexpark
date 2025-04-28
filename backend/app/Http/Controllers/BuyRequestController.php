@@ -16,11 +16,12 @@ class BuyRequestController extends Controller
       }
     public function buy(Product $product){
         $error;
+        $query = Product::query()->get();
         $balance = User::first();
         $price = Product::find($product->id);
         if (intval($balance->balance) < intval($price->price)) {
             $error = 'Недостаточно средств на балансе';
-            dd($error);
+            return view('products.index', compact('error','query'));
         }else{
         $buy = BuyRequest::create([
             'user_id' => 1,
@@ -28,9 +29,9 @@ class BuyRequestController extends Controller
         ]); 
         $balance->balance = intval($balance->balance) - intval($price->price);
         $balance->save();
-        return redirect()->back()->with('success','request is added');
+        $error = 'Товар приобретен';
+        return view('products.index', compact('error','query'));
     }
-   
     }
     
 }
