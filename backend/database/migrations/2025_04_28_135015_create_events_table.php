@@ -18,10 +18,12 @@ return new class extends Migration
             $table->timestamps();
             $table->string('type');
             $table->string('name');
-            $table->string('count')->default(0);
+            $table->string('desc');
+            $table->string('count')->default('0');
             $table->string('subject');
             $table->string('salary');
             $table->string('data');
+            $table->string('time');
         });
     }
 
