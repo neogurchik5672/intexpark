@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('type');
             $table->string('name');
             $table->string('desc');
-            $table->string('count')->default('0');
+            $table->integer('count')->default('0');
             $table->string('subject');
-            $table->string('salary');
+            $table->integer('salary');
             $table->string('data');
             $table->string('time');
         });
