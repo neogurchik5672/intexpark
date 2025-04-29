@@ -10,7 +10,7 @@
     <p>{{$item->type}}</p>
     <p>{{$item->subject}}</p>
     <p>{{$item->salary}} коинов</p>
-    @if($item->type == 'Ofline')
+    @if($item->type == 'Offline')
     <p>{{$item->data}} {{$item->time}}</p>
     <p>{{count($item->members)}} из {{$item->count}} участников</p>
     @if (count($item->members) == $item->count)

@@ -14,7 +14,7 @@ class BuyRequestController extends Controller
         return view('buyRequests.index', compact('query'));
       }
     public function buy(Product $product){
-        $error;
+        $error = '';
         $query = Product::query()->get();
         $balance = User::first();
         $price = Product::find($product->id);
