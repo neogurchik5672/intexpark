@@ -5,7 +5,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BuyRequestController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\EventsController;
 use App\Http\Controllers\MemberController;
 
 /*

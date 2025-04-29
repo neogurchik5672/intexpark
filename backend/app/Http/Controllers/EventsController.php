@@ -21,9 +21,9 @@ class EventsController extends Controller
         'type'=>'required|string',
         'name'=>'required|string',
         'desc'=>'required|string',
-        'count'=>'required|string',
+        'count'=>'required|integer',
         'subject'=>'required|string',
-        'salary'=>'required|string',
+        'salary'=>'required|integer',
         'data'=>'required|string',
         'time'=>'required|string',
    ]);
