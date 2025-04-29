@@ -20,4 +20,7 @@ class Events extends Model
         'data',
         'time',
     ];
-}
+    public function members(){
+        return $this->hasMany(Member::class);
+    }
+} 

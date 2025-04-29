@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Events;
+use App\Models\Member;
 
 class EventsController extends Controller
 {
@@ -11,9 +12,7 @@ class EventsController extends Controller
         $query = Events::query()->get();
         return view('events.index', compact('query'));
     }
-        public function create(){
-
-        
+    public function create(){
         return view('events.create');
     }
    public function store(Request $request){
@@ -42,11 +41,12 @@ class EventsController extends Controller
         'data' => $request['data'],
         'time' => $request['time'],
     ]); 
+<<<<<<< Updated upstream
     
     return redirect('/');
+=======
+    return view('events.index');
+>>>>>>> Stashed changes
    }
-
-
-
 }
 
