@@ -4,9 +4,9 @@
     <form enctype="multipart/form-data" action="{{ route('events.store') }}" method="POST">
     @csrf
     <input placeholder="Название" type="text" name="name" id="name" >
-    <input placeholder="Кол-человек" type="text" name="count" id="count" >
+    <input placeholder="Кол-человек" type="number" name="count" id="count" >
     <input placeholder="Адресс/Ссылка" type="text" name="subject" id="subject" >
-    <input placeholder="Кол-коинов" type="text" name="salary" id="salary" >
+    <input placeholder="Кол-коинов" type="number" min="1" name="salary" id="salary" >
     <input placeholder="Описание"  type="text" name="desc" id="desc" >
     <input placeholder="Дата" type="date" name="data" id="data" >
     <input placeholder="Время" type="time" name="time" id="time" >

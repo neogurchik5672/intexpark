@@ -27,6 +27,10 @@ class EventsController extends Controller
         'data'=>'required|string',
         'time'=>'required|string',
    ]);
+    if ($request->type !== 'offline') {
+        $request['data'] = '';
+        $request['time'] = '';
+    }
     $events = Events::create([
         'user_id' => 1,
         'type' => $request['type'],
@@ -38,6 +42,8 @@ class EventsController extends Controller
         'data' => $request['data'],
         'time' => $request['time'],
     ]); 
+   
+    
     return redirect('/');
    }
 
