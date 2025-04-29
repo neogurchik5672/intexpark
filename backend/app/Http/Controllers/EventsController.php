@@ -24,10 +24,10 @@ class EventsController extends Controller
         'count'=>'required|integer',
         'subject'=>'required|string',
         'salary'=>'required|integer',
-        'data'=>'required|string',
-        'time'=>'required|string',
+        'data'=>'string',
+        'time'=>'string',
    ]);
-    if ($request->type !== 'offline') {
+    if ($request->type !== 'Offline') {
         $request['data'] = '';
         $request['time'] = '';
     }
@@ -42,7 +42,6 @@ class EventsController extends Controller
         'data' => $request['data'],
         'time' => $request['time'],
     ]); 
-   
     
     return redirect('/');
    }

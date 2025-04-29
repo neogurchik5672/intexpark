@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 class BuyRequestController extends Controller
 {
     public function index(){
-        
         $query = BuyRequest::query()->get();
         return view('buyRequests.index', compact('query'));
       }

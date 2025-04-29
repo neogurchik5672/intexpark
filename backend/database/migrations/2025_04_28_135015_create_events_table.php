@@ -23,8 +23,8 @@ return new class extends Migration
             $table->integer('count')->default('0');
             $table->string('subject');
             $table->integer('salary');
-            $table->string('data');
-            $table->string('time');
+            $table->string('data')->nullable();
+            $table->string('time')->nullable();
         });
     }
 
