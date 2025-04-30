@@ -18,6 +18,15 @@
                 @csrf
                 <button type="submit">Купить</button>
             </form>
+            <form action="{{route('products.edit',$item->id)}}" method="get">
+                @csrf
+                <button type="submit">изменить</button>
+            </form>
+            <form action="{{route('products.destroy',$item->id)}}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit">удалить</button>
+            </form>
         </div>
     @endforeach
 </div>

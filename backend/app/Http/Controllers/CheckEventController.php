@@ -20,4 +20,12 @@ class CheckEventController extends Controller
         ]); 
         return redirect()->action([UserController::class,'show']);
     }
+    public function statusOffNot($item){
+    $events = CheckEvent::create([
+        'user_id' => '1',
+        'events_id' => $item,
+        'status' => 'false',
+    ]); 
+    return redirect()->action([UserController::class,'show']);
+}
 }

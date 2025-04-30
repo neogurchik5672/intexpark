@@ -7,6 +7,7 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\CheckEventController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,9 @@ Route::post('/member/store/{events}',[MemberController::class,'store'])->name('m
 Route::get('/products/create',[ProductController::class,'create'])->name('product.create');
 Route::post('/products/store',[ProductController::class,'store'])->name('product.store');
 Route::post('/checkEvent/statusOff/{item}',[CheckEventController::class,'statusOff'])->name('checkEvent.statusOff');
+Route::post('/checkEvent/statusOffNot/{item}',[CheckEventController::class,'statusOffNot'])->name('checkEvent.statusOffNot');
+Route::get('/admin/index',[AdminController::class,'index'])->name('admin.index');
+Route::delete('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
 

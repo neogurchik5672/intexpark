@@ -11,9 +11,11 @@ class ProductController extends Controller
     $user = User::query()->first();
     return view('products.index', compact('query','user'));
   }
+
   public function create(){
     return view('products.create');
   }
+
   public function store(Request $request){
     $request->validate( [
       'title'=>'required|string|max:255',
@@ -30,4 +32,30 @@ class ProductController extends Controller
   ]); 
   return redirect()->action([ProductController::class,'index']);
 }
+
+public function destroy($id)
+    {
+        $product = Product::findOrFail($id); // Получаем пост по ID
+        $product->delete();
+        return redirect()->action([ProductController::class,'index']);
+       }
+
+       public function edit($id)
+        {
+        $product = Product::findOrFail($id); // Получаем пост по ID
+        return view('products.update', compact('product'));
+        }
+
+        public function update(Request $request,$id)
+        {
+          $img = isset($request['img']) ? $request['img']->store('products','public') : 'null';
+            $validate = $request->validate( [
+                'title'=>'required|string|max:255',
+                'desc'=>'required|string',
+                'price'=>'required|numeric',               
+                'img'=>'image|mimes:jpeg,png,jpg,gif',
+           ]);
+            $product = Product::where('id',$id)->update(['title' => $validate['title'],'desc' => $validate['desc'],'price' => $validate['price'],'img' => $img]);
+            return redirect()->action([ProductController::class,'index']);
+        }
 }

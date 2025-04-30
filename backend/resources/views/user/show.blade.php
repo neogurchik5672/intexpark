@@ -34,6 +34,10 @@
                 @csrf
                 <button type="submit">присутствовал</button>
             </form>
+            <form action="{{route('checkEvent.statusOffNot',$item)}}" method="post">
+                @csrf
+                <button type="submit">отсутствовал</button>
+            </form>
             @endif
         @endforeach
     </div>  
