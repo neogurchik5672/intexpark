@@ -6,6 +6,7 @@ use App\Http\Controllers\BuyRequestController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\CheckEventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,5 @@ Route::get('/events/index',[EventsController::class,'index'])->name('events.inde
 Route::post('/member/store/{events}',[MemberController::class,'store'])->name('member.store');
 Route::get('/products/create',[ProductController::class,'create'])->name('product.create');
 Route::post('/products/store',[ProductController::class,'store'])->name('product.store');
+Route::post('/checkEvent/statusOff/{item}',[CheckEventController::class,'statusOff'])->name('checkEvent.statusOff');
 

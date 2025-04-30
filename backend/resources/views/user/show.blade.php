@@ -28,7 +28,13 @@
         <p>{{count($item->members)}} из {{$item->count}} участников</p>
         участники: <br>
         @foreach ($item->members as $member)
-            {{$member->user->tg_id}}<br>
+            {{$member->user->tg_id}}
+            @if(!isset($item->checkevents))
+            <form action="{{route('checkEvent.statusOff',$item)}}" method="post">
+                @csrf
+                <button type="submit">присутствовал</button>
+            </form>
+            @endif
         @endforeach
     </div>  
 @endforeach

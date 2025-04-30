@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Member;
 use App\Models\BuyRequest;
 use App\Models\Events;
+use App\Models\CheckEvent;
 
 
 class UserController extends Controller
@@ -20,6 +21,7 @@ class UserController extends Controller
         $myEvents = Member::query()->where('user_id',$query->id)->get();
         $myBuyRequest = BuyRequest::query()->where('user_id',$query->id)->get();
         $myOrganizatedEvents = Events::query()->where('user_id',$query->id)->get();
+        // $checkEvents = CheckEvent::query()->where('user_id',$query->id)->where('status','true')->get();
         return view('user.show', compact('query','myEvents','myOrganizatedEvents','myBuyRequest'));
 
     }
