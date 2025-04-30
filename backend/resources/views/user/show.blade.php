@@ -20,6 +20,18 @@
         </div>
         @endif    
     @endforeach
+    @foreach ($myOrganizatedEvents as $item)
+    ваши события
+    <div class="item">
+        <h1>{{$item->name}}</h1>
+        <p>{{$item->data}} {{$item->time}}</p>
+        <p>{{count($item->members)}} из {{$item->count}} участников</p>
+        участники: <br>
+        @foreach ($item->members as $member)
+            {{$member->user->tg_id}}<br>
+        @endforeach
+    </div>  
+@endforeach
     </div>
     @foreach ($myBuyRequest as $items)
     <div>

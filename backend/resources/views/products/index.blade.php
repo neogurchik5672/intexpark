@@ -3,6 +3,10 @@
 <div class="error">
     {{isset($error) ? $error : ''}}
 </div>
+<div class="user">
+    {{$user ? $user->tg_id : ''}} <br>
+    {{$user ? $user->balance.' коинов' : ''}} 
+</div>
     <div class="items">
     @foreach ($query as $item)
         <div class="item">

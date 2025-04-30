@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Events;
+use App\Models\Member;
 
 class EventsController extends Controller
 {
@@ -11,12 +12,13 @@ class EventsController extends Controller
         $query = Events::query()->get();
         return view('events.index', compact('query'));
     }
-        public function create(){
-
-        
+    public function create(){
         return view('events.create');
     }
    public function store(Request $request){
+    $query = Events::query()->get();
+    $data = '';
+    $time = '';
     $request->validate( [
         'type'=>'required|string',
         'name'=>'required|string',
@@ -24,12 +26,13 @@ class EventsController extends Controller
         'count'=>'required|integer',
         'subject'=>'required|string',
         'salary'=>'required|integer',
-        'data'=>'string',
-        'time'=>'string',
    ]);
     if ($request->type !== 'Offline') {
-        $request['data'] = '';
-        $request['time'] = '';
+        $data = '';
+        $time = '';
+    }else{
+        $data = $request['data'];
+        $time = $request['time'];
     }
     $events = Events::create([
         'user_id' => 1,
@@ -39,14 +42,10 @@ class EventsController extends Controller
         'count' => $request['count'],
         'subject' => $request['subject'],
         'salary' => $request['salary'],
-        'data' => $request['data'],
-        'time' => $request['time'],
+        'data' => $data,
+        'time' => $time,
     ]); 
-    
-    return redirect('/');
+    return redirect()->action([EventsController::class, 'index']);
    }
-
-
-
 }
 

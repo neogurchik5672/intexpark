@@ -29,4 +29,6 @@ Route::get('/events/create',[EventsController::class,'create'])->name('events.cr
 Route::post('/events/store',[EventsController::class,'store'])->name('events.store');
 Route::get('/events/index',[EventsController::class,'index'])->name('events.index');
 Route::post('/member/store/{events}',[MemberController::class,'store'])->name('member.store');
+Route::get('/products/create',[ProductController::class,'create'])->name('product.create');
+Route::post('/products/store',[ProductController::class,'store'])->name('product.store');
 
