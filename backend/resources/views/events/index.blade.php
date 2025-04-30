@@ -8,20 +8,27 @@
     <h1>{{$item->name}}</h1>
     <p>{{$item->desc}}</p>    
     <p>{{$item->type}}</p>
-    <p>{{$item->subject}}</p>
     <p>{{$item->salary}} коинов</p>
-    @if($item->type == 'Offline')
+    @if($item->type == 'Offline')   
+     <p>{{$item->subject}}</p>
     <p>{{$item->data}} {{$item->time}}</p>
     <p>{{count($item->members)}} из {{$item->count}} участников</p>
+    @endif
     @if (count($item->members) == $item->count)
         <p>максимально человек</p>        
     @else
     <form action="{{route('member.store',$item->id)}}" method="post">
         @csrf
-        <button type="submit">присоедениться</button>
+        <button type="submit">
+        @if($item->type == 'Online')
+            <a href="{{$item->subject}}">присоедениться</a>
+            @else
+    присоедениться
+            @endif
+        </button>
     </form>
     @endif
-    @endif    
+   
 </div>
 @endforeach
 @endsection

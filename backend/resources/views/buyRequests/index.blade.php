@@ -6,6 +6,7 @@
 
             <a href="{{ route('buyRequest.show', $item->id) }}">{{$item->product->title}}</a>
             <p>{{$item->id}}</p>
+            <p>{{$user->tg_id}}</p>
             <p>{{$item->product->desc}}</p>
             <div class="img"><img src="{{$item->product->img !== 'null' ? Storage::url($item->product->img) : asset('storage/products/default.png') }}" alt="{{$item->product->title}}"></div>  
             <span>{{$item->product->price}} коинов</span>

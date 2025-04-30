@@ -12,9 +12,9 @@
             <h1>{{$item->events->name}}</h1>
             <p>{{$item->events->desc}}</p>    
             <p>{{$item->events->type}}</p>
-            <p>{{$item->events->subject}}</p>
-            <p>{{$item->events->salary}} коинов</p>
-            @if($item->events->type == 'offline')
+               <p>{{$item->events->salary}} коинов</p>
+            @if($item->events->type == 'Offline')  
+               <p>{{$item->events->subject}}</p>
             <p>{{$item->events->data}} {{$item->time}}</p>
             <p>{{$item->events->count}} макс. участников</p>
         </div>
