@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Member;
+use App\Models\BuyRequest;
 
 class UserController extends Controller
 {
@@ -15,6 +16,7 @@ class UserController extends Controller
     public function show(){        
         $query = User::query()->first();
         $myEvents = Member::query()->where('user_id',$query->id)->get();
-        return view('user.show', compact('query','myEvents'));
+        $myBuyRequest = BuyRequest::query()->where('user_id',$query->id)->get();
+        return view('user.show', compact('query','myEvents','myBuyRequest'));
     }
 }

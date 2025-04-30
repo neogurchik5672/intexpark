@@ -21,5 +21,12 @@
         @endif    
     @endforeach
     </div>
+    @foreach ($myBuyRequest as $items)
+    <div>
+    id заказа:<h1>{{$items->id}}</h1>
+    статус:<h1>{{$items->status}}</h1>
+    адрес<h1>{{$items->address}}</h1>
+</div>
+    @endforeach
 </div>
 @endsection

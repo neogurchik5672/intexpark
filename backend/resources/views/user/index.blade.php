@@ -6,6 +6,6 @@
             <h1>{{$item->tg_id}} тг юзернейм</h1>
             <span>{{$item->balance}} коинов</span>
         </div>
-    @endforeach
+
 </div>
 @endsection

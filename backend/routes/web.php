@@ -21,6 +21,8 @@ use App\Http\Controllers\MemberController;
 Route::get('/',[ProductController::class,'index']);
 Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
 Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');
+Route::get('/buy/{id}/show',[BuyRequestController::class,'show'])->name('buyRequest.show');
+Route::post('/buy/create/{id}',[BuyRequestController::class,'create'])->name('buyRequest.create');
 Route::get('/user/show',[UserController::class,'show'])->name('user.show');
 Route::get('/user/index',[UserController::class,'index'])->name('user.index');
 Route::get('/events/create',[EventsController::class,'create'])->name('events.create');

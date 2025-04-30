@@ -9,7 +9,7 @@ class BuyRequest extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $filliable = ['user_id','product_id'];
+    protected $filliable = ['user_id','product_id','address','status'];
     public function product(){
         return $this->belongsTo(Product::class);
     }
