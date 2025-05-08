@@ -1,18 +1,21 @@
 @extends('layouts.app')
 @section('content')
-<div class="error">
-    {{isset($error) ? $error : ''}}
-</div>
-<div class="user">
-</div>
-    <div class="items">
+
+<section class="banner">
+      <img src="img/banner.png" alt="" />
+    </section>
+
+    <section class="text_shop">
+      <img src="img/text_shop.png" alt="" />
+    </section>
+
+    <section class="shop">
     @foreach ($query as $item)
-        <div class="item">
-            <h1>{{$item->title}}</h1>
-            <p>{{$item->desc}}</p>
-            <p>{{$item->count}}</p>
-            <div class="img"><img src="{{$item->img !== 'null' ? Storage::url($item->img) : asset('storage/products/default.png') }}" alt="{{$item->title}}"></div>  
-            <span>{{$item->price}} коинов</span>
+        <div class="card">
+        <img class="img" src="{{$item->img !== 'null' ? Storage::url($item->img) : asset('storage/products/default.png') }}" alt="{{$item->title}}">  
+            <p>{{$item->title}}</p>
+          
+            <p class="cost">{{$item->price}} коинов</p>
             <form action="{{route('buyRequest.buy',$item->id)}}" method="post">
                 @csrf
                 
@@ -25,26 +28,13 @@
                 
                 <button type="submit">Купить</button>
 
-               
-              
                 @else
                 <div>Нет в наличии</div>
              
   @endif
             @endif       
-            </form>
-
-
-            <form action="{{route('products.edit',$item->id)}}" method="get">
-                @csrf
-                <button type="submit">изменить</button>
-            </form>
-            <form action="{{route('products.destroy',$item->id)}}" method="post">
-                @csrf
-                @method('DELETE')
-                <button type="submit">удалить</button>
-            </form>
+</form>            
         </div>
     @endforeach
-</div>
+    </section>
 @endsection

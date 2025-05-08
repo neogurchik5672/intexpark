@@ -8,8 +8,7 @@ class ProductController extends Controller
 {
   public function index(){
     $query = Product::query()->get();
-    $user = User::query()->first();
-    return view('products.index', compact('query','user'));
+    return view('products.index', compact('query'));
   }
 
   public function create(){

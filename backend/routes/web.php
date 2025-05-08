@@ -39,4 +39,4 @@ Route::get('/admin/index',[AdminController::class,'index'])->name('admin.index')
 Route::delete('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
-
+Route::get('/admin/products',[AdminController::class,'products'])->name('admin.products');
