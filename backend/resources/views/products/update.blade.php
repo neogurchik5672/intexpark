@@ -13,6 +13,9 @@
     <textarea name="desc" id="desc" rows="5" required>{{ old('description', $product->desc) }}</textarea> <!-- Поле для редактирования содержания поста -->
 </div>
 <div>
+    <input type="number" placeholder="count" name="count" id="count" value="{{  $product->count }}" required> <!-- Поле для ввода содержания поста -->
+</div>
+<div>
     <label for="content">цена</label>
     <input type="number" name="price" id="content" rows="5" value="{{ $product->price }}" required></input> <!-- Поле для редактирования содержания поста -->
 </div>

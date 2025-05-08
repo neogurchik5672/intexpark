@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('desc');
             $table->string('img');
             $table->string('price');
+            $table->integer('count');
             $table->timestamps();
         });
     }

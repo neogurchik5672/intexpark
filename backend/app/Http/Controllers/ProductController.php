@@ -20,7 +20,8 @@ class ProductController extends Controller
     $request->validate( [
       'title'=>'required|string|max:255',
       'desc'=>'required|string|max:255',
-      'price'=>'required|integer|max:255',      
+      'price'=>'required|integer|max:255',  
+      'count'=>'required|integer|max:255',  
       'img' => 'image','mimes:jpeg,png,jpg,gif',
  ]);
  $img = isset($request['img']) ? $request['img']->store('products','public') : 'null';
@@ -29,6 +30,7 @@ class ProductController extends Controller
       'desc' => $request['desc'],
       'img' => $img,
       'price' => $request['price'],
+      'count' => $request['count'],
   ]); 
   return redirect()->action([ProductController::class,'index']);
 }
@@ -52,10 +54,11 @@ public function destroy($id)
             $validate = $request->validate( [
                 'title'=>'required|string|max:255',
                 'desc'=>'required|string',
-                'price'=>'required|numeric',               
+                'price'=>'required|numeric',
+                'count'=>'required|integer',              
                 'img'=>'image|mimes:jpeg,png,jpg,gif',
            ]);
-            $product = Product::where('id',$id)->update(['title' => $validate['title'],'desc' => $validate['desc'],'price' => $validate['price'],'img' => $img]);
+            $product = Product::where('id',$id)->update(['title' => $validate['title'],'desc' => $validate['desc'],'price' => $validate['price'],'img' => $img,'count' => $validate['count']]);
             return redirect()->action([ProductController::class,'index']);
         }
 }
