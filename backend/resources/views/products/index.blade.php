@@ -26,7 +26,7 @@
                 @else
                 @if ($item->count >0)
                 
-                <button type="submit">Купить</button>
+                <button type="submit" class="btn btn_yellow">Купить</button>
 
                 @else
                 <div>Нет в наличии</div>
