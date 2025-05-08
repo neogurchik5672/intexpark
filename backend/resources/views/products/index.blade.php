@@ -14,7 +14,7 @@
         <div class="card">
         <img class="img" src="{{$item->img !== 'null' ? Storage::url($item->img) : asset('storage/products/default.png') }}" alt="{{$item->title}}">  
             <p>{{$item->title}}</p>
-          
+            <p class="cost">{{$item->count}} штук</p>
             <p class="cost">{{$item->price}} коинов</p>
             <form action="{{route('buyRequest.buy',$item->id)}}" method="post">
                 @csrf
