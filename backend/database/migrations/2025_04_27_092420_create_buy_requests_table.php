@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->string('address')->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->default('Ожидает рассмотрения');
             $table->timestamps();
         });
     }
