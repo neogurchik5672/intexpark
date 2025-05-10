@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\BuyRequest;
 use App\Models\User;
+use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
 class BuyRequestController extends Controller
 {
@@ -15,25 +16,23 @@ class BuyRequestController extends Controller
         return view('buyRequests.index', compact('query','user'));
       }
     public function buy(Product $product){
-        $error = '';
         $query = Product::query()->get();
-        $balance = User::first();
+        $balance = User::query()->first();
         $price = Product::find($product->id);
-        if (intval($balance->balance) < intval($price->price)) {
-            $error = 'Недостаточно средств на балансе';
-            return view('products.index', compact('error','query'));
-        }else{
+        $cart = Cart::query()->where('product_id',$product->id);
+        $cart->delete();
         $buy = BuyRequest::create([
             'user_id' => 1,
             'product_id' => $product->id,
         ]); 
+        $price->count = intval($price->count) - 1;
+        $price->save();
         $balance->balance = intval($balance->balance) - intval($price->price);
         $price->count = intval($price->count) - 1;
         $price->save();
         $balance->save();
         $error = 'Товар приобретен';
-        return  redirect('/');
-    }
+        return redirect()->action([ProductController::class,'index']);
     }
     
     public function show($id){
@@ -47,6 +46,6 @@ class BuyRequestController extends Controller
         ]);
         $buyRequest = BuyRequest::findOrFail($id);
     $buyRequest->update($validated);
-        return redirect('/');
+    return redirect()->action([ProductController::class,'index']);
       }
 }

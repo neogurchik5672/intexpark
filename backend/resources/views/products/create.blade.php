@@ -18,6 +18,9 @@
         <div class="fileCreate">
             <input  id="fileCreate" type="file" name="img" id="images" multiple> <!-- Поле для ввода содержания поста -->
         </div>
+        <div>
+            <input type="number" placeholder="count" name="count" id="count" min="0" required> <!-- Поле для ввода содержания поста -->
+        </div>
         <button type="submit">Сохранить</button> <!-- Кнопка для отправки формы -->
 </div>
 @endsection

@@ -20,11 +20,11 @@ class ProductController extends Controller
     $request->validate( [
       'title'=>'required|string|max:255',
       'desc'=>'required|string|max:255',
-      'price'=>'required|integer|max:255',  
-      'count'=>'required|integer|max:255',  
+      'price'=>'required|integer|max:255',      
+      'count'=>'required|integer|min:0|max:255',      
       'img' => 'image','mimes:jpeg,png,jpg,gif',
  ]);
- $img = isset($request['img']) ? $request['img']->store('products','public') : 'null';
+ $img = isset($request['img']) ? $request['img']->store('products','public') : NULL;
   $events = Product::create([
       'title' => $request['title'],
       'desc' => $request['desc'],
@@ -34,15 +34,14 @@ class ProductController extends Controller
   ]); 
   return redirect()->action([ProductController::class,'index']);
 }
-
-public function destroy($id)
-    {
+        public function destroy($id)
+      {
         $product = Product::findOrFail($id); // Получаем пост по ID
         $product->delete();
         return redirect()->action([ProductController::class,'index']);
        }
 
-       public function edit($id)
+        public function edit($id)
         {
         $product = Product::findOrFail($id); // Получаем пост по ID
         return view('products.update', compact('product'));

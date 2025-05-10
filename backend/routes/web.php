@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\CheckEventController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ use App\Http\Controllers\AdminController;
 Route::get('/',[ProductController::class,'index']);
 Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
 Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');
-Route::get('/buy/{id}/show',[BuyRequestController::class,'show'])->name('buyRequest.show');
+Route::get('/buy/show/{id}',[BuyRequestController::class,'show'])->name('buyRequest.show');
 Route::post('/buy/create/{id}',[BuyRequestController::class,'create'])->name('buyRequest.create');
 Route::get('/user/show',[UserController::class,'show'])->name('user.show');
 Route::get('/user/index',[UserController::class,'index'])->name('user.index');
@@ -40,3 +41,6 @@ Route::delete('/products/destroy/{id}', [ProductController::class, 'destroy'])->
 Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::get('/admin/products',[AdminController::class,'products'])->name('admin.products');
+Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.create');
+Route::get('/cart/index', [CartController::class, 'index'])->name('cart.index');
+
