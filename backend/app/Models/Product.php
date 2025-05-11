@@ -18,5 +18,8 @@ class Product extends Model
         'price',
         'count',
     ];
+    public function cart(){
+        return $this->hasOne(Cart::class);
+    }
 }
  

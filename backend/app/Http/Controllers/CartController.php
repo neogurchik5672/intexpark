@@ -13,6 +13,9 @@ class CartController extends Controller
         ['user_id'=>1,'product_id' => $product->id],
         []
     );
+    $count = Product::find($product->id);
+    $count->count = intval($count->count) - 1;
+    $count->save();
     return redirect()->action([ProductController::class,'index']);
 }
 public function index(){
@@ -20,3 +23,4 @@ public function index(){
     return view('cart.index', compact('query'));
   }
 }
+ 

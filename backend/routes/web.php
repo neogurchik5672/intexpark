@@ -41,6 +41,6 @@ Route::delete('/products/destroy/{id}', [ProductController::class, 'destroy'])->
 Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::get('/admin/products',[AdminController::class,'products'])->name('admin.products');
-Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.create');
+Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart/index', [CartController::class, 'index'])->name('cart.index');
 

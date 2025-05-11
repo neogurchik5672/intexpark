@@ -14,26 +14,20 @@
         <div class="card">
         <img class="img" src="{{$item->img !== 'null' ? Storage::url($item->img) : asset('storage/products/default.png') }}" alt="{{$item->title}}">  
             <p>{{$item->title}}</p>
-            <p class="cost">{{$item->count}} штук</p>
+            <p class="cost">{{$item->count}} шт</p>
             <p class="cost">{{$item->price}} коинов</p>
-            <form action="{{route('buyRequest.buy',$item->id)}}" method="post">
+            <form action="{{route('cart.add',$item->id)}}" method="post">
                 @csrf
-                
-                @if($user->balance < $item->price)
-
-                
-                <div>Недостаточно средств</div>
+                @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
+                <div class="btn btn_in_basket"><a href="{{route('cart.index')}}">В корзине</a></div>                    
+                @elseif($user->balance < $item->price)      
+                <div class="btn btn_none">Недостаточно средств</div>
+                @elseif ($item->count < 1)
+                <div class="btn btn_none">Нет в наличии</div>  
                 @else
-                @if ($item->count >0)
-                
-                <button type="submit" class="btn btn_yellow">Купить</button>
-
-                @else
-                <div>Нет в наличии</div>
-             
-  @endif
-            @endif       
-</form>            
+                <button type="submit" class="btn btn_yellow">добавить в корзину</button> 
+                @endif
+            </form>
         </div>
     @endforeach
     </section>

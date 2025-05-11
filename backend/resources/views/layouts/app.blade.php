@@ -16,7 +16,7 @@
           <a class="" href="{{route('events.index')}}">СОБЫТИЯ</a>
         </div>
         <div class="">
-          <a class="" href="applications.html">КОИНЫ</a>
+          <a class="" href="{{route('buyRequest.index')}}">КОИНЫ</a>
           <a class="" href="{{route('user.show')}}">ЛИЧНЫЙ КАБИНЕТ</a>
         </div>
       </div>

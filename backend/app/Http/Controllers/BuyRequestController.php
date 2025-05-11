@@ -25,11 +25,7 @@ class BuyRequestController extends Controller
             'user_id' => 1,
             'product_id' => $product->id,
         ]); 
-        $price->count = intval($price->count) - 1;
-        $price->save();
         $balance->balance = intval($balance->balance) - intval($price->price);
-        $price->count = intval($price->count) - 1;
-        $price->save();
         $balance->save();
         $error = 'Товар приобретен';
         return redirect()->action([ProductController::class,'index']);
