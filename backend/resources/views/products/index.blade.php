@@ -25,7 +25,16 @@
                 @elseif ($item->count < 1)
                 <div class="btn btn_none">Нет в наличии</div>  
                 @else
-                <button type="submit" class="btn btn_yellow">добавить в корзину</button> 
+                <div class="dropdown">
+  <div onclick="myFunction()" class="dropbtn">Dropdown</div>
+  <div id="myDropdown" class="dropdown-content">
+  <p>{{$item->title}}</p>
+  <p class="cost">{{$item->desc}}</p>
+  <p class="cost">{{$item->price}} коинов</p> 
+  <button type="submit" class="btn btn_yellow">добавить в корзину</button> 
+  </div>
+</div>
+               
                 @endif
             </form>
         </div>
