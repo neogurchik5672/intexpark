@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" href="/css/style.css">
-    <script src="{{asset('js/index.js')}}"></script>
 </head>
 <body class="index">
 <header>
@@ -34,5 +33,6 @@
             <li><a href={{route('admin.index')}}>админка</a></li>
         </ul> 
     </footer>
+    <script src="{{asset('js/index.js')}}"></script>
 </body>
 </html>

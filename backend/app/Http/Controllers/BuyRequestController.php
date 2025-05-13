@@ -11,9 +11,10 @@ use Illuminate\Support\Facades\DB;
 class BuyRequestController extends Controller
 {
     public function index(Product $product){
-        $query = BuyRequest::query()->get();
+        $query = Product::query()->get();
+        $buy = BuyRequest::query()->get();
         $user = User::query()->first();
-        return view('buyRequests.index', compact('query','user'));
+        return view('buyRequests.index', compact('query','buy','user'));
       }
     public function buy(Product $product){
         $query = Product::query()->get();
