@@ -16,6 +16,7 @@
             <p>{{$item->title}}</p>
             <p class="cost">{{$item->count}} шт</p>
             <p class="cost">{{$item->price}} коинов</p>
+        {{-- {{$history}} --}}
             <form action="{{route('cart.add',$item->id)}}" method="post">
                 @csrf
                 @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
@@ -24,14 +25,16 @@
                 <div class="btn btn_none">Недостаточно средств</div>
                 @elseif ($item->count < 1)
                 <div class="btn btn_none">Нет в наличии</div>  
+                @elseif (isset($history->status) && $history->status === 'buy')
+                <div class="btn btn_none">Куплено</div>  
                 @else
                 <div class="dropdown">
-  <div onclick="myFunction()" class="dropbtn">Dropdown</div>
+  <div onclick="myFunction()" class="dropbtn">Добавить в корзину</div>
   <div id="myDropdown" class="dropdown-content">
-  <p>{{$item->title}}</p>
-  <p class="cost">{{$item->desc}}</p>
-  <p class="cost">{{$item->price}} коинов</p> 
-  <button type="submit" class="btn btn_yellow">добавить в корзину</button> 
+  <p class="test">{{$item->title}}</p>
+  <p class="test" class="cost">Описание:{{$item->desc}}</p>
+  <p class="test" class="cost">{{$item->price}} коинов</p> 
+  <button type="submit" class="btn btn_yellow">Добавить в корзину</button> 
   </div>
 </div>
                

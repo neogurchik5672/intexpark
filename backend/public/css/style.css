@@ -142,7 +142,19 @@ section.shop {
     font-size: 30px;
     color: var(--color3);
 }
+.dropbtn{
+        display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 31.5px 0;
+    width: 100%;
+    background: var(--color1);
 
+    font-family: Montserrat-Bold;
+    font-size: 30px;
+    color: var(--color3);
+}
 .btn img {
     width: 25px;
     height: 25px;
@@ -205,3 +217,6 @@ section.shop {
 
 
 .show {display:block;}
+.test{
+    color: black;
+}

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\BuyRequest;
 use App\Models\User;
+use App\Models\History;
 use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
 class BuyRequestController extends Controller
@@ -22,6 +23,10 @@ class BuyRequestController extends Controller
         $cart = Cart::query()->where('product_id',$product->id);
         $cart->delete();
         $buy = BuyRequest::create([
+            'user_id' => 1,
+            'product_id' => $product->id,
+        ]); 
+                $history = History::create([
             'user_id' => 1,
             'product_id' => $product->id,
         ]); 

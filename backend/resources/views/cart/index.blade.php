@@ -10,7 +10,7 @@
         @csrf
         <button type="submit">купить</button>
     </form>
-    <form action="{{route('products.destroy',$item->product->id)}}" method="post">
+    <form action="{{route('cart.destroy',$item->id)}}" method="post">
         @csrf
         @method('DELETE')
         <button type="submit">удалить из корзины</button>

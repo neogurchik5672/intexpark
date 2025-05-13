@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\History;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\BuyRequest;
 use App\Models\User;
 use App\Models\Cart;
 
@@ -10,7 +12,8 @@ class ProductController extends Controller
   public function index(){
     $query = Product::query()->get();
     $user = User::first();
-    return view('products.index', compact('query','user'));
+    $history = History::where('user_id',$user->id);
+    return view('products.index', compact('query','user','history'));
   }
 
   public function create(){
@@ -25,7 +28,7 @@ class ProductController extends Controller
       'count'=>'required|integer|min:0|max:255',      
       'img' => 'image','mimes:jpeg,png,jpg,gif',
  ]);
- $img = isset($request['img']) ? $request['img']->store('products','public') : NULL;
+ $img = isset($request['img']) ? $request['img']->store('products','public') : null;
   $events = Product::create([
       'title' => $request['title'],
       'desc' => $request['desc'],
