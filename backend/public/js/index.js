@@ -17,3 +17,19 @@ window.onclick = function(event) {
     }
   }
 }
+
+document.querySelectorAll('.dropdown-btn').forEach(button => {
+  button.addEventListener('click', function() {
+    const container = this.closest('.dropdown-container');
+    container.classList.toggle('active');
+  });
+});
+
+// Закрывать при клике вне списка
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.dropdown-container')) {
+    document.querySelectorAll('.dropdown-container').forEach(container => {
+      container.classList.remove('active');
+    });
+  }
+});

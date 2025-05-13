@@ -3,7 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.img{
+    width: 400px;
+}
 a,
 li {
     text-decoration: none;
