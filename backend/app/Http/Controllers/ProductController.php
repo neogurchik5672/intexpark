@@ -12,8 +12,7 @@ class ProductController extends Controller
   public function index(){
     $query = Product::query()->get();
     $user = User::first();
-    $history = History::where('user_id',$user->id);
-    return view('products.index', compact('query','user','history'));
+    return view('products.index', compact('query','user'));
   }
 
   public function create(){

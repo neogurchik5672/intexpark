@@ -10,14 +10,20 @@
     </section>
 
     <section class="shop">
+        
     @foreach ($query as $item)
+    {{$item->History}}
         <div class="card">
         <img class="img" src="{{$item->img ? Storage::url($item->img) : asset('storage/products/default.png') }}" alt="{{$item->title}}">  
             <p>{{$item->title}}</p>
+            
             <p class="cost">{{$item->count}} шт</p>
             <p class="cost">{{$item->price}} коинов</p>
-        {{-- {{$history}} --}}
+
             <form action="{{route('cart.add',$item->id)}}" method="post">
+                {{-- @foreach ($item->History as $buy)
+                {{$buy}} --}}
+              
                 @csrf
                 @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
                 <div class="btn btn_in_basket"><a href="{{route('cart.index')}}">В корзине</a></div>                    
@@ -25,9 +31,11 @@
                 <div class="btn btn_none">Недостаточно средств</div>
                 @elseif ($item->count < 1)
                 <div class="btn btn_none">Нет в наличии</div>  
-                @elseif (isset($history->status) && $history->status === 'buy')
+                                @elseif (isset($buy->status) && $buy->status === 'buy')
                 <div class="btn btn_none">Куплено</div>  
+
                 @else
+                 
                 <div class="dropdown">
   <div onclick="myFunction()" class="dropbtn">Добавить в корзину</div>
   <div id="myDropdown" class="dropdown-content">
@@ -39,8 +47,10 @@
 </div>
                
                 @endif
+                 {{-- @endforeach --}}
             </form>
-        </div>
-    @endforeach
+        </div> 
+           
+     @endforeach
     </section>
 @endsection

@@ -21,5 +21,8 @@ class Product extends Model
     public function cart(){
         return $this->hasOne(Cart::class);
     }
+        public function History(){
+        return $this->belongsTo(History::class);
+    }
 }
  
