@@ -14,8 +14,7 @@ class BuyRequestController extends Controller
     public function index(Product $product){
         $query = Product::query()->get();
         $buy = BuyRequest::query()->get();
-        $user = User::query()->first();
-        return view('buyRequests.index', compact('query','buy','user'));
+        return view('buyRequests.index', compact('query','buy'));
       }
     public function buy(Product $product){
         $query = Product::query()->get();

@@ -7,23 +7,24 @@
             <p>{{$item->title}}</p>
             <p class="cost">{{$item->price}} коинов</p>
             <div class="dropdown-container">
-                @foreach ($buy as $buyItem)
-                @if ($buyItem->product_id == $item->id)
-                <button type="button" class="btn btn_yellow dropdown-btn">
-              <div>заявки</div> 
+                @if ( count($item->buyRequest) > 0)
+            <button type="button" class="btn btn_yellow dropdown-btn">
+            <div>заявки</div> 
             <div><img src="{{asset('storage/products/arroy_bottom.png')}}" alt=""/></div>
           </button>
           <div class="dropdown-content">
-          <a href="{{ route('buyRequest.show',$buyItem->id) }}">
+            @foreach ($item->buyRequest as $buyItem)
+        <a href="{{ route('buyRequest.show',$buyItem->id) }}">
           {{ $buyItem->user->tg_id}}  
         </a>
-          </div>
-          @else
+        @endforeach
+        @else
           <button type="submit" class="btn btn_none">нет заявок</button>
-                @endif
-                @endforeach
+            
+            @endif
         </div>
-        </div>
+          </div>
+          </div>
     @endforeach
     </section>
 @endsection
