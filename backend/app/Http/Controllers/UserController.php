@@ -23,6 +23,14 @@ class UserController extends Controller
         $myOrganizatedEvents = Events::query()->where('user_id',$query->id)->get();
         // $checkEvents = CheckEvent::query()->where('user_id',$query->id)->where('status','true')->get();
         return view('user.show', compact('query','myEvents','myOrganizatedEvents','myBuyRequest'));
-
+    }
+    public function updateCoins($id,Request $request){
+         $request->validate( [
+      'coins'=>'required|integer|max:255',
+         ]);
+        $user = User::query()->where('id',$id)->first();
+        $user->balance = intval($user->balance) + $request['coins'];
+        $user->save();
+        return redirect()->back();
     }
 }

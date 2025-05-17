@@ -44,4 +44,5 @@ Route::get('/admin/products',[AdminController::class,'products'])->name('admin.p
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart/index', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+Route::put('/user/updateCoins/{id}', [UserController::class, 'updateCoins'])->name('user.updateCoins');
 
