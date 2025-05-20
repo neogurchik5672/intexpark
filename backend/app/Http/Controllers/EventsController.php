@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Events;
 use App\Models\Member;
+use App\Models\User;
 
 class EventsController extends Controller
 {
     public function index() {
         $query = Events::query()->get();
-        return view('events.index', compact('query'));
+        $user = User::query()->first();
+        return view('events.index', compact('query','user'));
     }
     public function create(){
         return view('events.create');

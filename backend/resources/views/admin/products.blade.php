@@ -5,7 +5,7 @@
     <section class="shop">
     @foreach ($query as $item)
         <div class="card">
-        <img class="img" src="{{$item->img !== 'null' ? Storage::url($item->img) : asset('storage/products/default.png') }}" alt="{{$item->title}}">  
+        <img class="img" src="{{$item->img !== null ? Storage::url($item->img) : asset('storage/products/default.png') }}" alt="{{$item->title}}">  
             <p>{{$item->title}}</p>
           
             <p class="cost">{{$item->price}} коинов</p>
