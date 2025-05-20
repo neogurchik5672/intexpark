@@ -52,7 +52,7 @@ class ProductController extends Controller
 
         public function update(Request $request,$id)
         {
-          $img = isset($request['img']) ? $request['img']->store('products','public') : null;
+          $img = isset($request['img']) ? $request['img']->store('products','public') : null; // добавление картинки в папку
             $validate = $request->validate( [
                 'title'=>'required|string|max:255',
                 'desc'=>'required|string',

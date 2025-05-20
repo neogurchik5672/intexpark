@@ -16,7 +16,7 @@ class BuyRequestController extends Controller
         $buy = BuyRequest::query()->get();
         return view('buyRequests.index', compact('query','buy'));
       }
-    public function buy(Product $product){
+    public function buy(Product $product){ //при покупке изменяется баланс,продукт записывается в историю и добавляется в лист ожидания
         $query = Product::query()->get();
         $balance = User::query()->first();
         $price = Product::find($product->id);
