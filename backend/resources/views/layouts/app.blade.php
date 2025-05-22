@@ -17,11 +17,13 @@
         </div>
         <div class="">
           <a class="" href="{{route('buyRequest.index')}}">КОИНЫ</a>
-          <a class="" href="{{route('user.show')}}">ЛИЧНЫЙ КАБИНЕТ</a>
+        <p class="PC" id="PC">ЛИЧНЫЙ КАБИНЕТ</p>
+    
         </div>
       </div>
     </header>
     <main>
+      @extends('layouts.modalMenu')
     @yield('content')
     </main> 
     <footer>

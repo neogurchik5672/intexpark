@@ -33,3 +33,17 @@ document.addEventListener('click', function(e) {
     });
   }
 });
+
+//модальное окно для ЛК
+let button = document.getElementById("PC")
+let menu = document.getElementById("modalMenu")
+let closebutton = document.getElementById("closeModalMenu")
+
+ button.addEventListener('click', function() {
+  menu.style.display = "flex"
+  button.style.display = "none"
+ })
+  closebutton.addEventListener('click', function() {
+  menu.style.display = "none"
+  button.style.display = "block"
+ })

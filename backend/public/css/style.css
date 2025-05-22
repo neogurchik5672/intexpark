@@ -54,6 +54,28 @@ body {
     color: var(--color2);
 }
 
+/* modal menu */
+.modalBody{
+    width: 100%;
+}
+.modalMenu{
+        display: none;
+    width: 20%;
+    height: 400px;
+    position: absolute;
+    background-color: #021F3F;
+    color: #fff;
+    top:0;
+    right: 0;
+}
+.flexClose{
+    width: 100%;
+}
+.closeModalMenu{
+    display: flex;
+    margin: 10px 10px 0 0;
+    justify-content: flex-end;
+}
 /* header */
 header {
     margin: 0;
