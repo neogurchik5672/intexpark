@@ -21,8 +21,8 @@
             <p class="cost">{{$item->price}} коинов</p>
 
             <form action="{{route('cart.add',$item->id)}}" method="post">
-                {{-- @foreach ($item->History as $buy)
-                {{$buy}} --}}
+               
+ @foreach ($item->History as $buy)
               
                 @csrf
                 @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
@@ -47,7 +47,7 @@
 </div>
                
                 @endif
-                 {{-- @endforeach --}}
+                 @endforeach
             </form>
         </div> 
            
