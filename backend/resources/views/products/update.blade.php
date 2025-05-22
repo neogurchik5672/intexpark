@@ -21,7 +21,7 @@
 </div>
 <div>
     <label for="image">изменить изображение</label>
-    <input type="file" name="img" id="images" multiple> <!-- Поле для ввода содержания поста -->
+    <input type="file" name="img" value="{{ $product->img }}" id="images" multiple> <!-- Поле для ввода содержания поста -->
 </div>
 <button type="submit">Обновить</button> <!-- Кнопка для отправки формы -->
 </form>

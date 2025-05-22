@@ -12,7 +12,6 @@
     <section class="shop">
         
     @foreach ($query as $item)
-    {{$item->History}}
         <div class="card">
         <img class="img" src="{{$item->img ? Storage::url($item->img) : asset('storage/products/default.png') }}" alt="{{$item->title}}">  
             <p>{{$item->title}}</p>

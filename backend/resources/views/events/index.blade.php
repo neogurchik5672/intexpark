@@ -23,7 +23,15 @@
         @if($item->type == 'Online')
             <a href="{{$item->subject}}">присоедениться</a>
             @else
-    присоедениться
+            @if ($item->members != '[]')
+            @foreach ($item->members as $member)
+                @if ($member->user_id == $user->id)
+                    Вы уже участвуете
+                @endif
+            @endforeach
+            @else
+                    присоединиться
+            @endif
             @endif
         </button>
     </form>
