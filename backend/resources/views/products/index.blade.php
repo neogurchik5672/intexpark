@@ -22,7 +22,6 @@
             <form action="{{route('cart.add',$item->id)}}" method="post">
                
  @foreach ($item->History as $buy)
-              
                 @csrf
                 @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
                 <div class="btn btn_in_basket"><a href="{{route('cart.index')}}">В корзине</a></div>                    
@@ -32,9 +31,8 @@
                 <div class="btn btn_none">Нет в наличии</div>  
                                 @elseif (isset($buy->status) && $buy->status === 'buy')
                 <div class="btn btn_none">Куплено</div>  
-
+                @break
                 @else
-                 
                 <div class="dropdown">
   <div onclick="myFunction()" class="dropbtn">Добавить в корзину</div>
   <div id="myDropdown" class="dropdown-content">
@@ -44,7 +42,6 @@
   <button type="submit" class="btn btn_yellow">Добавить в корзину</button> 
   </div>
 </div>
-               
                 @endif
                  @endforeach
             </form>
