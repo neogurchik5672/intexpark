@@ -49,18 +49,19 @@ let closebutton = document.getElementById("closeModalMenu")
   button.style.display = "block"
  })
 
-         function toggleDateTimeFields() {
+     function toggleDateTimeFields() {
             const typeSelect = document.getElementById('type');
             const dateTimeFields = document.getElementById('dateTimeFields');
             
-            if (typeSelect.value === 'Online') {
-                dateTimeFields.style.display = 'none';
-            } else {
+            // Если выбран Offline — показываем поля
+            if (typeSelect.value === 'Offline') {
                 dateTimeFields.style.display = 'block';
+            } else { // Иначе скрываем (Online)
+                dateTimeFields.style.display = 'none';
             }
         }
 
-        // Вызываем функцию при загрузке страницы, чтобы установить начальное состояние
+        // При загрузке страницы сразу проверяем выбранный тип
         document.addEventListener('DOMContentLoaded', function() {
             toggleDateTimeFields();
         });

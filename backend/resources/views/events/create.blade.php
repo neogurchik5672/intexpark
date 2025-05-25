@@ -11,10 +11,10 @@
 
 
     <select name="type" id="type" onchange="toggleDateTimeFields()">
-    <option name="type" id="type">Online</option>
-    <option name="type" id="type">Offline</option>
+    <option name="type" id="type" value="Online">Online</option>
+    <option name="type" id="type" value="Offline">Offline</option>
 </select>
-<div id="dateTimeFields">
+<div style="display: none;" id="dateTimeFields">
     <input placeholder="Дата" type="date" name="data" id="data" >
     <input type="hidden" name="data" id="data">
     <input placeholder="Время" type="time" name="time" id="time" >
