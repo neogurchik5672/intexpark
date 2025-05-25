@@ -47,3 +47,19 @@ let closebutton = document.getElementById("closeModalMenu")
   menu.style.display = "none"
   button.style.display = "block"
  })
+
+         function toggleDateTimeFields() {
+            const typeSelect = document.getElementById('type');
+            const dateTimeFields = document.getElementById('dateTimeFields');
+            
+            if (typeSelect.value === 'Online') {
+                dateTimeFields.style.display = 'none';
+            } else {
+                dateTimeFields.style.display = 'block';
+            }
+        }
+
+        // Вызываем функцию при загрузке страницы, чтобы установить начальное состояние
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleDateTimeFields();
+        });
