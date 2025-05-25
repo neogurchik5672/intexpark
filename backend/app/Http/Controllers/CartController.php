@@ -14,7 +14,7 @@ class CartController extends Controller
         []
     );
     $count = Product::find($product->id);
-    $count->count = intval($count->count) - 1;
+    $count->count = intval($count->count) - 1; // при добавлении в корзину количество отнимается при удалении добавляется
     $count->save();
     return redirect()->action([CartController::class,'index']);
 }
@@ -22,12 +22,15 @@ public function index(){
     $query = Cart::query()->where('user_id',1)->get();
     return view('cart.index', compact('query'));
   }
-          public function destroy($id)
+         
+  public function destroy($id)
       { 
 
         $product = Cart::findOrFail($id); 
         $product->delete();  
-
+    $count = Product::find($product->product_id);
+    $count->count = intval($count->count) - 1;
+     $count->save();
         return redirect()->action([CartController::class,'index']);
 
        }
