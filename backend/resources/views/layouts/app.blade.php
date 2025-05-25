@@ -23,7 +23,6 @@
       </div>
     </header>
     <main>
-      @extends('layouts.modalMenu')
     @yield('content')
     </main> 
     <footer>

@@ -27,7 +27,7 @@ class ProductController extends Controller
       'count'=>'required|integer|min:0|max:255',      
       'img' => 'image','mimes:jpeg,png,jpg,gif',
  ]);
- $img = isset($request['img']) ? $request['img']->store('products','public') : null;
+ $img = isset($request['img']) ? $request['img']->store('products','public') : null; //загрузка изображения
   $events = Product::create([
       'title' => $request['title'],
       'desc' => $request['desc'],

@@ -35,6 +35,7 @@ document.addEventListener('click', function(e) {
 });
 
 //модальное окно для ЛК
+
 let button = document.getElementById("PC")
 let menu = document.getElementById("modalMenu")
 let closebutton = document.getElementById("closeModalMenu")
@@ -63,3 +64,4 @@ let closebutton = document.getElementById("closeModalMenu")
         document.addEventListener('DOMContentLoaded', function() {
             toggleDateTimeFields();
         });
+
