@@ -20,18 +20,17 @@
             <p class="cost">{{$item->price}} коинов</p>
 
             <form action="{{route('cart.add',$item->id)}}" method="post">
-               
- @foreach ($item->History as $buy)
-                @csrf
+                 @csrf
+
                 @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
                 <div class="btn btn_in_basket"><a href="{{route('cart.index')}}">В корзине</a></div>                    
                 @elseif($user->balance < $item->price)      
                 <div class="btn btn_none">Недостаточно средств</div>
                 @elseif ($item->count < 1)
                 <div class="btn btn_none">Нет в наличии</div>  
-                                @elseif (isset($buy->status) && $buy->status === 'buy')
+                                @elseif ($item->History->where('status', 'buy')->isNotEmpty())
                 <div class="btn btn_none">Куплено</div>  
-                @break
+             
                 @else
                 <div class="dropdown">
   <div onclick="myFunction()" class="dropbtn">Добавить в корзину</div>
@@ -43,7 +42,7 @@
   </div>
 </div>
                 @endif
-                 @endforeach
+                
             </form>
         </div> 
            
