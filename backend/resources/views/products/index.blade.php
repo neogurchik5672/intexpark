@@ -23,14 +23,15 @@
                  @csrf
                 {{-- проверки  --}}
                 @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
-                <div class="btn btn_in_basket"><a href="{{route('cart.index')}}">В корзине</a></div>                    
+                <div class="btn btn_in_basket"><a href="{{route('cart.index')}}">В корзине</a></div>       
+                         @elseif ($item->History->where('status', 'buy')->isNotEmpty())
+                <div class="btn btn_none">Куплено</div>  
+                          
                 @elseif($user->balance < $item->price)      
                 <div class="btn btn_none">Недостаточно средств</div>
                 @elseif ($item->count < 1)
                 <div class="btn btn_none">Нет в наличии</div>  
-                                @elseif ($item->History->where('status', 'buy')->isNotEmpty())
-                <div class="btn btn_none">Куплено</div>  
-             
+                       
                 @else
                 <div class="dropdown">
   <div onclick="myFunction()" class="dropbtn">Добавить в корзину</div>

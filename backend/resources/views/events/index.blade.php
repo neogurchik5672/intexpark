@@ -22,11 +22,8 @@
         <button type="submit">
         @if($item->type == 'Online')
             <a href="{{$item->subject}}">присоедениться</a>
-            @else
-                @if ($item->members->where('user_id', $user->id)->isNotEmpty())
-                    Вы уже участвуете
-                @endif
-            @endforeach
+            @elseif ($item->members->where('user_id', $user->id)->isNotEmpty())
+                 Вы уже участвуете
             @else
                 присоединиться
             @endif
