@@ -39,7 +39,7 @@ document.addEventListener('click', function(e) {
 let button = document.getElementById("PC")
 let menu = document.getElementById("modalMenu")
 let closebutton = document.getElementById("closeModalMenu")
-
+console.log(button)
  button.addEventListener('click', function() {
   menu.style.display = "flex"
   button.style.display = "none"

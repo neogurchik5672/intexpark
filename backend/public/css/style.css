@@ -59,22 +59,50 @@ body {
     width: 100%;
 }
 .modalMenu{
-        display: none;
-    width: 20%;
+    display: none;
+    width: 40%;
     height: 400px;
     position: absolute;
     background-color: #021F3F;
-    color: #fff;
-    top:0;
-    right: 0;
+    border-radius: 15px;
+    background-color: #fff;
+    left: 30%;
 }
 .flexClose{
     width: 100%;
 }
 .closeModalMenu{
+    color: black;
+    font-weight: 800;
     display: flex;
     margin: 10px 10px 0 0;
     justify-content: flex-end;
+}
+.titleModalMenu{
+    display: flex;
+    justify-content: center ;
+    color:#021F3F;
+    font-weight: 600;
+}
+.itemHistory{
+    color: #044973;
+    display: flex;
+    justify-content:space-around;
+    margin: 0 2%;
+}
+.priceHistory{
+    font-weight: 800;
+}
+.dateHistory{
+    color:#9ea0a1
+}
+.left{
+width: 58%;
+}
+.right{
+    width: 38%;
+    display: flex;
+    justify-content: space-around;
 }
 /* header */
 header {
