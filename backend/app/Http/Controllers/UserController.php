@@ -35,4 +35,13 @@ class UserController extends Controller
         $user->save();
         return redirect()->back();
     }
+        public function all($id){        
+        $query = User::findOrFail($id);
+        $myEvents = Member::query()->where('user_id',$query->id)->get();
+        $myBuyRequest = BuyRequest::query()->where('user_id',$query->id)->get();
+        $myOrganizatedEvents = Events::query()->where('user_id',$query->id)->get();
+        $myHistory = History::query()->where('user_id',$query->id)->get();
+        // $checkEvents = CheckEvent::query()->where('user_id',$query->id)->where('status','true')->get();
+        return view('user.all', compact('query','myEvents','myHistory','myOrganizatedEvents','myBuyRequest'));
+    }
 }

@@ -45,4 +45,5 @@ Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.a
 Route::get('/cart/index', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::put('/user/updateCoins/{id}', [UserController::class, 'updateCoins'])->name('user.updateCoins');
+Route::get('/user/all/{id}',[UserController::class,'all'])->name('user.all');
 
