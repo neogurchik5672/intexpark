@@ -272,3 +272,19 @@ section.shop {
 .test{
     color: black;
 }
+.userHeader{
+    border:10px solid #FDBC15;    
+    border-radius: 30px;
+    width: 80vw;
+}
+.bodyUser{
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+}
+.avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #fff;
+}

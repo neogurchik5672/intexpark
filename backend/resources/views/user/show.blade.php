@@ -1,11 +1,13 @@
 @extends('layouts.app')
 @section('content')
+<div class="bodyUser">
 <div class="show">
+<div class="userHeader">
     <div class="user">
+        <div class="avatar"></div>
     <h1> {{$query->tg_id}} тг юзернейм</h1>
     <span>{{$query->balance}} коинов</span> 
     </div>
-
     <div class="myHistory">
         <h1 class="PC" id="PC">История покупок</h1>
        
@@ -31,7 +33,7 @@
           </div>
         </div>
     </div>
-
+</div>
 
     <!-- перенести на отдельную страницу -->
     <!-- <div class="myEvents">
@@ -78,6 +80,7 @@
     статус:<h1>{{$items->status}}</h1>
     адрес<h1>{{$items->address}}</h1>
 </div>
-    @endforeach
-</div> -->
+    @endforeach -->
+</div>
+</div>
 @endsection
