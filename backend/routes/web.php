@@ -44,6 +44,8 @@ Route::get('/admin/products',[AdminController::class,'products'])->name('admin.p
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart/index', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
-Route::put('/user/updateCoins/{id}', [UserController::class, 'updateCoins'])->name('user.updateCoins');
+Route::match(['PUT', 'GET'],'/user/updateCoins/{id}', [UserController::class, 'updateCoins'])->name('user.updateCoins');
+Route::match(['PUT', 'GET'],'/user/updateCoin/{id}', [UserController::class, 'updateCoin'])->name('user.updateCoin');
 Route::get('/user/all/{id}',[UserController::class,'all'])->name('user.all');
+Route::get('/admin/transaction',[AdminController::class,'transaction'])->name('admin.transaction');
 

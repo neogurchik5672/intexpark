@@ -9,6 +9,7 @@ use App\Models\BuyRequest;
 use App\Models\Events;
 use App\Models\CheckEvent;
 use App\Models\History;
+use App\Models\Transaction;
 
 
 class UserController extends Controller
@@ -27,12 +28,34 @@ class UserController extends Controller
         return view('user.show', compact('query','myEvents','myHistory','myOrganizatedEvents','myBuyRequest'));
     }
     public function updateCoins($id,Request $request){
+       
          $request->validate( [
-      'coins'=>'required|integer|max:255',
+      'coins'=>'required|integer',
+      'reason'=>'required|string',
          ]);
-        $user = User::query()->where('id',$id)->first();
+         $user = User::query()->where('id',$id)->first();
         $user->balance = intval($user->balance) + $request['coins'];
         $user->save();
+          $CoinTransactionLog = Transaction::create([
+            'user_id' => 1,
+            'admin_id' => 1,
+            'reason' => $request['reason'],
+        ]); 
+        return redirect()->back();
+    }
+        public function updateCoin($id,Request $request){
+         $request->validate( [
+      'coins'=>'required|integer',
+      'reason'=>'required|string',
+         ]);
+        $user = User::query()->where('id',$id)->first();
+        $user->balance = intval($user->balance) - $request['coins'];
+        $user->save();
+           $CoinTransactionLog = Transaction::create([
+            'user_id' => 1,
+            'admin_id' => 1,
+            'reason' => $request['reason'],
+        ]); 
         return redirect()->back();
     }
         public function all($id){        
