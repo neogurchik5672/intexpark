@@ -43,6 +43,7 @@ console.log(button)
  button.addEventListener('click', function() {
   menu.style.display = "flex"
   button.style.display = "none"
+  menu.style.boxShadow = "0 0 0 max(100vh, 100vw) rgba(0, 0, 0, 0.5)"
  })
   closebutton.addEventListener('click', function() {
   menu.style.display = "none"

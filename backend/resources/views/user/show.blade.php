@@ -4,14 +4,20 @@
 <div class="show">
 <div class="userHeader">
     <div class="user">
-        <div class="avatar"></div>
-    <h1> {{$query->tg_id}} тг юзернейм</h1>
-    <span>{{$query->balance}} коинов</span> 
+    <div class="avatar"></div>
+    <div class="userValue">
+    <h1> {{"@".$query->tg_id}} </h1>
+    <span><a href="">ВЫЙТИ</a></span>
     </div>
-    <div class="myHistory">
-        <h1 class="PC" id="PC">История покупок</h1>
-       
+</div>
+<div class="valueInputs">
+    <div class="inputsUser"> 10 exp</div>
+    <div class="inputsUser"> {{" ".$query->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></div>
+    <div class="inputsUser"> 5 <img src="{{asset('img/vector.png')}}" alt="icon"></div>
+</div>
 
+    <div class="myHistory">
+       <div class="PC"  id="PC"><h1>ИСТОРИЯ ПОКУПОК</h1></div>
         <div class="modalMenu" id="modalMenu">
           <div class="flexClose">
           <div class="closeModalMenu" id="closeModalMenu">X</div>
@@ -24,7 +30,7 @@
       <div class="titleHistory">  {{ $item->product->title }} </div>
       </div>
       <div class="right">
-          <div class="priceHistory">{{ $item->product->price }}</div>
+          <div class="priceHistory">{{ $item->product->price }}<img src="{{asset('img/coin.png')}}" alt="icon"></div>
        <div class="dateHistory">{{preg_replace('/-/','.', preg_replace('/\s.*/',' ', $item->created_at))}}</div>
         </div>
         </div>

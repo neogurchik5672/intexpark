@@ -88,16 +88,32 @@ body {
     color: #044973;
     display: flex;
     justify-content:space-around;
-    margin: 0 2%;
+    margin: 20px 2%;
 }
 .priceHistory{
+    display: flex;
+    align-items: center;
     font-weight: 800;
+    margin-right: 20px;
+}
+.priceHistory    img{
+    width: 45px;
+    height: 45px;   
+    margin-left: 5px;
 }
 .dateHistory{
-    color:#9ea0a1
+    color:#9ea0a1;    
+    display: flex;
+    align-items: center;
+}
+.titleHistory{    
+    display: flex;
+    align-items: center;
 }
 .left{
 width: 58%;
+display: flex;
+align-items: center;
 }
 .right{
     width: 38%;
@@ -276,6 +292,7 @@ section.shop {
     border:10px solid #FDBC15;    
     border-radius: 30px;
     width: 80vw;
+    padding: 50px 0 65px 0;
 }
 .bodyUser{
     margin-top: 200px;
@@ -283,8 +300,61 @@ section.shop {
     justify-content: center;
 }
 .avatar{
-    width: 150px;
-    height: 150px;
+    width: 260px;
+    height: 260px;
     border-radius: 50%;
     background-color: #fff;
+    position: absolute; 
+    transform: translate(160px,-130px);
+}
+.PC{
+    width:32%;
+    background-color: #FDBC15;
+    position: absolute;
+    left: 34%;
+    transform: translateY(20px);
+    color: black;
+    border-radius: 55px;
+    text-align: center;
+    padding: 20px 15px; 
+}
+.PC h1{
+    font-size: 30px;
+    padding: 15px 0;
+    font-weight:900;
+    border-radius: 35px;
+    box-shadow: 3px 3px #FFE479;
+    border: 3px solid #CD5602;
+}
+.userValue{
+    display: flex;
+    justify-content:space-around;
+    margin-left: 20%;
+}
+.userValue a{
+    opacity: 20%;
+}
+.inputsUser{
+    margin: 0 10px;    
+    background-color: #085A7F;
+    width: 10%;
+    padding: 10px 0;
+    border-radius: 15px;
+    border:3px solid #23BDCA;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-weight: 900;
+}
+.inputsUser img{
+    width: 45px;
+    height: 45px;   
+    margin-left: 15px;
+}
+.valueInputs{   
+    margin-top: 50px; 
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
 }
