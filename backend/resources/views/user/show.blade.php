@@ -1,11 +1,48 @@
 @extends('layouts.app')
 @section('content')
+<div class="bodyUser">
 <div class="show">
+<div class="userHeader">
     <div class="user">
-    <h1> {{$query->tg_id}} тг юзернейм</h1>
-    <span>{{$query->balance}} коинов</span> 
+    <div class="avatar"></div>
+    <div class="userValue">
+    <h1> {{"@".$query->tg_id}} </h1>
+    <span><a href="">ВЫЙТИ</a></span>
     </div>
-    <div class="myEvents">
+</div>
+<div class="valueInputs">
+    <div class="inputsUser"> 10 exp</div>
+    <div class="inputsUser"> {{" ".$query->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></div>
+    <div class="inputsUser"> 5 <img src="{{asset('img/vector.png')}}" alt="icon"></div>
+</div>
+
+    <div class="myHistory">
+       <div class="PC"  id="PC"><h1>ИСТОРИЯ ПОКУПОК</h1></div>
+        <div class="modalMenu" id="modalMenu">
+          <div class="flexClose">
+          <div class="closeModalMenu" id="closeModalMenu">X</div>
+<br>
+          <div class="mainModalMenu">
+            <p class="titleModalMenu">История покупок</p>
+                @foreach ($myHistory as $item)
+                <div class="itemHistory">
+                    <div class="left">
+      <div class="titleHistory">  {{ $item->product->title }} </div>
+      </div>
+      <div class="right">
+          <div class="priceHistory">{{ $item->product->price }}<img src="{{asset('img/coin.png')}}" alt="icon"></div>
+       <div class="dateHistory">{{preg_replace('/-/','.', preg_replace('/\s.*/',' ', $item->created_at))}}</div>
+        </div>
+        </div>
+        @endforeach
+          </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+    <!-- перенести на отдельную страницу -->
+    <!-- <div class="myEvents">
         <h1>Ближайше события</h1>
         @foreach ($myEvents as $item)
         <div class="item">
@@ -49,6 +86,7 @@
     статус:<h1>{{$items->status}}</h1>
     адрес<h1>{{$items->address}}</h1>
 </div>
-    @endforeach
+    @endforeach -->
+</div>
 </div>
 @endsection

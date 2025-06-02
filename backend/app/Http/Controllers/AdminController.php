@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Transaction;
 
 class AdminController extends Controller
 {
@@ -12,5 +13,9 @@ class AdminController extends Controller
     public function products(){
         $query = Product::query()->get();
         return view('admin.products',compact('query'));
+    }
+        public function transaction(){
+ $tra = Transaction::query()->get();
+        return view('admin.transaction',compact('tra'));
     }
 }

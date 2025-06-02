@@ -17,7 +17,7 @@
         </div>
         <div class="">
           <a class="" href="{{route('buyRequest.index')}}">КОИНЫ</a>
-        <p class="PC" id="PC">ЛИЧНЫЙ КАБИНЕТ</p>
+ <a href="{{ route('user.show') }}">ЛИЧНЫЙ КАБИНЕТ</a>
     
         </div>
       </div>

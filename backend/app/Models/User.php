@@ -31,6 +31,7 @@ class User extends Authenticatable
     ];
 
     // Связь с ачивками
+    
     public function achievements()
     {
         return $this->belongsToMany(
@@ -51,4 +52,8 @@ class User extends Authenticatable
         $this->save();
     }
     
+        public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
 }

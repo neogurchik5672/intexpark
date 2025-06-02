@@ -10,7 +10,6 @@
 </select>
 <select name="address" id="address">
     <option name="address" id="address">г. Омск, ул. Красный Путь, 103</option>
-    <option name="address" id="address">г. Омск, пр. Комарова, 21к1</option>
 </select>
 <button  type="submit">Сохранить</button>
 </form>

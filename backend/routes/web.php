@@ -58,4 +58,8 @@ Route::get('/achievements', function () {
     $user = auth()->user(); // или получить пользователя как-то иначе
     return view('achievements.index', compact('achievements', 'user'));
 });
+Route::match(['PUT', 'GET'],'/user/updateCoins/{id}', [UserController::class, 'updateCoins'])->name('user.updateCoins');
+Route::match(['PUT', 'GET'],'/user/updateCoin/{id}', [UserController::class, 'updateCoin'])->name('user.updateCoin');
+Route::get('/user/all/{id}',[UserController::class,'all'])->name('user.all');
+Route::get('/admin/transaction',[AdminController::class,'transaction'])->name('admin.transaction');
 

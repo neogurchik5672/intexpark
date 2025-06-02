@@ -8,6 +8,8 @@ use App\Models\Member;
 use App\Models\BuyRequest;
 use App\Models\Events;
 use App\Models\CheckEvent;
+use App\Models\History;
+use App\Models\Transaction;
 
 
 class UserController extends Controller
@@ -21,16 +23,48 @@ class UserController extends Controller
         $myEvents = Member::query()->where('user_id',$query->id)->get();
         $myBuyRequest = BuyRequest::query()->where('user_id',$query->id)->get();
         $myOrganizatedEvents = Events::query()->where('user_id',$query->id)->get();
+        $myHistory = History::query()->where('user_id',$query->id)->get();
         // $checkEvents = CheckEvent::query()->where('user_id',$query->id)->where('status','true')->get();
-        return view('user.show', compact('query','myEvents','myOrganizatedEvents','myBuyRequest'));
+        return view('user.show', compact('query','myEvents','myHistory','myOrganizatedEvents','myBuyRequest'));
     }
     public function updateCoins($id,Request $request){
+       
          $request->validate( [
-      'coins'=>'required|integer|max:255',
+      'coins'=>'required|integer',
+      'reason'=>'required|string',
          ]);
-        $user = User::query()->where('id',$id)->first();
+         $user = User::query()->where('id',$id)->first();
         $user->balance = intval($user->balance) + $request['coins'];
         $user->save();
+          $CoinTransactionLog = Transaction::create([
+            'user_id' => 1,
+            'admin_id' => 1,
+            'reason' => $request['reason'],
+        ]); 
         return redirect()->back();
+    }
+        public function updateCoin($id,Request $request){
+         $request->validate( [
+      'coins'=>'required|integer',
+      'reason'=>'required|string',
+         ]);
+        $user = User::query()->where('id',$id)->first();
+        $user->balance = intval($user->balance) - $request['coins'];
+        $user->save();
+           $CoinTransactionLog = Transaction::create([
+            'user_id' => 1,
+            'admin_id' => 1,
+            'reason' => $request['reason'],
+        ]); 
+        return redirect()->back();
+    }
+        public function all($id){        
+        $query = User::findOrFail($id);
+        $myEvents = Member::query()->where('user_id',$query->id)->get();
+        $myBuyRequest = BuyRequest::query()->where('user_id',$query->id)->get();
+        $myOrganizatedEvents = Events::query()->where('user_id',$query->id)->get();
+        $myHistory = History::query()->where('user_id',$query->id)->get();
+        // $checkEvents = CheckEvent::query()->where('user_id',$query->id)->where('status','true')->get();
+        return view('user.all', compact('query','myEvents','myHistory','myOrganizatedEvents','myBuyRequest'));
     }
 }

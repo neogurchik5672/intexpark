@@ -61,22 +61,66 @@ body {
     width: 100%;
 }
 .modalMenu{
-        display: none;
-    width: 20%;
+    display: none;
+    width: 40%;
     height: 400px;
     position: absolute;
     background-color: #021F3F;
-    color: #fff;
-    top:0;
-    right: 0;
+    border-radius: 15px;
+    background-color: #fff;
+    left: 30%;
 }
 .flexClose{
     width: 100%;
 }
 .closeModalMenu{
+    color: black;
+    font-weight: 800;
     display: flex;
     margin: 10px 10px 0 0;
     justify-content: flex-end;
+}
+.titleModalMenu{
+    display: flex;
+    justify-content: center ;
+    color:#021F3F;
+    font-weight: 600;
+}
+.itemHistory{
+    color: #044973;
+    display: flex;
+    justify-content:space-around;
+    margin: 20px 2%;
+}
+.priceHistory{
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    margin-right: 20px;
+}
+.priceHistory    img{
+    width: 45px;
+    height: 45px;   
+    margin-left: 5px;
+}
+.dateHistory{
+    color:#9ea0a1;    
+    display: flex;
+    align-items: center;
+}
+.titleHistory{    
+    display: flex;
+    align-items: center;
+}
+.left{
+width: 58%;
+display: flex;
+align-items: center;
+}
+.right{
+    width: 38%;
+    display: flex;
+    justify-content: space-around;
 }
 /* header */
 header {
@@ -247,4 +291,74 @@ section.shop {
 .show {display:block;}
 .test{
     color: black;
+}
+.userHeader{
+    border:10px solid #FDBC15;    
+    border-radius: 30px;
+    width: 80vw;
+    padding: 50px 0 65px 0;
+}
+.bodyUser{
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+}
+.avatar{
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute; 
+    transform: translate(160px,-130px);
+}
+.PC{
+    width:32%;
+    background-color: #FDBC15;
+    position: absolute;
+    left: 34%;
+    transform: translateY(20px);
+    color: black;
+    border-radius: 55px;
+    text-align: center;
+    padding: 20px 15px; 
+}
+.PC h1{
+    font-size: 30px;
+    padding: 15px 0;
+    font-weight:900;
+    border-radius: 35px;
+    box-shadow: 3px 3px #FFE479;
+    border: 3px solid #CD5602;
+}
+.userValue{
+    display: flex;
+    justify-content:space-around;
+    margin-left: 20%;
+}
+.userValue a{
+    opacity: 20%;
+}
+.inputsUser{
+    margin: 0 10px;    
+    background-color: #085A7F;
+    width: 10%;
+    padding: 10px 0;
+    border-radius: 15px;
+    border:3px solid #23BDCA;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-weight: 900;
+}
+.inputsUser img{
+    width: 45px;
+    height: 45px;   
+    margin-left: 15px;
+}
+.valueInputs{   
+    margin-top: 50px; 
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
 }
