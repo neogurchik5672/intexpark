@@ -21,15 +21,14 @@
         @csrf
         <button type="submit">
         @if($item->type == 'Online')
-            <a href="{{$item->subject}}">присоедениться</a>
+            <a href="{{$item->subject}}">Присоедениться</a>
+        @else
+            @if ($item->members->where('user_id', $user->id)->isNotEmpty())
+                Вы уже участвуете   
             @else
-                @if ($item->members->where('user_id', $user->id)->isNotEmpty())
-                    Вы уже участвуете
-                @endif
-            @endforeach
-            @else
-                присоединиться
+                Присоединиться
             @endif
+        @endif
         </button>
     </form>
     @endif
