@@ -46,25 +46,16 @@ Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.a
 Route::get('/cart/index', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::put('/user/updateCoins/{id}', [UserController::class, 'updateCoins'])->name('user.updateCoins');
-
-// Админка ачивок
-// Route::prefix('admin')->name('admin.')->group(function () {
-//     Route::resource('achievements', AchievementController::class)->only([
-//         'index', 'create', 'store', 'edit', 'update', 'destroy'
-//     ]);
-// });
-
-// Страница ачивок
-// Route::get('/achievements', function () {
-//     $achievements = \App\Models\Achievement::all();
-//     $user = auth()->user(); // или получить пользователя как-то иначе
-//     return view('achievements.index', compact('achievements', 'user'));
-// });
-
-// Страница ачивок c sroll bar
-Route::get('/achievements/scroll', function () {
+//Админка ачивок
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('achievements', AchievementController::class)->only([
+        'index', 'create', 'store', 'edit', 'update', 'destroy'
+    ]);
+});
+//Страница ачивок
+Route::get('/achievements', function () {
     $achievements = \App\Models\Achievement::all();
     $user = auth()->user(); // или получить пользователя как-то иначе
-    return view('achievements.indexTwo', compact('achievements', 'user'));
+    return view('achievements.index', compact('achievements', 'user'));
 });
 
