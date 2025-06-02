@@ -39,7 +39,8 @@ document.addEventListener('click', function(e) {
 let button = document.getElementById("PC")
 let menu = document.getElementById("modalMenu")
 let closebutton = document.getElementById("closeModalMenu")
-console.log(button)
+if (button != null) {
+  
  button.addEventListener('click', function() {
   menu.style.display = "flex"
   button.style.display = "none"
@@ -50,15 +51,18 @@ console.log(button)
   button.style.display = "block"
  })
 
+}
      function toggleDateTimeFields() {
             const typeSelect = document.getElementById('type');
             const dateTimeFields = document.getElementById('dateTimeFields');
-            
+            if (typeSelect != null && dateTimeFields != null) {
+              
             // Если выбран Offline — показываем поля
             if (typeSelect.value === 'Offline') {
                 dateTimeFields.style.display = 'block';
             } else { // Иначе скрываем (Online)
                 dateTimeFields.style.display = 'none';
+            }
             }
         }
 
@@ -67,3 +71,21 @@ console.log(button)
             toggleDateTimeFields();
         });
 
+        //live search
+        document.querySelector('#search').oninput = function (){
+          let val = this.value.trim();
+          let items = document.querySelectorAll('.ulUser li')
+          if (val != '') {
+            items.forEach(function(elem){
+              console.log(elem)
+              if(elem.innerText.search(val) == -1){
+              }else{
+                elem.classList.remove('hide');
+              }
+            })
+          }else{
+             items.forEach(function(elem){
+                elem.classList.add('hide');
+          })
+        }
+      }

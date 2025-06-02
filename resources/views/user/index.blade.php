@@ -1,10 +1,20 @@
 @extends('layouts.app')
 @section('content')
 <div class="index">
+    <form class="formUser" action="{{route('user.index')}}">
+        <input type="search" autofocus placeholder="Поиск" name="search" id="search">
+        <ul class="ulUser">          
+    @foreach ($query as $item)
+            <li class="hide">
+                   @<a id="userId" href="{{route('user.all',$item->id)}}"><span>{{$item->tg_id}}</span></a>
+            </li>
+    @endforeach
+        </ul>
+    </form>
     @foreach ($query as $item)
         <div class="item">
-            <a href="{{route('user.all',$item->id)}}">{{$item->tg_id}} тг юзернейм</a>
-            <span>{{$item->balance}} коинов</span>
+            @<a id="userId" href="{{route('user.all',$item->id)}}"><span>{{$item->tg_id}}</span></a>
+            <p>{{$item->balance}} коинов</p>
             <form enctype="multipart/form-data" action="{{route('user.updateCoins',$item->id)}}" method="POST">
             @csrf
             @method('PUT') <!-- Метод PUT для обновления ресурса -->

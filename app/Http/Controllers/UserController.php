@@ -14,7 +14,7 @@ use App\Models\Transaction;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
     $query = User::query()->get();
     return view('user.index', compact('query'));
 }

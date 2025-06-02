@@ -21,9 +21,9 @@
         <div class="modalMenu" id="modalMenu">
           <div class="flexClose">
           <div class="closeModalMenu" id="closeModalMenu">X</div>
-<br>
           <div class="mainModalMenu">
             <p class="titleModalMenu">История покупок</p>
+            <div class="scrollbarUser">
                 @foreach ($myHistory as $item)
                 <div class="itemHistory">
                     <div class="left">
@@ -35,6 +35,7 @@
         </div>
         </div>
         @endforeach
+        </div>
           </div>
           </div>
         </div>

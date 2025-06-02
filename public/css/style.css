@@ -1,0 +1,370 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.img{
+    width: 400px;
+}
+a,
+li {
+    text-decoration: none;
+    list-style: none;
+    color: var(--color2);
+}
+
+button {
+    border: none;
+    text-transform: uppercase;
+}
+
+:root {
+    --index: calc(1vw + 1vh);
+
+    --color1: #FAC53B;
+    --color2: #fff;
+    --color3: #021F3F;
+    --color4: #41BD8F;
+    --color5: #944BA7;
+    --custom-gradient: linear-gradient(to bottom, #021F3F 8%, #044973 50%, #23BDCA 100%);
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(../fonts/Montserrat-Bold.woff2);
+}
+
+@font-face {
+    font-family: Montserrat-Black;
+    src: url(../fonts/Montserrat-Black.woff2);
+}
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url(../fonts/Montserrat-Regular.woff2);
+}
+
+body {
+    background: var(--custom-gradient);
+    background-attachment: fixed;
+    background-size: cover;
+
+    font-family: Montserrat-Regular;
+    font-size: 30px;
+    color: var(--color2);
+}
+
+/* modal menu */
+.modalBody{
+    width: 100%;
+}
+.modalMenu{
+    display: none;
+    width: 40%;
+    height: 400px;
+    position: absolute;
+    background-color: #021F3F;
+    border-radius: 15px;
+    background-color: #fff;
+    left: 30%;
+}
+.flexClose{
+    width: 100%;
+}
+.scrollbarUser{
+    overflow: auto;
+    scrollbar-color: #044973 #fff;
+    height: 330px;
+}
+
+.closeModalMenu{
+    height: 10px;
+    color: black;
+    font-weight: 800;
+    display: flex;
+    margin: 10px 10px 0 0;
+    justify-content: flex-end;
+}
+.titleModalMenu{
+    display: flex;
+    justify-content: center ;
+    color:#021F3F;
+    font-weight: 600;
+}
+.itemHistory{
+    color: #044973;
+    display: flex;
+    justify-content:space-around;
+    margin: 20px 2%;
+}
+.priceHistory{
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    margin-right: 20px;
+}
+.priceHistory    img{
+    width: 45px;
+    height: 45px;   
+    margin-left: 5px;
+}
+.dateHistory{
+    color:#9ea0a1;    
+    display: flex;
+    align-items: center;
+}
+.titleHistory{    
+    display: flex;
+    align-items: center;
+}
+.left{
+width: 58%;
+display: flex;
+align-items: center;
+}
+.right{
+    width: 38%;
+    display: flex;
+    justify-content: space-around;
+}
+/* header */
+header {
+    margin: 0;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    background: var(--color3);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 46px 162px;
+    text-transform: uppercase;
+}
+
+.header div {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.header a {
+    padding: 10px 25px;
+}
+
+.header a:hover,
+.menu_item_active {
+    color: var(--color3);
+    background: var(--color1);
+
+    font-family: Montserrat-Bold;
+}
+
+/* Главная страница */
+/* баннер */
+section.banner {
+    margin-top: 155px;
+    display: flex;
+    justify-content: right;
+}
+
+/* текст "магазин" */
+section.text_shop {
+    display: flex;
+    justify-content: center;
+}
+
+/* каталог товаров */
+.index .shop{
+     margin-top: 100px;
+}
+section.shop {
+    font-family: Montserrat-Bold;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 15px 162px;
+    gap: 100px 50px;
+}
+
+.card {
+    text-transform: uppercase;
+    width: 465px;
+}
+
+.card_img {
+    height: 465px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.cost {
+    margin: 17px 0 25px;
+}
+
+.btn {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 31.5px 0;
+    width: 100%;
+    background: var(--color1);
+
+    font-family: Montserrat-Bold;
+    font-size: 30px;
+    color: var(--color3);
+}
+.dropbtn{
+        display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 31.5px 0;
+    width: 100%;
+    background: var(--color1);
+
+    font-family: Montserrat-Bold;
+    font-size: 30px;
+    color: var(--color3);
+}
+.btn img {
+    width: 25px;
+    height: 25px;
+}
+
+.btn_none {
+    background: var(--color4);
+}
+
+.btn_in_basket {
+    background: var(--color5);
+    color: var(--color2);
+}
+/* Страница заявок */
+.applications .shop{
+    margin-top: 300px;
+}
+.applications .btn{
+    gap: 25px;
+}
+
+.dropdown-container {
+    position: relative;
+    width: 465px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown-container:hover .dropdown-content {
+    display: block;
+  }
+
+  main{
+    margin-top: 150px;
+  }
+
+
+
+
+.show {display:block;}
+.test{
+    color: black;
+}
+.userHeader{
+    border:10px solid #FDBC15;    
+    border-radius: 30px;
+    width: 80vw;
+    padding: 50px 0 65px 0;
+}
+.bodyUser{
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+}
+.avatar{
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute; 
+    transform: translate(160px,-130px);
+}
+.PC{
+    width:32%;
+    background-color: #FDBC15;
+    position: absolute;
+    left: 34%;
+    transform: translateY(20px);
+    color: black;
+    border-radius: 55px;
+    text-align: center;
+    padding: 20px 15px; 
+}
+.PC h1{
+    font-size: 30px;
+    padding: 15px 0;
+    font-weight:900;
+    border-radius: 35px;
+    box-shadow: 3px 3px #FFE479;
+    border: 3px solid #CD5602;
+}
+.userValue{
+    display: flex;
+    justify-content:space-around;
+    margin-left: 20%;
+}
+.userValue a{
+    opacity: 20%;
+}
+.inputsUser{
+    margin: 0 10px;    
+    background-color: #085A7F;
+    width: 10%;
+    padding: 10px 0;
+    border-radius: 15px;
+    border:3px solid #23BDCA;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-weight: 900;
+}
+.inputsUser img{
+    width: 45px;
+    height: 45px;   
+    margin-left: 15px;
+}
+.valueInputs{   
+    margin-top: 50px; 
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.ulUser li.hide{
+    display: none;
+}
