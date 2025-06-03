@@ -368,3 +368,38 @@ section.shop {
 .ulUser li.hide{
     display: none;
 }
+.addAvatarMenu{
+    display: none;
+    position: absolute;
+    width: 26%;
+    top: 25vh;
+    left:37%;
+    z-index: 9999;
+    background-color: #fff;
+}
+.addAvatarMenu img{
+    width: 120px;
+}
+.addAvatarMenu label{
+    width: 120px;
+}
+.addAvatarMenu .formUser{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:20px;
+}
+.addAvatarMenu span{
+    font-size: 20px;
+    color: #021F3F;
+}
+.titleAvatarMenu{
+    display: flex;
+    margin: 10px 10px 0 10px;
+    color: #021F3F;
+    justify-content: space-between;
+}
+.closeModalMenuAvatar{
+    display: flex;
+    justify-content: flex-end;
+}

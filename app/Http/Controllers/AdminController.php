@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use finfo;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\User;
 use App\Models\Transaction;
 
 class AdminController extends Controller
@@ -15,7 +17,11 @@ class AdminController extends Controller
         return view('admin.products',compact('query'));
     }
         public function transaction(){
- $tra = Transaction::query()->get();
+        $tra = Transaction::query()->get();
         return view('admin.transaction',compact('tra'));
     }
+        public function newAdmin($id){
+            $user = User::where('id',$id)->update(['role'=>'admin']);
+            return redirect()->back();
+        }
 }

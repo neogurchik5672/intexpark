@@ -48,4 +48,5 @@ Route::match(['PUT', 'GET'],'/user/updateCoins/{id}', [UserController::class, 'u
 Route::match(['PUT', 'GET'],'/user/updateCoin/{id}', [UserController::class, 'updateCoin'])->name('user.updateCoin');
 Route::get('/user/all/{id}',[UserController::class,'all'])->name('user.all');
 Route::get('/admin/transaction',[AdminController::class,'transaction'])->name('admin.transaction');
-
+Route::put('/admin/newAdmin/{id}',[AdminController::class,'newAdmin'])->name('admin.newAdmin');
+Route::post('/user/addAvatar/{$id}',[UserController::class,'all'])->name('user.addAvatar');

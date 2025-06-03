@@ -31,4 +31,7 @@ class User extends Authenticatable
     {
         return $this->role === 'admin';
     }
+    public function image(){
+        return $this->belongsTo(Image::class);
+    }
 }

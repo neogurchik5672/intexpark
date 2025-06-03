@@ -10,6 +10,7 @@ use App\Models\Events;
 use App\Models\CheckEvent;
 use App\Models\History;
 use App\Models\Transaction;
+use App\Models\Image;
 
 
 class UserController extends Controller
@@ -69,5 +70,11 @@ class UserController extends Controller
         $myHistory = History::query()->where('user_id',$query->id)->get();
         // $checkEvents = CheckEvent::query()->where('user_id',$query->id)->where('status','true')->get();
         return view('user.all', compact('query','myEvents','myHistory','myOrganizatedEvents','myBuyRequest'));
+    }
+    public function addAvatar(Request $request,$id){
+        //  $image = Image::updateOrCreate(
+        //     ['user_id'=>$id],
+        //     [''])
+        dd($request);
     }
 }

@@ -4,7 +4,37 @@
 <div class="show">
 <div class="userHeader">
     <div class="user">
-    <div class="avatar"></div>
+    <div class="avatar"><div id="addAvatar" class="addAvatar">+</div></div>
+    <div class="addAvatarMenu" id="addAvatarMenu">
+    <div class="titleAvatarMenu">
+        <span>Выберете Аватар</span>
+        <div class="closeModalMenuAvatar" id="closeModalMenuAvatar">X</div>
+    </div>
+    <form id="formAddAvatar" method="POST" action="{{ route('user.addAvatar',$query->id) }}">
+          @csrf
+        <div class="formUser">
+    <input type="radio" id="img1" name="radio" value="Apple.png" />
+    <label for="img1"><img src="{{asset('img/avatar/Apple.png')}}" alt="avatar"></label>
+    <input type="radio" id="img2" name="radio" value="Bread.png" />
+    <label for="img2"><img src="{{asset('img/avatar/Bread.png')}}" alt="avatar"></label>
+    <input type="radio" id="img3" name="radio" value="Crown.png" />
+    <label for="img3"><img src="{{asset('img/avatar/Crown.png')}}" alt="avatar"></label>
+    <input type="radio" id="img4" name="radio" value="Elixir.png" />
+    <label for="img4"><img src="{{asset('img/avatar/Elixir.png')}}" alt="avatar"></label>
+    <input type="radio" id="img5" name="radio" value="Gem.png" />
+    <label for="img5"><img src="{{asset('img/avatar/Gem.png')}}" alt="avatar"></label>
+    <input type="radio" id="img6" name="radio" value="Hearth.png" />
+    <label for="img6"><img src="{{asset('img/avatar/Hearth.png')}}" alt="avatar"></label>
+    <input type="radio" id="img7" name="radio" value="Key.png" />
+    <label for="img7"><img src="{{asset('img/avatar/Key.png')}}" alt="avatar"></label>
+    <input type="radio" id="img8" name="radio" value="Meat.png" />    
+    <label for="img8"><img src="{{asset('img/avatar/Meat.png')}}" alt="avatar"></label>
+    <input type="radio" id="img9" name="radio" value="Ring.png" />
+    <label for="img9"><img src="{{asset('img/avatar/Ring.png')}}" alt="avatar"></label>
+    </div>
+    <input type="submit" name="submit" id="submit">
+    </form>
+    </div>
     <div class="userValue">
     <h1> {{"@".$query->tg_id}} </h1>
     <span><a href="">ВЫЙТИ</a></span>
