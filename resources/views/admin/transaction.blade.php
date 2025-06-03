@@ -8,7 +8,12 @@
 <p>Админ:{{$item->admin_id}}</p><br>
 <p>Пользователь:{{$item->user_id}}</p><br>
 <p>Дата:{{$item->updated_at}}</p><br>
-<p>Причина:{{$item->reason}}</p><br>
+@if ($item->reason == NULL)
+<div>Причина: Отсутствует</div>
+@else
+<p>Причина: {{$item->reason}}</p><br>
+@endif
+
 </div>
     @endforeach
     </section>

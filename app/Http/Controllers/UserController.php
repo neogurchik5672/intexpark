@@ -30,18 +30,21 @@ class UserController extends Controller
     public function updateCoins($id,Request $request){
        
          $request->validate( [
-      'coins'=>'required|integer',
-      'reason'=>'required|string',
+      'balance'=>'required|integer',
          ]);
-         $user = User::query()->where('id',$id)->first();
-        $user->balance = intval($user->balance) + $request['coins'];
-        $user->save();
+    $user = User::findOrFail($id);
+
+          $user = User::where('id',$id)->update([
+            'balance' => $request['balance'],
+        ]); 
+
           $CoinTransactionLog = Transaction::create([
             'user_id' => 1,
             'admin_id' => 1,
             'reason' => $request['reason'],
         ]); 
         return redirect()->back();
+
     }
         public function updateCoin($id,Request $request){
          $request->validate( [
