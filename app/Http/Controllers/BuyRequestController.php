@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\History;
 use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\CheckAchievementController;
+
 class BuyRequestController extends Controller
 {
     public function index(Product $product){
@@ -34,6 +36,11 @@ class BuyRequestController extends Controller
         $balance->save();
         $error = 'Товар приобретен';
         return redirect()->action([ProductController::class,'index']);
+
+        $achievementController = new CheckAchievementController;
+        $achievementController->checkFirstPurchase();
+        $achievementController->checkThreePurchase();
+        $achievementController->checkIsFirstMerchPurchase();
     }
     
     public function show($id){
