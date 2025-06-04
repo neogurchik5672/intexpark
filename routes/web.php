@@ -9,6 +9,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\CheckEventController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AchievementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +51,15 @@ Route::get('/user/all/{id}',[UserController::class,'all'])->name('user.all');
 Route::get('/admin/transaction',[AdminController::class,'transaction'])->name('admin.transaction');
 Route::put('/admin/newAdmin/{id}',[AdminController::class,'newAdmin'])->name('admin.newAdmin');
 Route::post('/user/addAvatar/{$id}',[UserController::class,'all'])->name('user.addAvatar');
+// Админка
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('achievements', AchievementController::class)->only([
+        'index', 'create', 'store', 'edit', 'update', 'destroy'
+    ]);
+});
+// Страница ачивок
+Route::get('/achievements', function () {
+    $achievements = \App\Models\Achievement::all();
+    $user = auth()->user(); // или получить пользователя как-то иначе
+    return view('achievements.index', compact('achievements', 'user'));
+});
