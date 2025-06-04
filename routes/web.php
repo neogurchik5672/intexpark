@@ -9,19 +9,22 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\CheckEventController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
+
 use App\Http\Controllers\AchievementController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\TelegramAuthController;
 
+
+
+// Авторизация
+Route::post('/telegram/auto-auth', [TelegramAuthController::class, 'autoAuth']);
+Route::get('/telegram/user', [TelegramAuthController::class, 'getUser']);
+Route::post('/telegram/logout', [TelegramAuthController::class, 'logout']);
+
+// Главная страница Mini App
+Route::get('/telegram/app', function () {
+    return view('telegram.app');
+})->middleware('telegram.auth');
 Route::get('/',[ProductController::class,'index']);
 Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
 Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');
