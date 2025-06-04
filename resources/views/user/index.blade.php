@@ -21,18 +21,7 @@
             <input type="number" name="balance" min="1" id="balance" value="{{$item->balance}}">
             <input type="text" name="reason" id="reason" placeholder="Коментарий">
             <button type="submit">Добавить</button> 
-</form>
-<<<<<<< Updated upstream
-=======
-       
-                 <div class="form-group">
-            <form enctype="multipart/form-data" action="{{route('user.updateCoin',$item->id)}}" method="POST">
-            @csrf
-            @method('PUT') <!-- Метод PUT для обновления ресурса -->
-            <input type="number" name="coins" min="1" id="coins" placeholder="Отнять коины">
-            <input type="text" name="reason" id="reason" placeholder="Коментарий">
-            <button type="submit">Отнять</button> 
-</form>
+
 @if ($item->role != 'admin')
                  <div class="form-group">
             <form enctype="multipart/form-data" action="{{route('admin.newAdmin',$item->id)}}" method="POST">
@@ -43,7 +32,7 @@
    </div>
 @endif
    </div>
->>>>>>> Stashed changes
+
         </div>
 
 @endforeach
