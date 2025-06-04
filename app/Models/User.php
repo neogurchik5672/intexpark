@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,34 +12,26 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'users';
     protected $fillable = [
-        'telegram_id',
-        'first_name',
-        'last_name',
-        'username',
-        'photo_url',
-        'auth_date',
-        'hash',
-        'role',
-        'balance',
+        'name',
+        'email',
         'password',
+        'tg_id',
+        'balance',
+        'last_visit',
+        'total_time_spent',     
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
-        'hash',
     ];
 
     protected $casts = [
-        'auth_date' => 'datetime',
+        'email_verified_at' => 'datetime',
+        'last_visit' => 'datetime',        
     ];
-
-    public function getAuthIdentifierName()
-    {
-        return 'telegram_id';
-    }
-
         public function isAdmin(): bool
     {
         return $this->role === 'admin';
