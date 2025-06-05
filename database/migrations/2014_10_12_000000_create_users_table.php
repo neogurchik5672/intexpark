@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('password');
             $table->bigInteger('telegram_id')->nullable()->unique();
             $table->text('telegram_data')->nullable();
-            $table->string('role');
+            $table->string('role')->default('user');
             $table->string('balance');
             $table->timestamps();
         });
