@@ -10,15 +10,13 @@
 <body class="index">
 <header>
       <div class="header">
-        <div class="">ЛОГО</div>
-        <div class="">
-          <a class="menu_item_active" href="/">ГЛАВНАЯ</a>
-          <a class="" href="{{route('events.index')}}">СОБЫТИЯ</a>
+          <div id="checkPage" class="defaultPage @yield('checkPage')">
+        <span class="">ИНТЕКСПАРК</span> 
+        <a class="main" href="/">ГЛАВНАЯ</a>
+        <a class="events" href="{{route('events.index')}}">СОБЫТИЯ</a>
         </div>
-        <div class="">
+          <div class="rightHeader">
           <a class="" href="{{route('buyRequest.index')}}">{{$userHeader->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></a>
- <a href="{{ route('user.show') }}">{{ $userHeader->telegram_id }}<img src="{{asset('img/profile.png')}}" alt="icon"></a>
-
  <a class=" {{ $userHeader->role == 'admin' ? 'menu-btn' : ''}} " href="{{ $userHeader->role == 'admin' ?  '' : route('user.show')}}">{{ $userHeader->telegram_id }}<img src="{{asset('img/profile.png')}}" alt="icon"></a>
     <div class="socialite-login">
     <a href="{{ route('login.telegram') }}" class="btn btn-telegram">
@@ -39,9 +37,11 @@
         color: white;
     }
 </style>
-
+          <a href="{{ route('user.show') }}">{{'@'.$userHeader->tg_id }}<img src="{{asset('img/profile.png')}}" alt="icon"></a>
         </div>
       </div>
+    </div>
+  </div>
     </header>
         <div class="wrapper">
 	<div class="menu">
@@ -60,7 +60,7 @@
 </div>
     <main>
     @yield('content')
-    </main> 
+    </main>
     <footer>
         <ul>
           <h1>footer</h1>
