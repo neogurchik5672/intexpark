@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use App\Models\User;
 use Illuminate\Support\Facades\View;
@@ -24,7 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+      if(Schema::hasTable('users') ){
         $user = User::query()->first();
         View::share('userHeader',$user);
+      }
     }
 }

@@ -3,14 +3,20 @@
 <div class="index">
     <form class="formUser" action="{{route('user.index')}}">
         <input type="search" autofocus placeholder="Поиск" name="search" id="search">
-        <ul class="ulUser">          
+
+        <ul class="ulUser">   
+        <div class="scrollAllUsersUl">
     @foreach ($query as $item)
             <li class="hide">
-                   @<a id="userId" href="{{route('user.all',$item->id)}}"><span>{{$item->telegram_id}}</span></a>
+                   <a id="userId" href="{{route('user.all',$item->id)}}"><span>{{"@".$item->telegram_id}}</span></a>
             </li>
     @endforeach
+        </div>
         </ul>
     </form>
+
+    менять картинку при наведении 
+ <img data-onclick="4" onmouseout="this.src='{{asset('img/coin.png')}}'" onmouseover="this.src='{{asset('img/profile.png')}}'" src="{{asset('img/profile.png')}}">
     @foreach ($query as $item)
         <div class="item">
             @<a id="userId" href="{{route('user.all',$item->id)}}"><span>{{$item->telegram_id}}</span></a>
