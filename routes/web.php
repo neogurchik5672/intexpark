@@ -24,33 +24,8 @@ use Illuminate\Support\Str;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/auth/telegram', function () {
-    return Socialite::driver('telegram')->redirect();
-})->name('login.telegram');
 
-Route::get('/auth/telegram/callback', function () {
-    try {
-        $telegramUser = Socialite::driver('telegram')->user();
-        
-        $user = User::updateOrCreate(
-            ['telegram_id' => $telegramUser->getId()],
-            [
-                'name' => $telegramUser->getName(),
-                'email' => $telegramUser->getEmail() ?? $telegramUser->getId().'@telegram.user',
-                'password' => bcrypt(Str::random(16)),
-                'telegram_data' => json_encode($telegramUser->user),
-            ]
-        );
-        
-        Auth::login($user, true);
-        
-        return redirect()->intended('/dashboard');
-    } catch (\Exception $e) {
-        return redirect()->route('login')->withErrors([
-            'telegram' => 'Ошибка авторизации через Telegram. Пожалуйста, попробуйте позже.'
-        ]);
-    }
-});
+// Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']);
 Route::get('/',[ProductController::class,'index']);
 Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
 Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');
