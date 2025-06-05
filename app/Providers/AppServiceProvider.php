@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        $user = User::query()->first();
+        View::share('userHeader',$user);
     }
 }
