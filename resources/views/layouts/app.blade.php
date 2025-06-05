@@ -17,7 +17,7 @@
         </div>
         <div class="">
           <a class="" href="{{route('buyRequest.index')}}">{{$userHeader->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></a>
- <a href="{{ route('user.show') }}">{{ $userHeader->tg_id }}<img src="{{asset('img/profile.png')}}" alt="icon"></a>
+ <a href="{{ route('user.show') }}">{{ $userHeader->telegram_id }}<img src="{{asset('img/profile.png')}}" alt="icon"></a>
     <div class="socialite-login">
     <a href="{{ route('login.telegram') }}" class="btn btn-telegram">
         <i class="fab fa-telegram"></i> Войти через Telegram

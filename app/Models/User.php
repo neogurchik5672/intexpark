@@ -17,7 +17,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'tg_id',
+        'telegram_id',
         'balance',
         'last_visit',
         'total_time_spent',     

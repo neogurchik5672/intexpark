@@ -6,14 +6,14 @@
         <ul class="ulUser">          
     @foreach ($query as $item)
             <li class="hide">
-                   @<a id="userId" href="{{route('user.all',$item->id)}}"><span>{{$item->tg_id}}</span></a>
+                   @<a id="userId" href="{{route('user.all',$item->id)}}"><span>{{$item->telegram_id}}</span></a>
             </li>
     @endforeach
         </ul>
     </form>
     @foreach ($query as $item)
         <div class="item">
-            @<a id="userId" href="{{route('user.all',$item->id)}}"><span>{{$item->tg_id}}</span></a>
+            @<a id="userId" href="{{route('user.all',$item->id)}}"><span>{{$item->telegram_id}}</span></a>
             <p>{{$item->balance}} коинов</p>
             <form enctype="multipart/form-data" action="{{route('user.updateCoins',$item->id)}}" method="POST">
             @csrf
