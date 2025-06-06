@@ -24,7 +24,7 @@ use Illuminate\Support\Str;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 // Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']);
 Route::get('/',[ProductController::class,'index']);
 Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
