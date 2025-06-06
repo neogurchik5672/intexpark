@@ -13,7 +13,7 @@
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            window.location.href = "/index";
+            window.location.href = data.redirect_url;
         } else {
             alert('Ошибка авторизации');
         }

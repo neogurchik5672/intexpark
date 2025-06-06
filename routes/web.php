@@ -26,8 +26,9 @@ use Illuminate\Support\Str;
 |
 */
 Auth::routes();
-// Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']);
-Route::get('/',[ProductController::class,'index']);
+// Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']); Для авторизации
+Route::get('/',[ProductController::class,'index']);    
+// Route::get('/index',[ProductController::class,'index']); Для авторизации
 Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
 Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');
 Route::get('/buy/show/{id}',[BuyRequestController::class,'show'])->name('buyRequest.show');
