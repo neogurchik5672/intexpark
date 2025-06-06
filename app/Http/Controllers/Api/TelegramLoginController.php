@@ -29,5 +29,6 @@ class TelegramLoginController extends Controller
         Auth::login($user, true);
 
         return response()->json(['success' => true]);
+       
     }
 }

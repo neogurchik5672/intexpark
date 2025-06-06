@@ -10,6 +10,7 @@ use App\Http\Controllers\CheckEventController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\Api\TelegramLoginController;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +26,8 @@ use Illuminate\Support\Str;
 |
 */
 Auth::routes();
-// Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']);
-Route::get('/',[ProductController::class,'index']);
+Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']);
+Route::get('/index',[ProductController::class,'index']);
 Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
 Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');
 Route::get('/buy/show/{id}',[BuyRequestController::class,'show'])->name('buyRequest.show');
