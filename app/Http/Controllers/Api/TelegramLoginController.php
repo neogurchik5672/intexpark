@@ -28,7 +28,10 @@ class TelegramLoginController extends Controller
 
         Auth::login($user, true);
 
-        return response()->json(['success' => true]);
+                return response()->json([
+            'success' => true,
+            'redirect_url' => url('/index') // Добавляем URL для редиректа
+        ]);
        
     }
 }
