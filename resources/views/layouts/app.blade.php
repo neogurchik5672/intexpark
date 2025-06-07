@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" href="/css/style.css">
+    @yield('styles')
 </head>
 <body class="index">
-<header>
+{{-- <header>
       <div class="header">
         <div class="">ЛОГО</div>
         <div class="">
@@ -21,7 +22,7 @@
     
         </div>
       </div>
-    </header>
+    </header> --}}
     <main>
     @yield('content')
     </main> 
@@ -35,5 +36,6 @@
         </ul> 
     </footer>
     <script src="{{asset('js/index.js')}}"></script>
+    @yield('scripts')
 </body>
 </html>
