@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" href="/css/style.css">
+    @yield('styles')
+    
+
 </head>
 <body class="index">
 <header>
@@ -16,7 +19,7 @@
           <a class="" href="{{route('events.index')}}">СОБЫТИЯ</a>
         </div>
         <div class="">
-          <a class="" href="{{route('buyRequest.index')}}">{{$userHeader->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></a>
+          <a class="" href="{{route('buyRequest.index')}}">{{$userHeader->balance}}<img src="{{asset('img/coin_i.png')}}" alt="icon"></a>
  <a href="{{ route('user.show') }}">{{ $userHeader->tg_id }}<img src="{{asset('img/profile.png')}}" alt="icon"></a>
     
         </div>
@@ -24,6 +27,8 @@
     </header>
     <main>
     @yield('content')
+    @yield('scripts')
+   
     </main> 
     <footer>
         <ul>
@@ -35,5 +40,7 @@
         </ul> 
     </footer>
     <script src="{{asset('js/index.js')}}"></script>
+
+
 </body>
 </html>

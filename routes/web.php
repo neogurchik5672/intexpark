@@ -63,3 +63,8 @@ Route::get('/achievements', function () {
     $user = auth()->user(); // или получить пользователя как-то иначе
     return view('achievements.index', compact('achievements', 'user'));
 });
+Route::get('/achievements/modal', function () {
+    $achievements = \App\Models\Achievement::all();
+    $user = auth()->user(); // или получить пользователя как-то иначе
+    return view('achievements.modal', compact('achievements', 'user'));
+});

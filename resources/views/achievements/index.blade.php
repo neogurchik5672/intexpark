@@ -321,6 +321,32 @@
         background: var(--t-zheltyy);
 
     }
+    .achievement-info {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.achievement-info h3 {
+    margin: 0 0 8px 0;
+    color: var(--belyy);
+    font-family: var(--font-family);
+    font-family: Montserrat-Regular;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.achievement-info p {
+    white-space: normal; /* Разрешаем перенос строк */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Ограничиваем до 3 строк */
+    -webkit-box-orient: vertical;
+}
 
     @media (max-width: 768px) {
         .achievements-grid {
