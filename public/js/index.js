@@ -112,4 +112,4 @@ document.querySelector('#formAddAvatar').addEventListener('change', function(e) 
         if (e.target === inputs[i]) continue;  
         inputs[i].disabled = true;  
     }  
-}); 
+});

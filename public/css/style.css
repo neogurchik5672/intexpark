@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .img{
     width: 400px;
 }
@@ -20,28 +21,30 @@ button {
 
 :root {
     --index: calc(1vw + 1vh);
-
     --color1: #FAC53B;
     --color2: #fff;
     --color3: #021F3F;
     --color4: #41BD8F;
     --color5: #944BA7;
+    --main_yellow: #FDBC15;
+    --yellow_use: #FFE479;
+    --blue: #085A7F;
     --custom-gradient: linear-gradient(to bottom, #021F3F 8%, #044973 50%, #23BDCA 100%);
 }
 
 @font-face {
-    font-family: Montserrat-Bold;
-    src: url(../fonts/Montserrat-Bold.woff2);
+    font-family: 'Montserrat-Bold';
+    src: url(../fonts/Montserrat-Bold.woff2) format("woff2");
 }
 
 @font-face {
-    font-family: Montserrat-Black;
-    src: url(../fonts/Montserrat-Black.woff2);
+    font-family: 'Montserrat-Black';
+    src: url(../fonts/Montserrat-Black.woff2) format("woff2");
 }
 
 @font-face {
-    font-family: Montserrat-Regular;
-    src: url(../fonts/Montserrat-Regular.woff2);
+    font-family: 'Montserrat-Regular';
+    src: url(../fonts/Montserrat-Regular.woff2) format("woff2");
 }
 
 body {
@@ -49,7 +52,9 @@ body {
     background-attachment: fixed;
     background-size: cover;
 
-    font-family: Montserrat-Regular;
+    overflow-x: hidden;
+
+    font-family: 'Montserrat-Regular';
     font-size: 30px;
     color: var(--color2);
 }
@@ -127,7 +132,7 @@ align-items: center;
     display: flex;
     justify-content: space-around;
 }
-/* header */
+
 header {
     margin: 0;
     top: 0;
@@ -154,12 +159,11 @@ header {
     padding: 10px 25px;
 }
 
-.header a:hover,
+a:hover,
 .menu_item_active {
     color: var(--color3);
     background: var(--color1);
-
-    font-family: Montserrat-Bold;
+    font-family: 'Montserrat-Bold;'
 }
 
 /* Главная страница */
@@ -178,18 +182,18 @@ section.text_shop {
 
 /* каталог товаров */
 .index .shop{
-     margin-top: 100px;
-}
-section.shop {
+    margin-top: 100px;
+} */
+ section.shop {
     font-family: Montserrat-Bold;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 15px 162px;
     gap: 100px 50px;
-}
+} 
 
-.card {
+ .card {
     text-transform: uppercase;
     width: 465px;
 }
