@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('checkPage','eventsLink')
 @section('content')
 <div class="error">
     {{isset($error) ? $error : ''}}

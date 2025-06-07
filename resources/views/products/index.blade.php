@@ -1,6 +1,6 @@
 @extends('layouts.app')
+@section('checkPage','mainLink')
 @section('content')
-
 <section class="banner">
       <img src="img/banner.png" alt="" />
     </section>
