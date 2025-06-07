@@ -6,7 +6,7 @@
     <div class="user">
     <div class="avatar"></div>
     <div class="userValue">
-    <h1> {{"@".$query->tg_id}} </h1>
+    <h1> {{"@".$query->telegram_id}} </h1>
     <span><a href="">ВЫЙТИ</a></span>
     </div>
 </div>
@@ -66,7 +66,7 @@
         <p>{{count($item->members)}} из {{$item->count}} участников</p>
         участники: <br>
         @foreach ($item->members as $member)
-            {{$member->user->tg_id}}
+            {{$member->user->telegram_id}}
             @if(!isset($item->checkevents))
             <form action="{{route('checkEvent.statusOff',$item)}}" method="post">
                 @csrf

@@ -30,5 +30,12 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    
+    'telegram' => [
+    'bot' => env('TELEGRAM_BOT_NAME'), // Имя бота (без @)
+    'client_id' => null,
+    'client_secret' => env('TELEGRAM_TOKEN'), // Токен бота
+    'redirect' => env('TELEGRAM_REDIRECT_URI'),
+],
 
 ];
