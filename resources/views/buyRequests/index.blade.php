@@ -15,7 +15,7 @@
           <div class="dropdown-content">
             @foreach ($item->buyRequest as $buyItem)
         <a href="{{ route('buyRequest.show',$buyItem->id) }}">
-          {{ $buyItem->user->tg_id}}  
+          {{ $buyItem->user->telegram_id}}  
         </a>
         @endforeach
         @else

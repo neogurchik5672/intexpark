@@ -37,10 +37,10 @@ document.addEventListener('click', function(e) {
 //модальное окно для ЛК
 
 let button = document.getElementById("PC")
+if (button) {
 let menu = document.getElementById("modalMenu")
 let closebutton = document.getElementById("closeModalMenu")
-if (button != null) {
-  
+
  button.addEventListener('click', function() {
   menu.style.display = "flex"
   button.style.display = "none"
@@ -81,11 +81,13 @@ if (button != null) {
               console.log(elem)
               if(elem.innerText.search(val) == -1){
               }else{
+                document.querySelector('.ulUser').style.display = 'flex';
                 elem.classList.remove('hide');
               }
             })
           }else{
              items.forEach(function(elem){
+                document.querySelector('.ulUser').style.display = 'none';
                 elem.classList.add('hide');
           })
         }
@@ -106,10 +108,26 @@ if (button != null) {
   buttonAvatar.style.display = "block"
  })
 }
+if(document.querySelector('#formAddAvatar')){
 document.querySelector('#formAddAvatar').addEventListener('change', function(e) {  
     var inputs = this.querySelectorAll('input[type=radio]');  
     for (var i = 0; i < inputs.length; i++) {  
         if (e.target === inputs[i]) continue;  
         inputs[i].disabled = true;  
     }  
+}); 
+}
+//всплавающее меню
+document.querySelector('.menu-btn').addEventListener('click', function(e) {
+  console.log("ok");
+  e.preventDefault();
+  document.querySelector('.menu').classList.add('menu_active');
+    document.querySelector('.wrapper').style.boxShadow = "0 0 0 max(100vh, 100vw) rgba(0, 0, 0, 0.5)"
 });
+  window.addEventListener('click', function(e) {
+  if (!e.target.closest('.menu-btn') && !e.target.closest('.wrapper')) {
+    document.querySelector('.wrapper').style.boxShadow = "none"
+  document.querySelector('.menu').classList.remove('menu_active');
+  }
+});
+

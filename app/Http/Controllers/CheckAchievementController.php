@@ -6,6 +6,7 @@ use App\Models\Achievement;
 use App\Models\UserAchievement;
 use Illuminate\Support\Facades\Auth;
 use App\Models\History;
+use App\Models\User;
 
 class CheckAchievementController extends Controller
 {
@@ -46,6 +47,7 @@ class CheckAchievementController extends Controller
                 'achievement_id' => $achievement->id,
             ]);
 
+            $this->addIntexCoinUser();
             return true;
         }
 
@@ -74,6 +76,7 @@ class CheckAchievementController extends Controller
                 'achievement_id' => $achievement->id,
             ]);
 
+            $this->addIntexCoinUser();
             return true;
         }
         return false;
@@ -102,6 +105,7 @@ class CheckAchievementController extends Controller
                 'achievement_id' => $achievement->id,
             ]);
 
+            $this->addIntexCoinUser();
             return true;
         }
 
@@ -130,6 +134,7 @@ class CheckAchievementController extends Controller
                 'achievement_id' => $achievement->id,
             ]);
             
+            $this->addIntexCoinUser();
             return true;
         }
 
@@ -160,6 +165,7 @@ class CheckAchievementController extends Controller
                 'achievement_id' => $achievement->id,
             ]);
 
+            $this->addIntexCoinUser();
             return true;
         }
 
