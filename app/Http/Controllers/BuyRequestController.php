@@ -10,6 +10,7 @@ use App\Models\History;
 use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\CheckAchievementController;
+use Illuminate\Support\Facades\Auth;
 
 class BuyRequestController extends Controller
 {
@@ -20,7 +21,7 @@ class BuyRequestController extends Controller
       }
     public function buy(Product $product){ //при покупке изменяется баланс,продукт записывается в историю и добавляется в лист ожидания
         $query = Product::query()->get();
-        $balance = User::query()->first();
+        $balance = Auth::user();
         $price = Product::find($product->id);
         $cart = Cart::query()->where('product_id',$product->id);
         $cart->delete();

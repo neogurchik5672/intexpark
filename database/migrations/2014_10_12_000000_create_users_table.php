@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('telegram_id')->nullable()->unique();
             $table->string('role')->default('user');
-            $table->string('balance');
+            $table->string('balance')->default('0');
             $table->timestamps();
         });
     }

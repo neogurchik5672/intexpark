@@ -21,8 +21,8 @@ class UserController extends Controller
         return view('user.index', compact('query'));
     }
     public function show(){        
-        $query = User::query()->first();
-        $myEvents = Member::query()->where('user_id',$query->id)->get();
+        $query = Auth::user();
+        // $myEvents = Member::query()->where('user_id',$query->id)->get();
         $myBuyRequest = BuyRequest::query()->where('user_id',$query->id)->get();
         $myOrganizatedEvents = Events::query()->where('user_id',$query->id)->get();
         $myHistory = History::query()->where('user_id',$query->id)->get();
@@ -40,29 +40,14 @@ class UserController extends Controller
         ]); 
 
           $CoinTransactionLog = Transaction::create([
-            'user_id' => 1,
-            'admin_id' => 1,
+            'user_id' => $id,
+            'admin_id' => auth()->id(),
             'reason' => $request['reason'],
         ]); 
         return redirect()->back();
 
     }
 
-    public function updateCoin($id,Request $request){
-        $request->validate( [
-            'coins'=>'required|integer',
-            'reason'=>'required|string',
-        ]);
-        $user = User::query()->where('id',$id)->first();
-        $user->balance = intval($user->balance) - $request['coins'];
-        $user->save();
-           $CoinTransactionLog = Transaction::create([
-            'user_id' => 1,
-            'admin_id' => 1,
-            'reason' => $request['reason'],
-        ]); 
-        return redirect()->back();
-    }
     public function all($id){        
         $query = User::findOrFail($id);
         $myEvents = Member::query()->where('user_id',$query->id)->get();
