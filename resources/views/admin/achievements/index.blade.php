@@ -2,6 +2,13 @@
 
 @section('content')
 
+<!-- уведомление изменения достижения -->
+<!-- @if(session('success'))
+    <div id="notification" class="centered-notification success">
+        {{ session('success') }}
+    </div>
+@endif -->
+
 <div class="achievements-container">
 <div class="header-section">
     <div class="achievements-title">Достижения</div>
@@ -15,7 +22,7 @@
 </button>
 <div class="modal" id="achievementModal">
     <div class="modal-content">
-        <span class="close-btn" id="closeModalBtn">&times;</span>
+        <!-- <span class="close-btn" id="closeModalBtn">&times;</span> -->
         <h2>Добавление достижения</h2>
         <form action="{{ route('admin.achievements.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -66,7 +73,7 @@
 <!-- Модальное окно редактирования достижения -->
 <div class="modal" id="editAchievementModal">
     <div class="modal-content">
-        <span class="close-btn" id="closeEditModalBtn">&times;</span>
+        <!-- <span class="close-btn" id="closeEditModalBtn">&times;</span> -->
         <h2>Редактирование достижения</h2>
         <form id="editAchievementForm" method="POST" enctype="multipart/form-data">
             @csrf
@@ -114,7 +121,7 @@
 <!-- Модальное окно подтверждения удаления -->
 <div class="modal" id="deleteConfirmModal">
     <div class="modal-content small-modal">
-        <span class="close-btn" id="closeDeleteModalBtn">&times;</span>
+        <!-- <span class="close-btn" id="closeDeleteModalBtn">&times;</span> -->
         <h2 style="text-align: center; font-family: Montserrat-Bold;">Удалить достижение</h2>
         <p id="achievementNameToDelete" style="text-align: center; font-size: 20px; margin-bottom: 30px;"></p>
         <form id="deleteForm" method="POST">
@@ -168,6 +175,7 @@
 @endforeach
         </div>
     </div>
+    
 </div>
 @endsection
 

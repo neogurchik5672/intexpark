@@ -1,4 +1,4 @@
-   function closeModal(id) {
+function closeModal(id) {
     const modal = document.getElementById(id);
     if (modal) {
         modal.style.display = 'none';
@@ -13,129 +13,90 @@
         }
     }
 }
-    
-    // Открытие модального окна
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Поиск достижений 
+    document.getElementById('achievementSearch').addEventListener('input', function () {
+        const term = this.value.toLowerCase();
+        document.querySelectorAll('.achievement-card').forEach(card => {
+            const name = card.getAttribute('data-name')?.toLowerCase() || '';
+            // card.style.display = name.includes(term) ? 'block' : 'none';
+            if (name.includes(term)) {
+            card.style.removeProperty('display'); // Возвращаем исходный стиль
+        } else {
+            card.style.display = 'none';
+        }
+        });
+    });
+
+    // Предпросмотр изображения при добавлении
+    const imageUpload = document.getElementById('image');
+    const imagePreview = document.getElementById('imagePreview');
+    if (imageUpload && imagePreview) {
+        imageUpload.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.addEventListener('load', function () {
+                    imagePreview.style.backgroundImage = `url(${this.result})`;
+                    imagePreview.style.backgroundSize = 'auto 90%';
+                    imagePreview.style.backgroundRepeat = 'no-repeat';
+                    imagePreview.style.backgroundPosition = 'center';
+                    imagePreview.style.opacity = '0.5';
+                    imagePreview.querySelector('.plus-icon')?.remove();
+                });
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    // Открытие модального окна добавления
     document.querySelector('.button__add').addEventListener('click', function () {
         document.getElementById('achievementModal').style.display = 'block';
     });
 
-    // Закрытие по клику на крестик
-    document.getElementById('closeModalBtn').addEventListener('click', function () {
-        document.getElementById('achievementModal').style.display = 'none';
-    });
-
-    // Закрытие по клику вне окна
-    window.addEventListener('click', function (event) {
-        const modal = document.getElementById('achievementModal');
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-    
-    document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('achievementSearch').addEventListener('input', function () {
-            const term = this.value.toLowerCase();
-            document.querySelectorAll('.achievement-card').forEach(card => {
-                const name = card.getAttribute('data-name')?.toLowerCase() || '';
-                card.style.display = name.includes(term) ? 'block' : 'none';
-            });
-        });
-        
-        // Обработчик для предпросмотра изображения
-        const imageUpload = document.getElementById('image');
-        const imagePreview = document.getElementById('imagePreview');
-        
-        if (imageUpload && imagePreview) {
-            imageUpload.addEventListener('change', function() {
-                const file = this.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    
-                   reader.addEventListener('load', function() {
-    imagePreview.style.backgroundImage = `url(${this.result})`;
-    imagePreview.style.backgroundSize = 'auto 90%'; /* ограничьте размер */
-    imagePreview.style.backgroundRepeat = 'no-repeat';
-    imagePreview.style.backgroundPosition = 'center';
-    imagePreview.style.opacity = '0.5';
-    imagePreview.querySelector('.plus-icon')?.remove();
-});
-                    
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
-    });
-   
-
-document.querySelectorAll('.btn-delete-form').forEach(form => {
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (confirm('Вы уверены, что хотите удалить эту ачивку?')) {
-            this.submit();
-        }
-    });
-});
-document.addEventListener('DOMContentLoaded', function () {
+    // Модальное окно удаления
     const deleteModal = document.getElementById('deleteConfirmModal');
-    const closeDeleteBtn = document.getElementById('closeDeleteModalBtn');
     const achievementNameElem = document.getElementById('achievementNameToDelete');
     const deleteForm = document.getElementById('deleteForm');
 
-    // При клике на кнопку "Удалить"
     document.querySelectorAll('.open-delete-modal').forEach(button => {
         button.addEventListener('click', function () {
             const name = this.getAttribute('data-name');
             const id = this.getAttribute('data-id');
-
-            // Отображаем название ачивки
             achievementNameElem.textContent = '«' + name + '»';
-
-            // Обновляем action формы
             deleteForm.setAttribute('action', '/admin/achievements/' + id);
-
-            // Показываем модалку
             deleteModal.style.display = 'block';
         });
     });
 
-    // Закрытие по крестику
-    closeDeleteBtn.addEventListener('click', function () {
-        deleteModal.style.display = 'none';
-    });
-
-    // Закрытие по клику вне окна
+    // Закрытие по клику вне окна — удаление
     window.addEventListener('click', function (event) {
         if (event.target === deleteModal) {
             deleteModal.style.display = 'none';
         }
     });
-});
-document.addEventListener('DOMContentLoaded', function () {
+
+    // Модальное окно редактирования
     const editModal = document.getElementById('editAchievementModal');
-    const closeEditModalBtn = document.getElementById('closeEditModalBtn');
     const editForm = document.getElementById('editAchievementForm');
 
-    // При клике на "редактировать"
     document.querySelectorAll('.btn-edit').forEach(button => {
         button.addEventListener('click', function (e) {
             e.preventDefault();
-
             const card = this.closest('.achievement-card');
             const name = card.querySelector('h3').innerText.trim();
             const description = card.querySelector('p').innerText.trim();
             const coins = card.querySelector('.coins').innerText.replace('+', '').trim();
             const imageSrc = card.querySelector('.achievement-img').src;
             const requiredCount = card.getAttribute('data-required-count');
-            // Получаем ID через data-id
             const achievementId = this.dataset.id;
-        
-            // Заполняем форму
+
             document.getElementById('edit_name').value = name;
             document.getElementById('edit_description').value = description;
             document.getElementById('edit_intexcoin').value = coins;
             document.getElementById('edit_required_count').value = requiredCount;
 
-            // Обновляем preview изображения
             const preview = document.getElementById('editImagePreview');
             preview.style.backgroundImage = `url(${imageSrc})`;
             preview.style.backgroundSize = 'auto 90%';
@@ -146,27 +107,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 preview.querySelector('.plus-icon').remove();
             }
 
-            // Устанавливаем action формы
             editForm.setAttribute('action', '/admin/achievements/' + achievementId);
-
-            // Открываем модалку
             editModal.style.display = 'block';
         });
     });
 
-    // Закрытие по крестику
-    closeEditModalBtn.addEventListener('click', function () {
-        closeModal('editAchievementModal');
-    });
-
-    // Закрытие по клику вне окна
-    window.addEventListener('click', function (event) {
-        if (event.target === editModal) {
-            closeModal('editAchievementModal');
-        }
-    });
-
-    // Предпросмотр нового изображения при выборе файла
+    // Предпросмотр нового изображения при редактировании
     const editImageInput = document.getElementById('edit_image');
     const editImagePreview = document.getElementById('editImagePreview');
     if (editImageInput && editImagePreview) {
@@ -188,4 +134,32 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // Закрытие по клику вне окна — редактирование
+    window.addEventListener('click', function (event) {
+        if (event.target === editModal) {
+            closeModal('editAchievementModal');
+        }
+    });
+
+    // Закрытие по клику вне окна — добавление
+    window.addEventListener('click', function (event) {
+        const modal = document.getElementById('achievementModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Показываем уведомление по центру
+//     window.addEventListener('DOMContentLoaded', function () {
+//         const notification = document.getElementById('notification');
+//         if (notification) {
+//             notification.classList.add('show');
+
+//             // Скрываем через 3 секунды
+//             setTimeout(() => {
+//             notification.classList.remove('show');
+//         }, 3000);
+//     }
+// });
 });

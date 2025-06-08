@@ -59,6 +59,7 @@
     </footer>
     <script src="{{ asset('js/index.js') }}"></script>
     @yield('scripts')
+    
 </body>
 
 </html>
