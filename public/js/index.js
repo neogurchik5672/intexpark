@@ -36,24 +36,24 @@ document.addEventListener('click', function(e) {
   }
 });
 
-//модальное окно для ЛК
+// //модальное окно для ЛК
 
-let button = document.getElementById("PC")
-if (button) {
-let menu = document.getElementById("modalMenu")
-let closebutton = document.getElementById("closeModalMenu")
+// let button = document.getElementById("PC")
+// if (button) {
+// let menu = document.getElementById("modalMenu")
+// let closebutton = document.getElementById("closeModalMenu")
 
- button.addEventListener('click', function() {
-  menu.style.display = "flex"
-  button.style.display = "none"
-  menu.style.boxShadow = "0 0 0 max(100vh, 100vw) rgba(0, 0, 0, 0.5)"
- })
-  closebutton.addEventListener('click', function() {
-  menu.style.display = "none"
-  button.style.display = "block"
- })
+//  button.addEventListener('click', function() {
+//   menu.style.display = "flex"
+//   button.style.display = "none"
+//   menu.style.boxShadow = "0 0 0 max(100vh, 100vw) rgba(0, 0, 0, 0.5)"
+//  })
+//   closebutton.addEventListener('click', function() {
+//   menu.style.display = "none"
+//   button.style.display = "block"
+//  })
 
-}
+// }
      function toggleDateTimeFields() {
             const typeSelect = document.getElementById('type');
             const dateTimeFields = document.getElementById('dateTimeFields');

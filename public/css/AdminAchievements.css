@@ -1,0 +1,925 @@
+:root {
+    --zheltyy: #fdbc15;
+    --t-siniy: #021f3f;
+    --fioletovyy: #944ba7;
+    --zelenyy: #41bd8f;
+    --belyy: #fff;
+    --s-zheltyy: #ffe479;
+    --t-zheltyy: #cd5602;
+    --goluboy: #23bdca;
+    --siniy: #085a7f;
+    --font-family: "Montserrat-Regular", "sans-serif";
+    --fon: linear-gradient(
+        180deg,
+        rgba(2, 31, 63, 1) 7.925131916999817%,
+        rgba(4, 73, 115, 1) 50%,
+        rgba(35, 189, 202, 1) 100%
+    );
+    --color1: #fac53b;
+    --color2: #fff;
+    --color3: #021f3f;
+    --color4: #41bd8f;
+    --color5: #944ba7;
+    --main_yellow: #fdbc15;
+    --yellow_use: #ffe479;
+    --blue: #085a7f;
+}
+
+/* стили для уведомления о изменении достижения */
+/* .centered-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    border-radius: 8px;
+    color: var(--t-siniy);
+    font-size: 16px;
+    background-color: var(--belyy);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 9999;
+    font-family: Montserrat-Bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    min-width: 250px;
+}
+
+.centered-notification.show {
+    opacity: 1;
+    visibility: visible;
+}  */
+
+#editImagePreview::after {
+    content: "+";
+    position: absolute;
+    font-size: 50px;
+    color: #ccc;
+    font-weight: bold;
+    pointer-events: none;
+}
+#editImagePreview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+#achievementNameToDelete {
+    font-family: Montserrat-Bold;
+    color: #021f3f;
+    white-space: normal; /* Разрешаем перенос строк */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Ограничиваем до 3 строк */
+    -webkit-box-orient: vertical;
+}
+
+.achievement-btn__delete {
+    background-color: var(--t-zheltyy);
+    color: white;
+    font-family: Montserrat-Bold;
+    transition-duration: 0.277s;
+}
+.achievement-btn__delete:hover {
+    background-color: #c0392b;
+}
+
+.card-actions {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    align-items: center; /* Выравнивание по вертикали */
+    gap: 12px;
+    z-index: 10;
+}
+
+.btn-edit,
+.btn-delete {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.btn-edit img,
+.btn-delete img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease;
+}
+
+/* По умолчанию показываем обычную иконку */
+.btn-edit .icon-default,
+.btn-delete .icon-default {
+    opacity: 1;
+}
+
+/* Закрашенная иконка скрыта по умолчанию */
+.btn-edit .icon-hover,
+.btn-delete .icon-hover {
+    opacity: 0;
+}
+
+/* При наведении или нажатии меняем прозрачность */
+.btn-edit:hover .icon-default,
+.btn-delete:hover .icon-default,
+.btn-edit:active .icon-default,
+.btn-delete:active .icon-default {
+    opacity: 0;
+}
+
+.btn-edit:hover .icon-hover,
+.btn-delete:hover .icon-hover,
+.btn-edit:active .icon-hover,
+.btn-delete:active .icon-hover {
+    opacity: 1;
+}
+
+.card-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.card-actions img {
+    width: 100%;
+    height: 100%;
+}
+
+.achievement__search-input {
+    background-color: unset;
+    height: 60px;
+    width: 500px;
+    margin-right: 4.5%;
+    color: #1aa3af;
+    font-family: Montserrat-Regular;
+    font-size: 15px;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid var(--color2);
+    padding-top: 40px !important;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.achievement__search-input::placeholder {
+    color: white;
+}
+
+.achievement__search-input:focus {
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+.achievement__search-input:focus::placeholder {
+    color: white;
+    opacity: 0.5;
+}
+
+.achievement__search-input:focus {
+    border-bottom: 2px solid #1aa3af;
+    padding-top: 38px;
+    color: #1aa3af;
+    box-shadow: none;
+}
+
+input[type="text"],
+textarea,
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.search-bar {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.search-bar input {
+    width: 500px;
+    padding: 8px 12px;
+}
+
+.button__add {
+    width: 100%;
+    height: 219px;
+    border: 5px, solid, var(--color2);
+    border-radius: 30px;
+    background-color: unset;
+    max-width: 1500px;
+    margin-bottom: 4%;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+}
+
+.button__add:hover {
+    width: 100%;
+    height: 219px;
+    border: 5px, solid, var(--color2);
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition-duration: 0.277s;
+}
+
+.coins {
+    color: var(--belyj, #ffffff);
+    text-align: left;
+    font-family: "Montserrat-Regular", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    position: relative;
+}
+
+.achievement-outline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--zheltyy);
+    width: 368px;
+    height: 64px;
+    border-radius: 32px;
+    position: absolute;
+    margin-top: -30px;
+    z-index: 1;
+}
+
+.achievement {
+    display: flex;
+    position: relative;
+    width: 346px;
+    height: 46px;
+    border-radius: 26px;
+    background-color: #fdbc15;
+    border: 2px solid #cd5602;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family);
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.achievement span {
+    color: #021f3f;
+    font-size: 24px;
+    font-weight: regular;
+    font-family: Montserrat-Black;
+}
+
+.achievements-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.achievements-scroll-wrapper {
+    border-radius: 20px;
+    padding: 20px 20px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.achievement-card {
+    position: relative;
+    background: var(--siniy);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 27px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 700px;
+}
+
+.achievement-item {
+    display: flex;
+    flex-grow: 1;
+}
+.achievement-coins {
+    position: relative; /* или static */
+    margin-top: auto; /* Отбрасываем вниз внутри flex-контейнера */
+    align-self: flex-end; /* Выравниваем по правому краю */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--belyy);
+    font-family: Montserrat-Regular, sans-serif;
+    font-size: 14px;
+    white-space: nowrap; /* Чтобы текст не переносился */
+    z-index: 1;
+}
+/* .achievement-coins {
+        position: absolute;
+        bottom: 20px;
+        right: 25px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: var(--belyy);
+        font-family: Montserrat-Regular, sans-serif;
+        font-size: 14px;
+    } */
+
+.coin-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.achievement-img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+}
+
+.achievement-info {
+    flex-grow: 1;
+}
+
+.achievement-info h3 {
+    margin: 0 0 8px 0;
+    color: var(--belyy);
+    font-family: var(--font-family);
+    font-family: Montserrat-Regular;
+}
+
+.achievement-info p {
+    white-space: pre-line;
+    margin: 0;
+    margin-right: 17%;
+    color: var(--belyy);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+main {
+    margin-top: 220px;
+}
+
+.achievement-icon {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.achievements-scroll-wrapper::-webkit-scrollbar {
+    width: 37px;
+}
+
+.achievements-scroll-wrapper::-webkit-scrollbar-track {
+    background: var(--t-siniy);
+    border-radius: 20px;
+}
+
+.achievements-scroll-wrapper::-webkit-scrollbar-thumb {
+    background: var(--siniy);
+    border-radius: 20px;
+    border: 7px solid transparent;
+    background-clip: padding-box;
+}
+
+.achievements-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+    border: 7px solid transparent;
+    background-clip: padding-box;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.achievements-title {
+    font-size: 103px;
+    font-weight: black;
+    color: var(--belyy);
+    font-family: "Montserrat-bold", sans-serif;
+    text-transform: uppercase;
+}
+
+/* Стили для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 1200px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-content h2 {
+    font-family: Montserrat-Bold;
+    margin-top: 0;
+    color: var(--t-siniy);
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.modal-form-container {
+    display: flex;
+    gap: 30px;
+}
+
+.modal-image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-fields-section {
+    flex: 1;
+}
+
+.image-upload-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.image-upload-label {
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--goluboy);
+    transition: all 0.3s ease;
+    position: relative;
+    opacity: 1; /* По умолчанию непрозрачный */
+}
+
+.image-preview::after {
+    content: "+";
+    position: absolute;
+    font-size: 50px;
+    color: #ccc;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.plus-icon {
+    font-size: 50px;
+    color: #ccc;
+    font-weight: bold;
+}
+
+.image-upload-input {
+    display: none;
+}
+
+label {
+    color: #021f3f;
+    font-family: Montserrat-Bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: Montserrat-Regular;
+    margin-bottom: 15px;
+}
+
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.shop-modal__footer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.achievement-btn {
+    padding: 20px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.achievement-btn__cancel {
+    background-color: var(--blue);
+    color: var(--color2);
+    transition-duration: 0.277s;
+    font-family: Montserrat-Bold;
+}
+
+.achievement-btn__cancel:hover {
+    background-color: #23bdca;
+}
+
+.achievement-btn__save {
+    background-color: var(--color4);
+    color: #fff;
+    transition-duration: 0.277s;
+    font-family: Montserrat-Bold;
+}
+
+.achievement-btn__save:hover {
+    background-color: #93d6bd;
+    color: #fff;
+}
+.small-modal {
+    max-width: 750px !important;
+    padding: 40px;
+    margin: 10% auto;
+}
+.achievement-info {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.achievement-info h3 {
+    margin: 0 50px 8px 0;
+    color: var(--belyy);
+    font-family: var(--font-family);
+    font-family: Montserrat-Regular;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.achievement-info p {
+    white-space: normal; /* Разрешаем перенос строк */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Ограничиваем до 3 строк */
+    -webkit-box-orient: vertical;
+}
+@media (max-width: 1440px) {
+    .achievement-info h3 {
+        margin-right: 12%;
+    }
+    .achievements-container {
+        max-width: 1350px;
+    }
+    .header-section {
+        width: 90%;
+    }
+    .achievements-title {
+        font-size: 62px;
+    }
+
+    .achievement-card {
+        min-width: 400px;
+        padding: 20px;
+    }
+
+    .achievement-img {
+        height: 80px;
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .button__add {
+        width: 92%;
+        height: 180px;
+        margin-bottom: 3%;
+    }
+
+    .button__add:hover {
+        width: 92%;
+        height: 180px;
+        margin-bottom: none;
+    }
+
+    .modal-form-container {
+        gap: 20px;
+    }
+
+    .modal-image-section,
+    .modal-fields-section {
+        flex: 1;
+    }
+
+    .search-bar input {
+        margin-right: 0;
+        width: 400px;
+    }
+
+    .achievement-info p {
+        font-size: 13px;
+    }
+}
+
+/* --- Адаптация под планшет (1024px) --- */
+@media (max-width: 1024px) {
+    .modal-content {
+        max-width: 700px;
+    }
+    .achievements-container {
+        max-width: 900px;
+    }
+
+    .image-preview {
+        width: 100%;
+        height: 100%;
+    }
+
+    .image-upload-container {
+        text-align: center;
+        align-items: center;
+    }
+
+    .image-upload-label {
+        width: 50%;
+    }
+
+    .achievements-title {
+        font-size: 48px;
+        text-align: center;
+    }
+
+    .header-section {
+        display: block;
+        text-align: center;
+    }
+
+    .search-bar {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .search-bar input {
+        width: 90%;
+        max-width: 500px;
+        margin: 0;
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .achievement-card {
+        min-width: 585px;
+        padding: 20px;
+    }
+
+    .achievement-img {
+        height: 80px;
+    }
+
+    .button__add {
+        height: 160px;
+        margin-bottom: 4%;
+        width: 60%;
+        border: 4px, solid, var(--color2);
+        border-radius: 13px;
+    }
+
+    .button__add:hover {
+        width: 60%;
+        height: 160px;
+        border: 4px, solid, var(--color2);
+        border-radius: 13px;
+        border-radius: 13px;
+        background-color: rgba(255, 255, 255, 0.2);
+        transition-duration: 0.277s;
+    }
+
+    .modal-form-container {
+        flex-direction: column;
+    }
+
+    .modal-image-section,
+    .modal-fields-section {
+        width: 100%;
+    }
+
+    .image-upload-container {
+        max-width: 100%;
+    }
+
+    .modal-fields-section .mb-3 {
+        width: 100%;
+    }
+
+    .achievement-info h3 {
+        font-size: 3.8vw;
+    }
+
+    .achievement-info p {
+        font-size: 1.5vw;
+    }
+
+    .coins {
+        font-size: 2vw;
+    }
+    .modal-image-section {
+        display: flex;
+        justify-content: center; /* Центрируем по горизонтали */
+        align-items: center; /* Центрируем по вертикали */
+        text-align: center; /* Дополнительно */
+        width: 100%;
+    }
+
+    .image-upload-container,
+    .image-upload-label {
+        width: 100%; /* Занимает всю ширину */
+        max-width: 300px; /* Ограничьте размер, если нужно */
+        margin: 0 auto; /* Центрируем сам контейнер */
+    }
+
+    .image-preview {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+    .modal-content h2 {
+        font-size: 3.42vw;
+    }
+    .form-label {
+        font-size: 2.34vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .achievement-info h3 {
+        font-size: 3.3vw;
+    }
+
+    .achievement-info p {
+        font-size: 2vw;
+    }
+
+    .coins {
+        font-size: 2.3vw;
+    }
+
+    .button__add {
+        height: 128px;
+        margin-bottom: 4%;
+        width: 60%;
+        border-radius: 13px;
+        border: 3px, solid, var(--color2);
+    }
+    .button__add img {
+        height: 70px;
+    }
+    .button__add:hover {
+        width: 60%;
+        height: 128px;
+        border: 3px, solid, var(--color2);
+        background-color: rgba(255, 255, 255, 0.2);
+        transition-duration: 0.277s;
+        border-radius: 13px;
+    }
+    .achievements-title {
+        font-size: 34px;
+        font-weight: black;
+        color: var(--belyy);
+        font-family: "Montserrat-bold", sans-serif;
+        text-transform: uppercase;
+    }
+    .header-section {
+        display: block;
+    }
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .achievement-card {
+        padding: none;
+        min-width: 300px;
+        min-width: unset;
+    }
+
+    .achievement-img {
+        height: 80px;
+    }
+
+    .modal-content {
+        width: 80%;
+        padding: 20px;
+    }
+
+    .modal-form-container {
+        flex-direction: column;
+    }
+
+    .image-upload-container {
+        max-width: 100%;
+    }
+
+    .achievements-scroll-wrapper {
+        -ms-overflow-style: none; /* Для Edge */
+        scrollbar-width: none; /* Для Firefox */
+        overflow-y: auto;
+    }
+
+    .achievements-scroll-wrapper::-webkit-scrollbar {
+        display: none; /* Для Chrome, Safari и Opera */
+    }
+    .image-upload-container,
+    .image-upload-label {
+        width: 100%; /* Занимает всю ширину */
+        max-width: 200px; /* Ограничьте размер, если нужно */
+        margin: 0 auto; /* Центрируем сам контейнер */
+    }
+}
+@media (max-width: 430px) {
+    .coin-icon {
+        width: 25px;
+        height: 25px;
+    }
+    .achievement-info h3 {
+        font-size: 5vw;
+        margin-right: 25%;
+    }
+    .achievement-info p {
+        font-size: 3vw;
+        margin-right: 25%;
+    }
+    .coins {
+        font-size: 3.5vw;
+    }
+    .modal-content h2 {
+        font-size: 4.8vw;
+    }
+    .form-label {
+        font-size: 3.9vw;
+    }
+    .image-upload-container,
+    .image-upload-label {
+        width: 100%; /* Занимает всю ширину */
+        max-width: 150px; /* Ограничьте размер, если нужно */
+        margin: 0 auto; /* Центрируем сам контейнер */
+    }
+    .button__add {
+        width: 70%;
+        border-radius: 10px;
+        border: 3px, solid, var(--color2);
+    }
+    .button__add:hover {
+        width: 70%;
+    }
+    .button__add img {
+        height: 50px;
+    }
+    .search-bar {
+        margin-top: 0;
+    }
+    .achievement-img {
+        height: 60px;
+    }
+    .achievement-btn {
+        font-size: 3.4vw;
+    }
+}

@@ -28,7 +28,7 @@ class AchievementController extends Controller
             'description' => 'nullable|string',
             'intexcoin' => 'required|integer',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
-            'required_count' => 'required|string'
+            'required_count' => 'required|integer'
     ]);
 
     // Загрузка изображения, если оно есть
@@ -37,10 +37,11 @@ class AchievementController extends Controller
     }
 
     // Создаём ачивку
-    Achievement::create($data);
+     $achievement = Achievement::create($data);
 
     // Перенаправляем обратно
-    return redirect()->route('admin.achievements.index')->with('success', 'Ачивка успешно добавлена!');
+    return redirect()->route('admin.achievements.index')->with('success', 'Достижение "' . $achievement->name . '" добавлено');
+    
 }
 public function destroy(Achievement $achievement)
 {
@@ -52,7 +53,7 @@ public function destroy(Achievement $achievement)
     // Удаляем ачивку из БД
     $achievement->delete();
 
-    return redirect()->route('admin.achievements.index')->with('success', 'Ачивка успешно удалена');
+    return redirect()->route('admin.achievements.index')->with('success', 'Достижение "' . $achievement->name . '" удалено');
 }
 
 public function edit(Achievement $achievement)
@@ -68,7 +69,7 @@ public function update(Request $request, Achievement $achievement)
         'description' => 'nullable|string',
         'intexcoin' => 'required|integer|min:1',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
-        'required_count' => 'required|string'
+        'required_count' => 'required|integer'
     ]);
 
     // Обработка изображения
@@ -85,6 +86,6 @@ public function update(Request $request, Achievement $achievement)
     $achievement->update($data);
 
     // Перенаправляем обратно
-    return redirect()->route('admin.achievements.index')->with('success', 'Ачивка успешно добавлена!');
+    return redirect()->route('admin.achievements.index')->with('success', 'Достижение «' . $achievement->name . '» изменено');
 }
 }

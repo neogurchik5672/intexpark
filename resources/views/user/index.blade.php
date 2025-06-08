@@ -18,9 +18,6 @@
             </li>
     @endforeach
         </ul>
-        </div>
-        </div>
-        </div>
     <div class="scrollbarMainAllUsers">
     <div class="mainAllUsers">
     @foreach ($query as $item)
@@ -117,25 +114,4 @@
             <div class="closeLockModalmenu">ВЫЙТИ</div>
             <button>ЗАБЛОКИРОВАТЬ</button>
            </div> 
-            {{-- <form enctype="multipart/form-data" action="{{route('user.updateCoins',$item->id)}}" method="POST">
-            @csrf
-            @method('PUT') <!-- Метод PUT для обновления ресурса -->
-            <input type="number" name="balance" min="1" id="balance" value="{{$item->balance}}">
-            <input type="text" name="reason" id="reason" placeholder="Коментарий">
-            <button type="submit">Добавить</button> 
-@if ($item->role != 'admin')
-                 <div class="form-group">
-            <form enctype="multipart/form-data" action="{{route('admin.newAdmin',$item->id)}}" method="POST">
-            @csrf
-            @method('PUT') <!-- Метод PUT для обновления ресурса -->
-            <button type="submit">Назначить админом</button> 
-</form>
-   </div>
-@endif
-            </form> --}}
-   </div>
-@endforeach
-        </div>
-        </div>
-</div>
 @endsection

@@ -1,53 +1,106 @@
+<!-- подключение из resourses/views/layouts/app.blade.php -->
 @extends('layouts.app')
 @section('checkPage','mainLink')
 @section('checkPageAdaptive','mainLinkAdaptiveCheck')
 @section('content')
-{{-- <section class="banner">
-      <img src="img/banner.png" alt="" />
-    </section>
 
-    <section class="text_shop">
-      <img src="img/text_shop.png" alt="" />
-    </section>
+    <img src="img/banner_icons/Backpack.png" alt="" class="banner__image--backpack">
+    <img src="img/banner_icons/Map.png" alt="" class="banner__image--map">
 
-    <section class="shop"> --}}
-        {{-- перебор всех продуктов --}}
-    {{-- @foreach ($query as $item) 
-        <div class="card">
-        <img class="img" src="{{$item->img ? Storage::url($item->img) : asset('storage/products/default.png') }}" alt="{{$item->title}}">  
-            <p>{{$item->title}}</p>
-            
-            <p class="cost">{{$item->count}} шт</p>
-            <p class="cost">{{$item->price}} коинов</p>
+    <p class="banner__descriptor">добро пожаловать в</p>
+    <p class="banner__title">интекспарк</p>
 
-            <form action="{{route('cart.add',$item->id)}}" method="post">
-                 @csrf
-                {{-- проверки
-                @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
-                <div class="btn btn_in_basket"><a href="{{route('cart.index')}}">В корзине</a></div>       
-                         @elseif ($item->History->where('status', 'buy')->isNotEmpty())
-                <div class="btn btn_none">Куплено</div>  
-                          
-                @elseif($user->balance < $item->price)      
-                <div class="btn btn_none">Недостаточно средств</div>
-                @elseif ($item->count < 1)
-                <div class="btn btn_none">Нет в наличии</div>  
-                       
-                @else
-                <div class="dropdown">
-  <div onclick="myFunction()" class="dropbtn">Добавить в корзину</div>
-  <div id="myDropdown" class="dropdown-content">
-  <p class="test">{{$item->title}}</p>
-  <p class="test" class="cost">Описание:{{$item->desc}}</p>
-  <p class="test" class="cost">{{$item->price}} коинов</p> 
-  <button type="submit" class="btn btn_yellow">Добавить в корзину</button> 
-  </div>
+    <img src="img/banner_icons/Book.png" alt="" class="banner__image--book">
+    <img src="img/banner_icons/Compass.png" alt="" class="banner__image--compass">
 </div>
-                @endif
-                
-            </form>
-        </div> 
-           
-     @endforeach
-    </section> --}}
+
+<!-- надпись МАГАЗИН с анимацией бликов -->
+<div class="shop-banner">
+    <div class="shop-title">
+        <span>магазин</span>
+        <div class="glow-rect" id="rect1"></div>
+        <div class="glow-rect" id="rect2"></div>
+    </div>
+</div>
+
+<!-- карточки магазина -->
+<section class="shop">
+    <div class="shop__cards">
+        @foreach ($query as $item)
+        <div class="shop__card" data-name="{{ $item->title }}">
+            <div class="shop__card-image-container">
+                <img class="shop__card-image"
+                    src="{{ $item->img !== null ? Storage::url($item->img) : asset('storage/products/default.png') }}"
+                    alt="{{ $item->title }}">
+            </div>
+            <div class="shop__card-title-wrapper">
+                <h3 class="shop__card-title">{{ $item->title }}</h3>
+            </div>
+            <a href="javascript:void(0)" onclick="openModal('modalDetails-{{ $item->id }}')"
+                class="shop__card-button shop__card-button--yellow">Подробнее</a>
+        </div>
+        @endforeach
+    </div>
+</section>
+
+<!-- модальное окно при нажатии подробнее -->
+@foreach ($query as $item)
+<div id="modalDetails-{{ $item->id }}" class="modal" style="display:none;">
+    <div class="modal__backdrop" onclick="closeModal('modalDetails-{{ $item->id }}')"></div>
+    <div class="modalka">
+        <div class="modalka__info">
+            <div class="modalka__image-wrapper">
+                <img class="madalka__image"
+                    src="{{$item->img !== null ? Storage::url($item->img) : asset('storage/products/default.png') }}"
+                    alt="{{$item->title}}" />
+            </div>
+
+            <div class="modalka__product-info">
+                <div class="modalka__product-text">
+                    <p class="modalka__product-name">{{$item->title}}</p>
+                    <p class="modalka__description">{{$item->desc}}</p>
+                </div>
+
+                <div class="modalka__price">
+                    <p>{{$item->price}}</p>
+                    <img src="{{ asset('img/коин.svg') }}" alt="" class="intexcoin">
+                </div>
+            </div>
+        </div>
+
+        @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
+        <div class="modalka__button modalka__button--purchased" data-message="ПОЗДРАВЛЯЕМ, ТОВАР ОПЛАЧЕН! С тебя было списано {{ $item->price }} интекскоинов">
+            КУПЛЕНО
+        </div>
+        @elseif ($item->History->where('status', 'buy')->isNotEmpty())
+        <div class="modalka__button modalka__button--purchased" data-message="ПОЗДРАВЛЯЕМ, ТОВАР ОПЛАЧЕН! С тебя было списано {{ $item->price }} интекскоинов">
+            КУПЛЕНО
+        </div>
+        @elseif($user->balance < $item->price)
+            <div class="modalka__button modalka__button--disabled" data-message="НЕДОСТАТОЧНО ИНТЕКСКОИНОВ. Невозможно оплатить товар">
+                НЕДОСТУПНО
+            </div>
+            @elseif ($item->count < 1)
+                <div class="modalka__button modalka__button--disabled" data-message="Товар временно отсутствует на складе">
+                НЕТ В НАЛИЧИИ
+    </div>
+    @else
+    <button class="modalka__button modalka__button--buy" onclick="buyProduct({{ $item->id }}, {{ $item->price }})">
+        КУПИТЬ
+    </button>
+    @endif
+</div>
+</div>
+@endforeach
+
+@endsection
+
+<!-- подключение css -->
+@section('indexstyles')
+<link href="{{ asset('css/main.css') }}" rel="stylesheet">
+@endsection
+
+<!-- подключение javascript -->
+@section('indexscripts')
+<script src="{{ asset('js/indexpage.js') }}"></script>
 @endsection

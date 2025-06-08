@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .img{
     width: 400px;
 }
@@ -20,28 +21,32 @@ button {
 
 :root {
     --index: calc(1vw + 1vh);
-
     --color1: #FAC53B;
     --color2: #fff;
     --color3: #021F3F;
     --color4: #41BD8F;
     --color5: #944BA7;
+    --main_yellow: #FDBC15;
+    --yellow_use: #FFE479;
+    --blue: #085A7F;
+    --orange: #CD5602;
+    --light_orange: #b3774c;
     --custom-gradient: linear-gradient(to bottom, #021F3F 8%, #044973 50%, #23BDCA 100%);
 }
 
 @font-face {
-    font-family: Montserrat-Bold;
-    src: url(../fonts/Montserrat-Bold.woff2);
+    font-family: 'Montserrat-Bold';
+    src: url(../fonts/Montserrat-Bold.woff2) format("woff2");
 }
 
 @font-face {
-    font-family: Montserrat-Black;
-    src: url(../fonts/Montserrat-Black.woff2);
+    font-family: 'Montserrat-Black';
+    src: url(../fonts/Montserrat-Black.woff2) format("woff2");
 }
 
 @font-face {
-    font-family: Montserrat-Regular;
-    src: url(../fonts/Montserrat-Regular.woff2);
+    font-family: 'Montserrat-Regular';
+    src: url(../fonts/Montserrat-Regular.woff2) format("woff2");
 }
 
 body {
@@ -49,7 +54,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
 
-    font-family: Montserrat-Regular;
+    font-family: Montserrat-Regular !important; 
     font-size: 30px;
     color: var(--color2);
 }
@@ -228,73 +233,6 @@ section.text_shop {
     justify-content: center;
 }
 
-/* каталог товаров */
-.index .shop{
-     margin-top: 100px;
-}
-section.shop {
-    font-family: Montserrat-Bold;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 15px 162px;
-    gap: 100px 50px;
-}
-
-.card {
-    text-transform: uppercase;
-    width: 465px;
-}
-
-.card_img {
-    height: 465px;
-    width: 100%;
-    margin-bottom: 25px;
-}
-
-.cost {
-    margin: 17px 0 25px;
-}
-
-.btn {
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    padding: 31.5px 0;
-    width: 100%;
-    background: var(--color1);
-
-    font-family: Montserrat-Bold;
-    font-size: 30px;
-    color: var(--color3);
-}
-.dropbtn{
-        display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    padding: 31.5px 0;
-    width: 100%;
-    background: var(--color1);
-
-    font-family: Montserrat-Bold;
-    font-size: 30px;
-    color: var(--color3);
-}
-.btn img {
-    width: 25px;
-    height: 25px;
-}
-
-.btn_none {
-    background: var(--color4);
-}
-
-.btn_in_basket {
-    background: var(--color5);
-    color: var(--color2);
-}
 /* Страница заявок */
 .applications .shop{
     margin-top: 300px;
@@ -881,3 +819,75 @@ text-align: end;
     margin-top:15px;
 }
 }
+      /* Адаптивность для мобильных
+        @media (max-width: 768px) {
+        
+            .defaultPage {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .defaultPage a {
+                display: none !important; 
+            }
+            
+            .defaultPage span {
+                font-size: 24px !important; 
+                margin: 10px 0;
+                margin-right: auto;
+                margin-left: 25px;
+                display: block !important;
+            }
+            
+            .rightHeader {
+                display: none !important;
+            }
+            
+        
+            main {
+                margin-top: 80px !important; 
+            }
+            
+
+            .menu {
+                width: 100% !important;
+            }
+        }
+            Адаптация для планшетов (1024px)
+        @media (max-width: 1024px) {
+            .header {
+                padding: 15px 10px;
+            }
+            
+            .defaultPage {
+                width: 50%;
+            }
+            
+            .defaultPage a {
+                padding: 12px 18px;
+                font-size: 14px;
+            }
+            
+            .rightHeader {
+                width: 50%;
+                margin-right: 20px;
+            }
+            
+            .rightHeader a {
+                margin-right: 20px;
+                font-size: 18px;
+            }
+            
+            .rightHeader img {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .menu {
+                width: 40%;
+            }
+            
+            main {
+                margin-top: 120px;
+            }
+        } */
