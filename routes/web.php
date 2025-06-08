@@ -28,6 +28,7 @@ use Illuminate\Support\Str;
 Auth::routes();
 // Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']); Для авторизации
 Route::get('/',[ProductController::class,'index']);    
+Route::get('/authcheck',[ProductController::class,'auth']);    
 // Route::get('/index',[ProductController::class,'index']); Для авторизации
 Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
 Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');
@@ -69,3 +70,11 @@ Route::get('/achievements', function () {
     $user = auth()->user(); // или получить пользователя как-то иначе
     return view('achievements.index', compact('achievements', 'user'));
 });
+//Страницы пользователя(+редактирование)
+Route::get('/user/account',[UserController::class,'account'])->name('user.account');
+Route::get('/user/user_view/{id}',[UserController::class,'user_view'])->name('user.user_view')->middleware('role:admin');
+Route::get('/user/user_editing/{id}',[UserController::class,'user_editing'])->name('user.user_editing')->middleware('role:admin');
+//Обновление данных пользователя (для админа)
+Route::post('/user/update-user-data', [UserController::class, 'updateUserData'])->name('user.update-user-data')->middleware('role:admin');
+//Удаление пользователя 
+Route::post('/user/delete-user', [UserController::class, 'deleteUser'])->name('user.delete-user')->middleware('role:admin');

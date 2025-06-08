@@ -17,7 +17,7 @@
         </ul>
     </form>
 
-    менять картинку при наведении 
+    <!-- менять картинку при наведении  -->
  <img data-onclick="4" onmouseout="this.src='{{asset('img/coin.png')}}'" onmouseover="this.src='{{asset('img/profile.png')}}'" src="{{asset('img/profile.png')}}">
     @foreach ($query as $item)
         <div class="item">
@@ -51,7 +51,7 @@
                 <use href="{{asset('img/trash.svg')}}"></use>
                 </svg></a>
            </div>           
-            {{-- <form enctype="multipart/form-data" action="{{route('user.updateCoins',$item->id)}}" method="POST">
+             <form enctype="multipart/form-data" action="{{route('user.updateCoins',$item->id)}}" method="POST">
             @csrf
             @method('PUT') <!-- Метод PUT для обновления ресурса -->
             <input type="number" name="balance" min="1" id="balance" value="{{$item->balance}}">
@@ -66,7 +66,7 @@
 </form>
    </div>
 @endif
-            </form> --}}
+            </form> 
    </div>
 @endforeach
         </div>

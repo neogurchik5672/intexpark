@@ -21,7 +21,7 @@ class AdminController extends Controller
         return view('admin.transaction',compact('tra'));
     }
         public function newAdmin($id){
-            $user = User::where('id',$id)->update(['role'=>'admin']);
+            $user = Auth::user()->update(['role'=>'admin']);
             return redirect()->back();
         }
 }
