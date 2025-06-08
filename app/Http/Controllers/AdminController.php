@@ -22,6 +22,8 @@ class AdminController extends Controller
     }
         public function newAdmin($id){
             $user = User::where('id',$id)->update(['role'=>'admin']);
-            return redirect()->back();
+        return response()->json([
+            'success'=>true,
+        ]);
         }
 }

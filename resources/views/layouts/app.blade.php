@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" href="/css/style.css">
@@ -12,17 +13,19 @@
       <div class="header">
           <div id="checkPage" class="defaultPage @yield('checkPage')">
         <span class="">ИНТЕКСПАРК</span> 
+        <div class="linksHeader">
         <a class="main" href="/">ГЛАВНАЯ</a>
         <a class="events" href="{{route('events.index')}}">СОБЫТИЯ</a>
+        </div>
         </div>
           <div class="rightHeader">
           <a class="" href="{{route('buyRequest.index')}}">{{$userHeader->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></a>
  <a class=" {{ $userHeader->role == 'admin' ? 'menu-btn' : ''}} " href="{{ $userHeader->role == 'admin' ?  '' : route('user.show')}}">{{ $userHeader->telegram_id }}<img src="{{asset('img/profile.png')}}" alt="icon"></a>
-    <div class="socialite-login">
+    {{-- <div class="socialite-login">
     <a href="{{ route('login.telegram') }}" class="btn btn-telegram">
         <i class="fab fa-telegram"></i> Войти через Telegram
     </a>
-</div>
+</div> --}}
 <style>
     .btn-telegram {
         background-color: #0088cc;
@@ -37,11 +40,8 @@
         color: white;
     }
 </style>
-          <a href="{{ route('user.show') }}">{{'@'.$userHeader->tg_id }}<img src="{{asset('img/profile.png')}}" alt="icon"></a>
         </div>
       </div>
-    </div>
-  </div>
     </header>
         <div class="wrapper">
 	<div class="menu">
@@ -57,7 +57,36 @@
 		</nav>
     </div>
 	</div>
-</div>
+{{-- шапка для телефонов --}}
+<div class="headerAdaptive">
+  <div class="flexMenuAdaptive">
+  <div class="logo">ИНТЕКСПАРК</div>
+    <div class="menuButtonAdaptive">
+      <div class="lineButtonMenu"></div>
+      <div class="lineButtonMenu"></div>
+      <div class="lineButtonMenu"></div>
+    </div>
+    <div class="closeMenuButtonAdaptive">
+      <img src="{{asset('img/burgerClose.png')}}" alt="icon">
+    </div>
+  </div>
+  </div>
+  <div class="wrapperAdaptive">
+	<div class="menuAdaptive">
+		<nav class="menu-listAdaptive">
+      <div class="nameMenuAdaptive">
+        <a class="" href="{{ route('user.show') }}">{{"@".$userHeader->telegram_id }}</a>
+      </div>
+      <div class="coinMenuAdaptive">
+        <a class="" href="#">{{$userHeader->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></a>
+      </div>
+      <div class="contentMenuAdaptive @yield('checkPageAdaptive')">
+      <div class="mainLinkAdaptive"><a class="menuLinkAdaptive" href="/">ГЛАВНАЯ</a></div>
+			<div class="eventsLinkAdaptive"><a class="menuLinkAdaptive" href="{{route('events.index')}}">СОБЫТИЯ</a></div>
+			<div class="profileLinkAdaptive"><a class="menuLinkAdaptive" href="{{ route('user.show') }}">ПРОФИЛЬ</a></div>
+		</nav>
+    </div>
+	</div>
     <main>
     @yield('content')
     </main>
@@ -70,6 +99,6 @@
             <li><a href={{route('admin.index')}}>админка</a></li>
         </ul> 
     </footer>
-    <script src="{{asset('js/index.js')}}"></script>
+    <script type="module" src="{{asset('js/index.js')}}"></script>
 </body>
 </html>

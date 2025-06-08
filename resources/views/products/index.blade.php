@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('checkPage','mainLink')
+@section('checkPageAdaptive','mainLinkAdaptiveCheck')
 @section('content')
-<section class="banner">
+{{-- <section class="banner">
       <img src="img/banner.png" alt="" />
     </section>
 
@@ -9,9 +10,9 @@
       <img src="img/text_shop.png" alt="" />
     </section>
 
-    <section class="shop">
+    <section class="shop"> --}}
         {{-- перебор всех продуктов --}}
-    @foreach ($query as $item) 
+    {{-- @foreach ($query as $item) 
         <div class="card">
         <img class="img" src="{{$item->img ? Storage::url($item->img) : asset('storage/products/default.png') }}" alt="{{$item->title}}">  
             <p>{{$item->title}}</p>
@@ -21,7 +22,7 @@
 
             <form action="{{route('cart.add',$item->id)}}" method="post">
                  @csrf
-                {{-- проверки  --}}
+                {{-- проверки
                 @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
                 <div class="btn btn_in_basket"><a href="{{route('cart.index')}}">В корзине</a></div>       
                          @elseif ($item->History->where('status', 'buy')->isNotEmpty())
@@ -48,5 +49,5 @@
         </div> 
            
      @endforeach
-    </section>
+    </section> --}}
 @endsection

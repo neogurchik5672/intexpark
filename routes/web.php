@@ -27,6 +27,7 @@ use Illuminate\Support\Str;
 
 // Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']);
 Route::get('/',[ProductController::class,'index']);
+Route::post('/user/remove/{id}',[UserController::class,'remove'])->name('user.remove');
 Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
 Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');
 Route::get('/buy/show/{id}',[BuyRequestController::class,'show'])->name('buyRequest.show');
@@ -50,7 +51,7 @@ Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.a
 Route::get('/cart/index', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
 Route::match(['PUT', 'GET'],'/user/updateCoins/{id}', [UserController::class, 'updateCoins'])->name('user.updateCoins');
-Route::match(['PUT', 'GET'],'/user/updateCoin/{id}', [UserController::class, 'updateCoin'])->name('user.updateCoin');
+// Route::match(['PUT', 'GET'],'/user/updateCoin/{id}', [UserController::class, 'updateCoin'])->name('user.updateCoin');
 Route::get('/user/all/{id}',[UserController::class,'all'])->name('user.all');
 Route::get('/admin/transaction',[AdminController::class,'transaction'])->name('admin.transaction');
 Route::put('/admin/newAdmin/{id}',[AdminController::class,'newAdmin'])->name('admin.newAdmin');

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('checkPageAdaptive','eventsLinkAdaptiveCheck')
 @section('checkPage','eventsLink')
 @section('content')
 <div class="error">

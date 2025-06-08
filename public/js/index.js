@@ -1,3 +1,5 @@
+import { fetchUpdateCoin,fetchTrashUser,fetchAddAdmin } from "./fetchToUsers.js";
+
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
@@ -130,4 +132,91 @@ document.querySelector('.menu-btn').addEventListener('click', function(e) {
   document.querySelector('.menu').classList.remove('menu_active');
   }
 });
+//модалки для страницы с юзерами
+document.querySelectorAll('#coinModalOpen').forEach(function(elem){
+elem.querySelector('#coinModalImg').addEventListener('click',function(){    
+  elem.querySelector('.coinModalMenu').style.display ="block"
+    elem.querySelector('.coinModalMenu').style.boxShadow = "0 0 0 max(100vh, 100vw) rgba(0, 0, 0, 0.5)"
+    elem.querySelector('.closeCoinModalMenu').addEventListener('click',function(){
+  elem.querySelector('.coinModalMenu').style.display ="none"
+    elem.querySelector('.coinModalMenu').style.boxShadow = "none"
+})
+})
+})
 
+document.querySelectorAll('#trashModalOpen').forEach(function(elem){
+elem.querySelector('#trashModalImg').addEventListener('click',function(){
+  elem.querySelector('.trashModalMenu').style.display ="block"
+    elem.querySelector('.trashModalMenu').style.boxShadow = "0 0 0 max(100vh, 100vw) rgba(0, 0, 0, 0.5)"
+    elem.querySelector('.closeTrashModalmenu').addEventListener('click',function(){
+  elem.querySelector('.trashModalMenu').style.display ="none"
+    elem.querySelector('.trashModalMenu').style.boxShadow = "none"
+})
+})
+})
+
+document.querySelectorAll('#addAdminModalOpen').forEach(function(elem){
+elem.querySelector('#addAdminModalImg').addEventListener('click',function(){
+  elem.querySelector('.addAdminModalMenu').style.display ="block"
+    elem.querySelector('.addAdminModalMenu').style.boxShadow = "0 0 0 max(100vh, 100vw) rgba(0, 0, 0, 0.5)"
+    elem.querySelector('.closeAddAdminMenu').addEventListener('click',function(){
+  elem.querySelector('.addAdminModalMenu').style.display ="none"
+    elem.querySelector('.addAdminModalMenu').style.boxShadow = "none"
+})
+})
+})
+
+document.querySelectorAll('.coinModalMenu > form').forEach(function(elem){
+  elem.addEventListener('submit',function(event){
+    event.preventDefault()
+      fetchUpdateCoin(elem)
+  })
+})
+
+document.querySelectorAll('.trashModalMenu').forEach(function(elem){
+  elem.querySelector('#formTrashModal').addEventListener('submit',function(event){
+    event.preventDefault()
+      fetchTrashUser(elem)
+       window.addEventListener('click', function(e) {
+         if (!e.target.closest('.trashSuccess')) {
+          elem.querySelector('.trashSuccess').style.boxShadow = "none"
+          elem.querySelector('.trashSuccess').style.display = "none"
+          elem.style.display = "none"
+          location.reload();
+         }
+       })
+  })
+})
+
+document.querySelectorAll('.addAdminModalMenu').forEach(function(elem){
+ if(!elem.querySelector('.isAdmin')){
+  elem.querySelector('#formAddAdminModal').addEventListener('submit',function(event){
+    event.preventDefault()
+      fetchAddAdmin(elem)
+       window.addEventListener('click', function(e) {
+         if (!e.target.closest('.addAdminSuccess')) {
+          elem.querySelector('.addAdminSuccess').style.boxShadow = "none"
+          elem.querySelector('.addAdminSuccess').style.display = "none"
+          elem.style.display = "none"
+          location.reload();
+         }
+      })
+  })
+}
+})
+document.querySelector('.menuButtonAdaptive').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('.menuAdaptive').classList.add('menu_activeAdaptive');
+  document.querySelector('.menuButtonAdaptive').style.display = "none"
+  document.querySelector('.closeMenuButtonAdaptive').style.display = "block"
+  document.querySelector('.wrapperAdaptive').style.boxShadow = "0 97px 0 max(95vh, 100vw) rgba(0, 0, 0, 0.3)"
+})
+  window.addEventListener('click', function(e) {
+  if (!e.target.closest('.wrapperAdaptive') && !e.target.closest('.menuButtonAdaptive')) {
+      console.log('11')
+  document.querySelector('.wrapperAdaptive').style.boxShadow = "none"
+  document.querySelector('.closeMenuButtonAdaptive').style.display = "none"
+  document.querySelector('.menuButtonAdaptive').style.display = "block"
+  document.querySelector('.menuAdaptive').classList.remove('menu_activeAdaptive');
+  }
+});

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('checkPageAdaptive','profileLinkAdaptiveCheck')
 @section('content')
 <div class="bodyUser">
 <div class="show">

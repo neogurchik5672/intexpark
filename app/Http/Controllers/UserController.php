@@ -33,35 +33,37 @@ class UserController extends Controller
          $request->validate( [
       'balance'=>'required|integer',
          ]);
-    $user = User::findOrFail($id);
 
           $user = User::where('id',$id)->update([
             'balance' => $request['balance'],
         ]); 
-
-          $CoinTransactionLog = Transaction::create([
-            'user_id' => 1,
-            'admin_id' => 1,
-            'reason' => $request['reason'],
-        ]); 
-        return redirect()->back();
+        return response()->json([
+            'success'=>true,
+        ]);
+    // $user = User::findOrFail($id);
+    //        $CoinTransactionLog = Transaction::create([
+    //         'user_id' => strval( $user->id),
+    //         'admin_id' =>strval(  $user->id),
+    //         'reason' => null,
+    //     ]); 
+    //     return redirect()->back();
 
     }
-        public function updateCoin($id,Request $request){
-         $request->validate( [
-      'coins'=>'required|integer',
-      'reason'=>'required|string',
-         ]);
-        $user = User::query()->where('id',$id)->first();
-        $user->balance = intval($user->balance) - $request['coins'];
-        $user->save();
-           $CoinTransactionLog = Transaction::create([
-            'user_id' => 1,
-            'admin_id' => 1,
-            'reason' => $request['reason'],
-        ]); 
-        return redirect()->back();
-    }
+    //     public function updateCoin($id,Request $request){
+    //      $request->validate( [
+    //   'coins'=>'required|integer',
+    //   'reason'=>'required|string',
+    //      ]);
+    //     $user = User::findOrFail('id',$id);
+    //     $user->balance = intval($user->balance) - $request['coins'];
+    //     $user->save();
+    //        $CoinTransactionLog = Transaction::create([
+    //         'user_id' => number_format( $user->id),
+    //         'admin_id' =>number_format(  $user->id),
+    //         'reason' => null,
+    //     ]); 
+                
+    // }
         public function all($id){        
         $query = User::findOrFail($id);
         $myEvents = Member::query()->where('user_id',$query->id)->get();
@@ -76,5 +78,12 @@ class UserController extends Controller
         //     ['user_id'=>$id],
         //     [''])
         dd($request);
+    }
+    public function remove($id){;
+        $user = User::findOrFail($id);
+        $user->delete();        
+       return response()->json([
+            'success'=>true,
+        ]);
     }
 }
