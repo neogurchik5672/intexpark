@@ -128,9 +128,13 @@ document.querySelector('.menu-btn').addEventListener('click', function(e) {
 });
   window.addEventListener('click', function(e) {
   if (!e.target.closest('.menu-btn') && !e.target.closest('.wrapper')) {
-    document.querySelector('.wrapper').style.boxShadow = "none"
+  document.querySelector('.wrapper').style.boxShadow = "none"
   document.querySelector('.menu').classList.remove('menu_active');
   }
+});
+window.addEventListener('scroll', function () {
+  document.querySelector('.wrapper').style.boxShadow = "none"
+  document.querySelector('.menu').classList.remove('menu_active');
 });
 //модалки для страницы с юзерами
 document.querySelectorAll('#coinModalOpen').forEach(function(elem){
@@ -213,10 +217,15 @@ document.querySelector('.menuButtonAdaptive').addEventListener('click', function
 })
   window.addEventListener('click', function(e) {
   if (!e.target.closest('.wrapperAdaptive') && !e.target.closest('.menuButtonAdaptive')) {
-      console.log('11')
   document.querySelector('.wrapperAdaptive').style.boxShadow = "none"
   document.querySelector('.closeMenuButtonAdaptive').style.display = "none"
   document.querySelector('.menuButtonAdaptive').style.display = "block"
   document.querySelector('.menuAdaptive').classList.remove('menu_activeAdaptive');
   }
+});
+window.addEventListener('scroll', function () {
+  document.querySelector('.wrapperAdaptive').style.boxShadow = "none"
+  document.querySelector('.closeMenuButtonAdaptive').style.display = "none"
+  document.querySelector('.menuButtonAdaptive').style.display = "block"
+  document.querySelector('.menuAdaptive').classList.remove('menu_activeAdaptive');
 });
