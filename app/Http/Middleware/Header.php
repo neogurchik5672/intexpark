@@ -15,20 +15,9 @@ class Header
         // Проверяем аутентификацию пользователя
         if (Auth::check()) {
             $user = User::find(Auth::id());
-            
-            if ($user) {
-                View::share('userHeader', $user);
-            } else {
-                try {
-                    Artisan::call('db:seed', ['--class' => 'UserSeeder']);
-                    $user = User::query()->where('id',Auth::user()->id)->first();
-                    View::share('userHeader', $user);
-                } catch (\Exception $e) {
-                    logger()->error('Ошибка наполнения пользователями: ' . $e->getMessage());
-                }
+            }else{
+                  abort(401, 'Вы не авторизованны.');
             }
-        }
-
         // Важно: всегда возвращаем следующий middleware
         return $next($request);
     }
