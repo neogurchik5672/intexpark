@@ -3,7 +3,10 @@
 @section('checkPage','mainLink')
 @section('checkPageAdaptive','mainLinkAdaptiveCheck')
 @section('content')
-<div>
+<div class="banner">
+    <img src="img/banner_icons/Sword.png" alt="" class="banner__image--sword">
+    <img src="img/banner_icons/Chest.png" alt="" class="banner__image--chest">
+
     <img src="img/banner_icons/Backpack.png" alt="" class="banner__image--backpack">
     <img src="img/banner_icons/Map.png" alt="" class="banner__image--map">
 
@@ -96,11 +99,11 @@
 @endsection
 
 <!-- подключение css -->
-@section('indexstyles')
+@section('styles')
 <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 @endsection
 
 <!-- подключение javascript -->
-@section('indexscripts')
+@section('scripts')
 <script src="{{ asset('js/indexpage.js') }}"></script>
 @endsection
