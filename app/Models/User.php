@@ -12,24 +12,23 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'users';
-    protected $fillable = [
-        'telegram_id',
-        'balance',
-        'role',
-        'last_visit',
-        'total_time_spent',     
-    ];
+     protected $table = 'users';
+   protected $fillable = [
+    'telegram_id',
+    'username',
+    'login_token',
+    'login_token_expires_at',
+    'role',
+    'balance',
+];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'telegram_data' => 'array',
         'last_visit' => 'datetime',        
     ];
+    
+    public $timestamps = true;
         public function isAdmin(): bool
     {
         return $this->role === 'admin';
