@@ -70,7 +70,8 @@
                 </div>
             </div>
         </div>
-
+<form action="{{route('buyRequest.buy',$item->id)}}" method="post">
+     @csrf
         @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
         <div class="modalka__button modalka__button--purchased" data-message="ПОЗДРАВЛЯЕМ, ТОВАР ОПЛАЧЕН! С тебя было списано {{ $item->price }} интекскоинов">
             КУПЛЕНО
@@ -88,10 +89,11 @@
                 НЕТ В НАЛИЧИИ
     </div>
     @else
-    <button class="modalka__button modalka__button--buy" onclick="buyProduct({{ $item->id }}, {{ $item->price }})">
+    <button class="modalka__button modalka__button--buy">
         КУПИТЬ
     </button>
     @endif
+</form>
 </div>
 </div>
 @endforeach

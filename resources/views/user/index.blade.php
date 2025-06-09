@@ -52,7 +52,7 @@
            </div>
                  <img id="coinModalImg" onmouseout="this.src='{{asset('img/coin.svg')}}'" onmouseover="this.src='{{asset('img/coinHover.png')}}'" src="{{asset('img/coin.svg')}}">
             </span>
-            <a href="{{route('user.all',$item->id)}}">
+            <a href="{{route('user.user_editing',$item->id)}}">
                  <img onmouseout="this.src='{{asset('img/edit.svg')}}'" onmouseover="this.src='{{asset('img/editHover.png')}}'" src="{{asset('img/edit.svg')}}">
             </a>
             <span id="LockModalOpen">

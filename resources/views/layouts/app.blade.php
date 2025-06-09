@@ -36,9 +36,11 @@
         <div class="menu">
             <nav class="menu-list">
                 <div class="nameMenu">
-                    <a class="" href="{{ route('user.show') }}">{{ '@' . $userHeader->telegram_id }}</a>
+                    <a class="" href="{{ route('user.account') }}">{{ '@' . $userHeader->username }}</a>
+                    <a class="" href="#">{{$userHeader->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></a>
                 </div>
                 <div class="contentMenu">
+                    
                     <a href="{{ route('user.index') }}">пользователи</a>
                     <a href="/achievements">достижения</a>
                     <a href="{{ route('buyRequest.index') }}">магазин</a>
@@ -66,7 +68,7 @@
 	<div class="menuAdaptive">
 		<nav class="menu-listAdaptive">
       <div class="nameMenuAdaptive">
-        <a class="" href="{{ route('user.show') }}">{{"@".$userHeader->telegram_id }}</a>
+        <a class="" href="{{ route('user.show') }}">{{"@".$userHeader->username }}</a>
       </div>
       <div class="coinMenuAdaptive">
         <a class="" href="#">{{$userHeader->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></a>
@@ -74,7 +76,6 @@
       <div class="contentMenuAdaptive @yield('checkPageAdaptive')">
       <div class="mainLinkAdaptive"><a class="menuLinkAdaptive" href="/">ГЛАВНАЯ</a></div>
 			<div class="eventsLinkAdaptive"><a class="menuLinkAdaptive" href="{{route('events.index')}}">СОБЫТИЯ</a></div>
-			<div class="profileLinkAdaptive"><a class="menuLinkAdaptive" href="{{ route('user.show') }}">ПРОФИЛЬ</a></div>
 		</nav>
     </div>
 	</div>
