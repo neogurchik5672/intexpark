@@ -6,14 +6,14 @@
     <div class="user">
     <div class="avatar"></div>
     <div class="userValue">
-    <h1> {{"@".$query->telegram_id}} </h1>
+    <h1> {{"@".$query->username}} </h1>
     <span><a href="">ВЫЙТИ</a></span>
     </div>
 </div>
 <div class="valueInputs">
-    <div class="inputsUser"> 10 exp</div>
+    <!-- <div class="inputsUser"> 10 exp</div> -->
     <div class="inputsUser"> {{" ".$query->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></div>
-    <div class="inputsUser"> 5 <img src="{{asset('img/vector.png')}}" alt="icon"></div>
+    <!-- <div class="inputsUser"> 5 <img src="{{asset('img/vector.png')}}" alt="icon"></div> -->
 </div>
 
     <div class="myHistory">
