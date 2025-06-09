@@ -3,7 +3,7 @@
 @section('checkPage','mainLink')
 @section('checkPageAdaptive','mainLinkAdaptiveCheck')
 @section('content')
-
+<div>
     <img src="img/banner_icons/Backpack.png" alt="" class="banner__image--backpack">
     <img src="img/banner_icons/Map.png" alt="" class="banner__image--map">
 

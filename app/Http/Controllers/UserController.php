@@ -21,13 +21,13 @@ class UserController extends Controller
         return view('user.index', compact('query'));
     }
     public function show(){        
-        $query = Auth::user();
+        // $query = Auth::user();
         // $myEvents = Member::query()->where('user_id',$query->id)->get();
-        $myBuyRequest = BuyRequest::query()->where('user_id',$query->id)->get();
-        $myOrganizatedEvents = Events::query()->where('user_id',$query->id)->get();
-        $myHistory = History::query()->where('user_id',$query->id)->get();
+        // $myBuyRequest = BuyRequest::query()->where('user_id',$query->id)->get();
+        // $myOrganizatedEvents = Events::query()->where('user_id',$query->id)->get();
+        // $myHistory = History::query()->where('user_id',$query->id)->get();
         // $checkEvents = CheckEvent::query()->where('user_id',$query->id)->where('status','true')->get();
-        return view('user.show', compact('query','myEvents','myHistory','myOrganizatedEvents','myBuyRequest'));
+        // return view('user.show', compact('query','myEvents','myHistory','myOrganizatedEvents','myBuyRequest'));
     }
     public function updateCoins($id,Request $request){
          $request->validate( [
@@ -48,12 +48,12 @@ class UserController extends Controller
     }
     public function all($id){        
         $query = User::findOrFail($id);
-        $myEvents = Member::query()->where('user_id',$query->id)->get();
+        // $myEvents = Member::query()->where('user_id',$query->id)->get();
         $myBuyRequest = BuyRequest::query()->where('user_id',$query->id)->get();
         $myOrganizatedEvents = Events::query()->where('user_id',$query->id)->get();
         $myHistory = History::query()->where('user_id',$query->id)->get();
         // $checkEvents = CheckEvent::query()->where('user_id',$query->id)->where('status','true')->get();
-        return view('user.all', compact('query','myEvents','myHistory','myOrganizatedEvents','myBuyRequest'));
+        return view('user.all', compact('query','myHistory','myOrganizatedEvents','myBuyRequest'));
     }
     public function addAvatar(Request $request,$id){
         //  $image = Image::updateOrCreate(
