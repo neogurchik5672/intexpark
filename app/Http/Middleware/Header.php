@@ -21,7 +21,7 @@ class Header
             } else {
                 try {
                     Artisan::call('db:seed', ['--class' => 'UserSeeder']);
-                    $user = User::first();
+                    $user = User::query()->where('id',Auth::user()->id)->first();
                     View::share('userHeader', $user);
                 } catch (\Exception $e) {
                     logger()->error('Ошибка наполнения пользователями: ' . $e->getMessage());
