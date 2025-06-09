@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+          Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('telegram_id')->nullable()->unique();
+            $table->string('telegram_id')->nullable()->unique();
+            $table->string('username')->nullable();
+            $table->string('login_token')->nullable()->unique();
+            $table->timestamp('login_token_expires_at')->nullable();
             $table->string('role')->default('user');
-            $table->string('balance')->default('0');
+            $table->string('balance');
             $table->timestamps();
         });
     }
