@@ -37,7 +37,7 @@
     </form>
     </div>
     <div class="userValue">
-    <h1> {{"@".$query->telegram_id}} </h1>
+    <h1> {{"@".$query->username}} </h1>
     <span><a href="">ВЫЙТИ</a></span>
     </div>
 </div>
