@@ -10,21 +10,27 @@ use App\Http\Controllers\CheckEventController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AchievementController;
-use App\Http\Controllers\Api\TelegramLoginController;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\TelegramController;
+use Illuminate\Support\Carbon;
+
+Auth::routes();
+
+Route::get('/auth/telegram/token/{token}', function ($token) {
+    $user = User::where('login_token', $token)
+                ->where('login_token_expires_at', '>', now())
+                ->first();
+
+    if (!$user) {
+        return response('Вход не выполнен. Токен недействителен или истёк.', 403);
+    }
+
+    Auth::login($user);
+    return redirect('/'); // главная страница после входа
+});
 // Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']);
 Route::get('/',[ProductController::class,'index']);
 Route::post('/user/remove/{id}',[UserController::class,'remove'])->name('user.remove');
