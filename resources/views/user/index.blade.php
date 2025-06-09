@@ -14,7 +14,7 @@
         <ul class="ulUser">          
     @foreach ($query as $item)
             <li class="hide">
-                   <a id="userId" href="{{route('user.all',$item->id)}}"><span>{{"@".$item->username}}</span></a>
+                   <a id="userId" href="{{route('user.user_view',$item->id)}}"><span>{{"@".$item->username}}</span></a>
             </li>
     @endforeach
         </ul>
@@ -26,7 +26,7 @@
     @foreach ($query as $item)
         <div class="item">
             <div class="userId">
-            <a id="userId" href="{{route('user.all',$item->id)}}"><span>{{"@".$item->username}}</span></a>
+            <a id="userId" href="{{route('user.user_view',$item->id)}}"><span>{{"@".$item->username}}</span></a>
             </div>
             <div class="iconsAllUsers">
             <span id="coinModalOpen">
