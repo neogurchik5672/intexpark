@@ -24,7 +24,7 @@
                 <a class="" href="{{ route('buyRequest.index') }}">{{ $userHeader->balance }}<img
                         src="{{ asset('img/coin.png') }}" alt="icon"></a>
                 <a class=" {{ $userHeader->role == 'admin' ? 'menu-btn' : '' }} "
-                    href="{{ $userHeader->role == 'admin' ? '' : route('user.show') }}">{{ $userHeader->telegram_id }}<img
+                    href="{{ $userHeader->role == 'admin' ? '' : route('user.show') }}">{{ $userHeader->username }}<img
                         src="{{ asset('img/profile.png') }}" alt="icon"></a>
                
             </div>
