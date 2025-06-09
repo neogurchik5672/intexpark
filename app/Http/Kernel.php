@@ -22,7 +22,6 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\EmulateAuth::class, ///Для эмуляции авторизации (при ее отсутствии)
-        \App\Http\Middleware\CheckAdmin::class,
         
     ];
 
