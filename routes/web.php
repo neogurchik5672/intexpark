@@ -29,16 +29,20 @@ Route::get('/auth/telegram/token/{token}', function ($token) {
     }
 
     Auth::login($user);
-    return redirect('/'); // главная страница после входа
+
+    // Очищаем токен после успешной авторизации
+    // $user->update([
+    //     'login_token' => null,
+    //     'login_token_expires_at' => null
+    // ]);
+
+    return redirect('/');
 });
-// Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']);
+
 Route::get('/',[ProductController::class,'index']);
 Route::post('/user/remove/{id}',[UserController::class,'remove'])->name('user.remove');
-Auth::routes();
-// Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']); Для авторизации
-Route::get('/',[ProductController::class,'index']);    
-Route::get('/authcheck',[ProductController::class,'auth']);    
-// Route::get('/index',[ProductController::class,'index']); Для авторизации
+// Route::get('/authcheck',[ProductController::class,'auth']);    
+
 Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
 Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');
 Route::get('/buy/show/{id}',[BuyRequestController::class,'show'])->name('buyRequest.show');
@@ -78,17 +82,15 @@ Route::post('/user/update-user-data', [UserController::class, 'updateUserData'])
 //Удаление пользователя 
 Route::post('/user/delete-user', [UserController::class, 'deleteUser'])->name('user.delete-user')->middleware('role:admin');
 
-Route::group(['middleware' => ['auth', 'admin']], function() {
-Route::get('/admin/index',[AdminController::class,'index'])->name('admin.index');
-Route::get('/admin/products',[AdminController::class,'products'])->name('admin.products');
-Route::get('/admin/transaction',[AdminController::class,'transaction'])->name('admin.transaction');
-Route::put('/admin/newAdmin/{id}',[AdminController::class,'newAdmin'])->name('admin.newAdmin');
-Route::get('/events/create',[EventsController::class,'create'])->name('events.create');
-Route::post('/events/store',[EventsController::class,'store'])->name('events.store');
-Route::get('/user/index',[UserController::class,'index'])->name('user.index');
-Route::get('/products/create',[ProductController::class,'create'])->name('product.create');
-Route::post('/products/store',[ProductController::class,'store'])->name('product.store');
-Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
-Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
-Route::delete('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
-});
+Route::get('/admin/index',[AdminController::class,'index'])->name('admin.index')->middleware('role:admin');
+Route::get('/admin/products',[AdminController::class,'products'])->name('admin.products')->middleware('role:admin');
+Route::get('/admin/transaction',[AdminController::class,'transaction'])->name('admin.transaction')->middleware('role:admin');
+// Route::put('/admin/newAdmin/{id}',[AdminController::class,'newAdmin'])->name('admin.newAdmin')->middleware('role:admin');
+Route::get('/events/create',[EventsController::class,'create'])->name('events.create')->middleware('role:admin');
+Route::post('/events/store',[EventsController::class,'store'])->name('events.store')->middleware('role:admin');
+Route::get('/user/index',[UserController::class,'index'])->name('user.index')->middleware('role:admin');
+Route::get('/products/create',[ProductController::class,'create'])->name('product.create')->middleware('role:admin');
+Route::post('/products/store',[ProductController::class,'store'])->name('product.store')->middleware('role:admin');
+Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit')->middleware('role:admin');
+Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update')->middleware('role:admin');
+Route::delete('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('role:admin');

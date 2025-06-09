@@ -100,9 +100,6 @@ class ProductController extends Controller
 
     return back()->with('success', 'Товар успешно обновлен');
   }
-   public function auth()
-  {
-    return view('products.authcheck');
-  }
+  
   
 }
