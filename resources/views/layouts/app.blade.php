@@ -26,8 +26,7 @@
                 <a class=" {{ $userHeader->role == 'admin' ? 'menu-btn' : '' }} "
                     href="{{ $userHeader->role == 'admin' ? '' : route('user.show') }}">{{ $userHeader->telegram_id }}<img
                         src="{{ asset('img/profile.png') }}" alt="icon"></a>
-                <a href="{{ route('user.show') }}">{{ '@' . $userHeader->tg_id }}<img
-                        src="{{ asset('img/profile.png') }}" alt="icon"></a>
+               
             </div>
         </div>
     </header>
@@ -90,7 +89,6 @@
         </ul>
     </footer>
     <script type="module" src="{{asset('js/index.js')}}"></script>
-    <script src="{{ asset('js/index.js') }}"></script>
     @yield('scripts')
 </body>
 

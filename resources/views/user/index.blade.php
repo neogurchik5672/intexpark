@@ -18,6 +18,9 @@
             </li>
     @endforeach
         </ul>
+</div>
+    </div>
+    </div>
     <div class="scrollbarMainAllUsers">
     <div class="mainAllUsers">
     @foreach ($query as $item)
@@ -114,4 +117,8 @@
             <div class="closeLockModalmenu">ВЫЙТИ</div>
             <button>ЗАБЛОКИРОВАТЬ</button>
            </div> 
+        </div>
+           @endforeach
+        </div>
+        </div>
 @endsection

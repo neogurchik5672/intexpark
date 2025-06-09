@@ -96,29 +96,29 @@ document.addEventListener('click', function(e) {
       }
         }
 //меню для аватара 
-let buttonAvatar = document.getElementById("addAvatar")
-let menuAvatar = document.getElementById("addAvatarMenu")
-let closebuttonAvatar = document.getElementById("closeModalMenuAvatar")
-if (button != null) {
+// let buttonAvatar = document.getElementById("addAvatar")
+// let menuAvatar = document.getElementById("addAvatarMenu")
+// let closebuttonAvatar = document.getElementById("closeModalMenuAvatar")
+// if (button != null) {
   
- buttonAvatar.addEventListener('click', function() {
-  menuAvatar.style.display = "block"
-  buttonAvatar.style.display = "none"
- })
-  closebuttonAvatar.addEventListener('click', function() {
-  menuAvatar.style.display = "none"
-  buttonAvatar.style.display = "block"
- })
-}
-if(document.querySelector('#formAddAvatar')){
-document.querySelector('#formAddAvatar').addEventListener('change', function(e) {  
-    var inputs = this.querySelectorAll('input[type=radio]');  
-    for (var i = 0; i < inputs.length; i++) {  
-        if (e.target === inputs[i]) continue;  
-        inputs[i].disabled = true;  
-    }  
-}); 
-}
+//  buttonAvatar.addEventListener('click', function() {
+//   menuAvatar.style.display = "block"
+//   buttonAvatar.style.display = "none"
+//  })
+//   closebuttonAvatar.addEventListener('click', function() {
+//   menuAvatar.style.display = "none"
+//   buttonAvatar.style.display = "block"
+//  })
+// }
+// if(document.querySelector('#formAddAvatar')){
+// document.querySelector('#formAddAvatar').addEventListener('change', function(e) {  
+//     var inputs = this.querySelectorAll('input[type=radio]');  
+//     for (var i = 0; i < inputs.length; i++) {  
+//         if (e.target === inputs[i]) continue;  
+//         inputs[i].disabled = true;  
+//     }  
+// }); 
+// }
 //всплавающее меню
 document.querySelector('.menu-btn').addEventListener('click', function(e) {
   console.log("ok");
