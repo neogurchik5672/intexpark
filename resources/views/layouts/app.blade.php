@@ -13,6 +13,8 @@
 </head>
 
 <body class="index">
+    <div class="overlay"></div>
+    <div class="overlayAdaptive"></div>
     <header>
         <div class="header">
             <div id="checkPage" class="defaultPage @yield('checkPage')">

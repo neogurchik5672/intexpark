@@ -80,9 +80,9 @@ document.addEventListener('click', function(e) {
           let items = document.querySelectorAll('.ulUser li')
           if (val != '') {
             items.forEach(function(elem){
-              console.log(elem)
               if(elem.innerText.search(val) == -1){
               }else{
+                document.querySelector('.marginScrollAllUsers').style.display = "flex"
                 document.querySelector('.ulUser').style.display = 'flex';
                 elem.classList.remove('hide');
               }
@@ -91,6 +91,7 @@ document.addEventListener('click', function(e) {
              items.forEach(function(elem){
                 document.querySelector('.ulUser').style.display = 'none';
                 elem.classList.add('hide');
+                document.querySelector('.marginScrollAllUsers').style.display = "none"
           })
         }
       }
@@ -124,16 +125,16 @@ document.querySelector('.menu-btn').addEventListener('click', function(e) {
   console.log("ok");
   e.preventDefault();
   document.querySelector('.menu').classList.add('menu_active');
-    document.querySelector('.wrapper').style.boxShadow = "0 0 0 max(100vh, 100vw) rgba(0, 0, 0, 0.5)"
+    document.querySelector('.overlay').style.display = "block"
 });
   window.addEventListener('click', function(e) {
   if (!e.target.closest('.menu-btn') && !e.target.closest('.wrapper')) {
-  document.querySelector('.wrapper').style.boxShadow = "none"
+    document.querySelector('.overlay').style.display = "none"
   document.querySelector('.menu').classList.remove('menu_active');
   }
 });
 window.addEventListener('scroll', function () {
-  document.querySelector('.wrapper').style.boxShadow = "none"
+    document.querySelector('.overlay').style.display = "none"
   document.querySelector('.menu').classList.remove('menu_active');
 });
 //модалки для страницы с юзерами
@@ -213,18 +214,19 @@ document.querySelector('.menuButtonAdaptive').addEventListener('click', function
   document.querySelector('.menuAdaptive').classList.add('menu_activeAdaptive');
   document.querySelector('.menuButtonAdaptive').style.display = "none"
   document.querySelector('.closeMenuButtonAdaptive').style.display = "block"
-  document.querySelector('.wrapperAdaptive').style.boxShadow = "0 97px 0 max(95vh, 100vw) rgba(0, 0, 0, 0.3)"
+  document.querySelector('.overlayAdaptive').style.display = "block"
 })
   window.addEventListener('click', function(e) {
-  if (!e.target.closest('.wrapperAdaptive') && !e.target.closest('.menuButtonAdaptive')) {
-  document.querySelector('.wrapperAdaptive').style.boxShadow = "none"
+  if (!e.target.closest('.wrapperAdaptive') && !e.target.closest('.overlay') && !e.target.closest('.menuButtonAdaptive')) {
+    console.log(e.target)
+    document.querySelector('.overlayAdaptive').style.display = "none"
   document.querySelector('.closeMenuButtonAdaptive').style.display = "none"
   document.querySelector('.menuButtonAdaptive').style.display = "block"
   document.querySelector('.menuAdaptive').classList.remove('menu_activeAdaptive');
   }
 });
 window.addEventListener('scroll', function () {
-  document.querySelector('.wrapperAdaptive').style.boxShadow = "none"
+  document.querySelector('.overlayAdaptive').style.display = "none"
   document.querySelector('.closeMenuButtonAdaptive').style.display = "none"
   document.querySelector('.menuButtonAdaptive').style.display = "block"
   document.querySelector('.menuAdaptive').classList.remove('menu_activeAdaptive');

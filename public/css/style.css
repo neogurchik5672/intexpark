@@ -165,6 +165,7 @@ header{
     font-family: Montserrat-Bold;
 }
 .defaultPage a{
+    margin-left: 20px;
     transition: 0.1s;
     border: 2px solid #23BDCA;
     padding: 15px 26px;
@@ -895,3 +896,15 @@ text-align: end;
                 margin-top: 120px;
             }
         } */
+.marginScrollAllUsers{
+    display: none;
+}
+.overlay, .overlayAdaptive{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    box-shadow: 0 0 0 max(100vh, 100vw) rgba(0, 0, 0, 0.5) inset;
+}
