@@ -78,17 +78,15 @@ Route::post('/user/update-user-data', [UserController::class, 'updateUserData'])
 //Удаление пользователя 
 Route::post('/user/delete-user', [UserController::class, 'deleteUser'])->name('user.delete-user')->middleware('role:admin');
 
-Route::group(['middleware' => ['auth', 'admin']], function() {
-Route::get('/admin/index',[AdminController::class,'index'])->name('admin.index');
-Route::get('/admin/products',[AdminController::class,'products'])->name('admin.products');
-Route::get('/admin/transaction',[AdminController::class,'transaction'])->name('admin.transaction');
-Route::put('/admin/newAdmin/{id}',[AdminController::class,'newAdmin'])->name('admin.newAdmin');
-Route::get('/events/create',[EventsController::class,'create'])->name('events.create');
-Route::post('/events/store',[EventsController::class,'store'])->name('events.store');
-Route::get('/user/index',[UserController::class,'index'])->name('user.index');
-Route::get('/products/create',[ProductController::class,'create'])->name('product.create');
-Route::post('/products/store',[ProductController::class,'store'])->name('product.store');
-Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
-Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
-Route::delete('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
-});
+Route::get('/admin/index',[AdminController::class,'index'])->name('admin.index')->middleware('role:admin');
+Route::get('/admin/products',[AdminController::class,'products'])->name('admin.products')->middleware('role:admin');
+Route::get('/admin/transaction',[AdminController::class,'transaction'])->name('admin.transaction')->middleware('role:admin');
+Route::put('/admin/newAdmin/{id}',[AdminController::class,'newAdmin'])->name('admin.newAdmin')->middleware('role:admin');
+Route::get('/events/create',[EventsController::class,'create'])->name('events.create')->middleware('role:admin');
+Route::post('/events/store',[EventsController::class,'store'])->name('events.store')->middleware('role:admin');
+Route::get('/user/index',[UserController::class,'index'])->name('user.index')->middleware('role:admin');
+Route::get('/products/create',[ProductController::class,'create'])->name('product.create')->middleware('role:admin');
+Route::post('/products/store',[ProductController::class,'store'])->name('product.store')->middleware('role:admin');
+Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit')->middleware('role:admin');
+Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update')->middleware('role:admin');
+Route::delete('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('role:admin');
