@@ -40,7 +40,7 @@
                     <a class="" href="#">{{$userHeader->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></a>
                 </div>
                 <div class="contentMenu">
-                    
+                    <a href={{route('admin.products')}}>Учёт товара</a><br>
                     <a href="{{ route('user.index') }}">пользователи</a>
                     <a href="/achievements">достижения</a>
                     <a href="{{ route('buyRequest.index') }}">магазин</a>

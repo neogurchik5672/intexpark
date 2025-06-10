@@ -60,7 +60,6 @@ Route::match(['PUT', 'GET'],'/user/updateCoins/{id}', [UserController::class, 'u
 // Route::match(['PUT', 'GET'],'/user/updateCoin/{id}', [UserController::class, 'updateCoin'])->name('user.updateCoin');
 Route::get('/user/all/{id}',[UserController::class,'all'])->name('user.all');
 
-
 Route::post('/user/addAvatar/{$id}',[UserController::class,'all'])->name('user.addAvatar');
 // Админка
 Route::prefix('admin')->name('admin.')->group(function () {

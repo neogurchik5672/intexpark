@@ -31,8 +31,7 @@ class ProductController extends Controller
       'desc' => 'required|string|max:255',
       'price' => 'required|integer|max:255000',
       'count' => 'required|integer|min:0|max:255',
-      'img' => 'image',
-      'mimes:jpeg,png,jpg,gif|max:10240',
+      'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
       'is_merch' => 'nullable|boolean',
     ]);
     $img = isset($request['img']) ? $request['img']->store('products', 'public') : null; //загрузка изображения
