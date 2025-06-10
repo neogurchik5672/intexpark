@@ -12,14 +12,17 @@ class Header
 {
     public function handle($request, Closure $next)
     {
+        if ($request->is('api/telegram/webhook')) {
+            return $next($request);
+        }
         // Проверяем аутентификацию пользователя
         if (Auth::check()) {
-            $user = User::find(Auth::id());
+            $user = User::find(Auth::id()); 
             View::share('userHeader',$user);
             }else{
                   abort(401, 'Вы не авторизованны.');
             }
-        // Важно: всегда возвращаем следующий middleware
+         // Важно: всегда возвращаем следующий middleware
         return $next($request);
     }
 }
