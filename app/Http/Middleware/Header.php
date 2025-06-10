@@ -22,7 +22,6 @@ class Header
             }else{
                   abort(401, 'Вы не авторизованны.');
             }
-         // Важно: всегда возвращаем следующий middleware
         return $next($request);
     }
 }
