@@ -40,6 +40,7 @@ Route::get('/auth/telegram/token/{token}', function ($token) {
 });
 // Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']);
 Route::get('/',[ProductController::class,'index']);
+Route::middleware(['auth'])->group(function () {
 Route::post('/user/remove/{id}',[UserController::class,'remove'])->name('user.remove');
    
 // Route::get('/index',[ProductController::class,'index']); Для авторизации
@@ -94,3 +95,4 @@ Route::post('/products/store',[ProductController::class,'store'])->name('product
 Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit')->middleware('role:admin');
 Route::put('/products/update/{id}', [ProductController::class, 'update'])->name('products.update')->middleware('role:admin');
 Route::delete('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('role:admin');
+});
