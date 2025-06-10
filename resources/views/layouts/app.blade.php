@@ -68,7 +68,7 @@
 	<div class="menuAdaptive">
 		<nav class="menu-listAdaptive">
       <div class="nameMenuAdaptive">
-        <a class="" href="{{ route('user.show') }}">{{strlen($userHeader->username) > 6 ? "@".substr($userHeader->username,0,7) : $userHeader->username}}</a>
+        <a class="" href="{{ route('user.account') }}">{{strlen($userHeader->username) > 6 ? "@".substr($userHeader->username,0,7) : $userHeader->username}}</a>
       </div>
       <div class="coinMenuAdaptive">
         <a class="" href="#">{{$userHeader->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></a>
