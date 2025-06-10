@@ -26,7 +26,7 @@
     @foreach ($query as $item)
         <div class="item">
             <div class="userId">
-            <a id="userId" href="{{route('user.user_view',$item->id)}}"><span>{{"@".$item->username}}</span></a>
+            <a id="userId" href="{{route('user.user_view',$item->id)}}"><span>{{strlen($item->username) > 8 ? "@".substr($item->username,0,7)."..." : $item->username}}</span></a>
             </div>
             <div class="iconsAllUsers">
             <span id="coinModalOpen">
