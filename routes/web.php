@@ -29,12 +29,19 @@ Route::get('/auth/telegram/token/{token}', function ($token) {
     }
 
     Auth::login($user);
-    return redirect('/'); // главная страница после входа
+
+    // // Очищаем токен после успешной авторизации
+    // $user->update([
+    //     'login_token' => null,
+    //     'login_token_expires_at' => null
+    // ]);
+
+    return redirect('/');
 });
 // Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']);
 Route::get('/',[ProductController::class,'index']);
 Route::post('/user/remove/{id}',[UserController::class,'remove'])->name('user.remove');
-  
+   
 // Route::get('/index',[ProductController::class,'index']); Для авторизации
 Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
 Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');
