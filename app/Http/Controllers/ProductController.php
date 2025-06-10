@@ -9,13 +9,14 @@ use App\Models\BuyRequest;
 use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
   public function index()
   {
     $query = Product::query()->get();
-    $user = User::first();
+    $user = Auth::user();
     return view('products.index', compact('query', 'user'));
   }
 
