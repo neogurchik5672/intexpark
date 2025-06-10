@@ -68,7 +68,7 @@
 	<div class="menuAdaptive">
 		<nav class="menu-listAdaptive">
       <div class="nameMenuAdaptive">
-        <a class="" href="{{ route('user.show') }}">{{"@".$userHeader->username }}</a>
+        <a class="" href="{{ route('user.show') }}">{{"@".substr($userHeader->username,0,7)}}</a>
       </div>
       <div class="coinMenuAdaptive">
         <a class="" href="#">{{$userHeader->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></a>

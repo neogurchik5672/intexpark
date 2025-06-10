@@ -15,6 +15,7 @@ class Header
         // Проверяем аутентификацию пользователя
         if (Auth::check()) {
             $user = User::find(Auth::id());
+            View::share('userHeader',$user);
             }else{
                   abort(401, 'Вы не авторизованны.');
             }
