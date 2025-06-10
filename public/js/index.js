@@ -121,6 +121,7 @@ document.addEventListener('click', function(e) {
 // }); 
 // }
 //всплавающее меню
+if(document.querySelector('.menu-btn')){
 document.querySelector('.menu-btn').addEventListener('click', function(e) {
   console.log("ok");
   e.preventDefault();
@@ -137,6 +138,7 @@ window.addEventListener('scroll', function () {
     document.querySelector('.overlay').style.display = "none"
   document.querySelector('.menu').classList.remove('menu_active');
 });
+}
 //модалки для страницы с юзерами
 document.querySelectorAll('#coinModalOpen').forEach(function(elem){
 elem.querySelector('#coinModalImg').addEventListener('click',function(){    

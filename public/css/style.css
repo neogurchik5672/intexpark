@@ -999,3 +999,11 @@ text-align: end;
 
 
 .show {display:block;}
+section.shop {
+    font-family: Montserrat-Bold;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 15px 162px;
+    gap: 100px 50px;
+}

@@ -64,7 +64,7 @@
     </div>
   </div>
   </div>
-  <div class="wrapperAdaptive">
+  <div class="wrapperAdaptive">menu-btn
 	<div class="menuAdaptive">
 		<nav class="menu-listAdaptive">
       <div class="nameMenuAdaptive">
@@ -76,6 +76,7 @@
       <div class="contentMenuAdaptive @yield('checkPageAdaptive')">
       <div class="mainLinkAdaptive"><a class="menuLinkAdaptive" href="/">ГЛАВНАЯ</a></div>
 			<div class="eventsLinkAdaptive"><a class="menuLinkAdaptive" href="{{route('events.index')}}">СОБЫТИЯ</a></div>
+      </div>
 		</nav>
     </div>
 	</div>
