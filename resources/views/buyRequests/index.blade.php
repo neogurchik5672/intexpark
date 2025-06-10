@@ -20,7 +20,6 @@
         @endforeach
         @else
           <button type="submit" class="btn btn_none">нет заявок</button>
-            
             @endif
         </div>
           </div>

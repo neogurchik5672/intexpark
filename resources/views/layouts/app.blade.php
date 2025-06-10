@@ -82,7 +82,7 @@
     <main>
         @yield('content')
     </main>
-    <footer>
+    {{-- <footer>
         <ul>
             <h1>footer</h1>
             <li><a href='/'>главная</a></li>
@@ -90,7 +90,7 @@
             <li><a href={{ route('events.index') }}>события и задания</a></li>
             <li><a href={{ route('admin.index') }}>админка</a></li>
         </ul>
-    </footer>
+    </footer> --}}
     <script type="module" src="{{asset('js/index.js')}}"></script>
     @yield('scripts')
 </body>
