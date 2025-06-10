@@ -41,7 +41,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\UpdateLastVisit::class,
-              \App\Http\Middleware\Header::class,
+         //     \App\Http\Middleware\Header::class,
         ],
 
         'api' => [
@@ -72,6 +72,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => \App\Http\Middleware\RoleMiddleware::class, ///Для авторизации
-        'header' => \App\Http\Middleware\Header::class,
+      //  'header' => \App\Http\Middleware\Header::class,
     ];
 }
