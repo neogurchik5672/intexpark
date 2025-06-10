@@ -68,7 +68,7 @@
 	<div class="menuAdaptive">
 		<nav class="menu-listAdaptive">
       <div class="nameMenuAdaptive">
-        <a class="" href="{{ route('user.show') }}">{{strlen($userHeader->username) > 6 ? "@".substr($userHeader->username,0,7) : $userHeader->username}}</a>
+        <a class="" href="{{ route('user.account') }}">{{strlen($userHeader->username) > 6 ? "@".substr($userHeader->username,0,7) : $userHeader->username}}</a>
       </div>
       <div class="coinMenuAdaptive">
         <a class="" href="#">{{$userHeader->balance}}<img src="{{asset('img/coin.png')}}" alt="icon"></a>
@@ -82,7 +82,7 @@
     <main>
         @yield('content')
     </main>
-    {{-- <footer>
+    <!-- {{-- <footer>
         <ul>
             <h1>footer</h1>
             <li><a href='/'>главная</a></li>
@@ -90,7 +90,7 @@
             <li><a href={{ route('events.index') }}>события и задания</a></li>
             <li><a href={{ route('admin.index') }}>админка</a></li>
         </ul>
-    </footer> --}}
+    </footer> --}} -->
     <script type="module" src="{{asset('js/index.js')}}"></script>
     @yield('scripts')
 </body>
