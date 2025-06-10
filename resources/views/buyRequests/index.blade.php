@@ -10,7 +10,7 @@
                 @if ( count($item->buyRequest) > 0)
             <button type="button" class="btn btn_yellow dropdown-btn">
             <div>заявки</div> 
-            <div><img src="{{asset('storage/products/arroy_bottom.png')}}" alt=""/></div>
+            <div><img src="{{asset('storage/arroy_bottom.png')}}" alt=""/></div>
           </button>
           <div class="dropdown-content">
             @foreach ($item->buyRequest as $buyItem)
