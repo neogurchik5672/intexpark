@@ -34,10 +34,7 @@ Route::get('/auth/telegram/token/{token}', function ($token) {
 // Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']);
 Route::get('/',[ProductController::class,'index']);
 Route::post('/user/remove/{id}',[UserController::class,'remove'])->name('user.remove');
-Auth::routes();
-// Route::match(['POST', 'GET'],'/', [TelegramLoginController::class, 'login']); Для авторизации
-Route::get('/',[ProductController::class,'index']);    
-Route::get('/authcheck',[ProductController::class,'auth']);    
+  
 // Route::get('/index',[ProductController::class,'index']); Для авторизации
 Route::post('/product/buy/{product}',[BuyRequestController::class,'buy'])->name('buyRequest.buy');
 Route::get('/buy/index',[BuyRequestController::class,'index'])->name('buyRequest.index');
