@@ -675,7 +675,6 @@
 /* Ноуты */
 @media (max-width: 1600px) {
     .shop__cards {
-        height: 1700px;
         gap: 2% 6%;
     }
 

@@ -3,7 +3,10 @@
 @section('checkPage','mainLink')
 @section('checkPageAdaptive','mainLinkAdaptiveCheck')
 @section('content')
-<div>
+<div class="banner">
+    <img src="img/banner_icons/Sword.png" alt="" class="banner__image--sword">
+    <img src="img/banner_icons/Chest.png" alt="" class="banner__image--chest">
+
     <img src="img/banner_icons/Backpack.png" alt="" class="banner__image--backpack">
     <img src="img/banner_icons/Map.png" alt="" class="banner__image--map">
 
@@ -67,7 +70,8 @@
                 </div>
             </div>
         </div>
-
+<form action="{{route('buyRequest.buy',$item->id)}}" method="post">
+     @csrf
         @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
         <div class="modalka__button modalka__button--purchased" data-message="ПОЗДРАВЛЯЕМ, ТОВАР ОПЛАЧЕН! С тебя было списано {{ $item->price }} интекскоинов">
             КУПЛЕНО
@@ -85,10 +89,11 @@
                 НЕТ В НАЛИЧИИ
     </div>
     @else
-    <button class="modalka__button modalka__button--buy" onclick="buyProduct({{ $item->id }}, {{ $item->price }})">
+    <button class="modalka__button modalka__button--buy">
         КУПИТЬ
     </button>
     @endif
+</form>
 </div>
 </div>
 @endforeach
@@ -96,11 +101,11 @@
 @endsection
 
 <!-- подключение css -->
-@section('indexstyles')
+@section('styles')
 <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 @endsection
 
 <!-- подключение javascript -->
-@section('indexscripts')
+@section('scripts')
 <script src="{{ asset('js/indexpage.js') }}"></script>
 @endsection

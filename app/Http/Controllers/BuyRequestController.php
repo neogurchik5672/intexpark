@@ -22,18 +22,21 @@ class BuyRequestController extends Controller
     public function buy(Product $product){ //при покупке изменяется баланс,продукт записывается в историю и добавляется в лист ожидания
         $query = Product::query()->get();
         $balance = Auth::user();
+        $user = Auth::user();
         $price = Product::find($product->id);
         $cart = Cart::query()->where('product_id',$product->id);
         $cart->delete();
         $buy = BuyRequest::create([
-            'user_id' => 1,
+            'user_id' => $user->id,
             'product_id' => $product->id,
         ]); 
                 $history = History::create([
-            'user_id' => 1,
+            'user_id' => $user->id,
             'product_id' => $product->id,
         ]); 
         $balance->balance = intval($balance->balance) - intval($price->price);
+        $product->count -= 1;
+        $product->save();
         $balance->save();
         $error = 'Товар приобретен';
         return redirect()->action([ProductController::class,'index']);

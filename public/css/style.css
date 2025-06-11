@@ -133,12 +133,14 @@ align-items: center;
     justify-content: space-around;
 }
 .header{
+    z-index: 9999999;
     background-color: #021F3F;
     display: flex;
     padding: 20px 0;
     font-family: Montserrat-Regular;
 }
 header{
+    z-index: 9999999;
     width: 100%;
     top: 0;
     position: fixed;
@@ -163,6 +165,7 @@ header{
     font-family: Montserrat-Bold;
 }
 .defaultPage a{
+    margin-left: 20px;
     transition: 0.1s;
     border: 2px solid #23BDCA;
     padding: 15px 26px;
@@ -500,6 +503,7 @@ section.text_shop {
 .titleAllUsers{
     height: 100px;
     display: flex;
+    justify-content: space-between;
 }
 .titleAllUsers span{
     font-family: Montserrat-Black;
@@ -667,6 +671,7 @@ color: #23BDCA;
     background-color: #021F3F;
     position: fixed;
     top: 0;
+    z-index: 99999;
     left: 0;
     padding: 30px 0;
     display: none;
@@ -717,9 +722,9 @@ header{
 }
 .menuAdaptive {
 	position: fixed;
+    z-index: 99999;
 	right: 0;
 	top: 97px;
-    z-index: 99;
 	width: 60%;
 	height: calc(100vh - 97px);
 	display: flex;
@@ -891,3 +896,114 @@ text-align: end;
                 margin-top: 120px;
             }
         } */
+.marginScrollAllUsers{
+    display: none;
+}
+.overlay, .overlayAdaptive{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    box-shadow: 0 0 0 max(100vh, 100vw) rgba(0, 0, 0, 0.5) inset;
+}
+.card {
+    text-transform: uppercase;
+    width: 465px;
+}
+
+.card_img {
+    height: 465px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.cost {
+    margin: 17px 0 25px;
+}
+
+.btn {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 31.5px 0;
+    width: 100%;
+    background: var(--color1);
+
+    font-family: Montserrat-Bold;
+    font-size: 30px;
+    color: var(--color3);
+}
+
+.btn img {
+    width: 25px;
+    height: 25px;
+}
+
+.btn_none {
+    background: var(--color4);
+}
+
+.btn_in_basket {
+    background: var(--color5);
+    color: var(--color2);
+}
+/* Страница заявок */
+.applications .shop{
+    margin-top: 300px;
+}
+.applications .btn{
+    gap: 25px;
+}
+
+.dropdown-container {
+    position: relative;
+    width: 465px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown-container:hover .dropdown-content {
+    display: block;
+  }
+
+  main{
+    margin-top: 150px;
+  }
+
+
+
+
+.show {display:block;}
+section.shop {
+    font-family: Montserrat-Bold;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 15px 162px;
+    gap: 100px 50px;
+}

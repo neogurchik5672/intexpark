@@ -21,7 +21,7 @@
                     <img src="{{ asset('img/Elixir.svg') }}" width="200" height="200" alt="картинка" class="Elixir">
                 </div>
                 <div class="userValue">
-                    <h2> {{"@".$user->telegram_id}} </h2>
+                    <h2> {{"@".$user->username}} </h2>
                     <span><a href=""></a></span>
                 </div>
                 <div class="valueInputsOuter">

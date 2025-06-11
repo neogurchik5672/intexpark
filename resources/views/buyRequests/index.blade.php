@@ -10,17 +10,16 @@
                 @if ( count($item->buyRequest) > 0)
             <button type="button" class="btn btn_yellow dropdown-btn">
             <div>заявки</div> 
-            <div><img src="{{asset('storage/products/arroy_bottom.png')}}" alt=""/></div>
+            <div><img src="{{asset('storage/arroy_bottom.png')}}" alt=""/></div>
           </button>
           <div class="dropdown-content">
             @foreach ($item->buyRequest as $buyItem)
         <a href="{{ route('buyRequest.show',$buyItem->id) }}">
-          {{ $buyItem->user->telegram_id}}  
+          {{ $buyItem->user->username}}  
         </a>
         @endforeach
         @else
           <button type="submit" class="btn btn_none">нет заявок</button>
-            
             @endif
         </div>
           </div>

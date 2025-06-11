@@ -14,7 +14,7 @@
         <ul class="ulUser">          
     @foreach ($query as $item)
             <li class="hide">
-                   <a id="userId" href="{{route('user.all',$item->id)}}"><span>{{"@".$item->telegram_id}}</span></a>
+                   <a id="userId" href="{{route('user.user_view',$item->id)}}"><span>{{"@".$item->username}}</span></a>
             </li>
     @endforeach
         </ul>
@@ -26,7 +26,7 @@
     @foreach ($query as $item)
         <div class="item">
             <div class="userId">
-            <a id="userId" href="{{route('user.all',$item->id)}}"><span>{{"@".$item->telegram_id}}</span></a>
+            <a id="userId" href="{{route('user.user_view',$item->id)}}"><span>{{strlen($item->username) > 8 ? "@".substr($item->username,0,7)."..." : $item->username}}</span></a>
             </div>
             <div class="iconsAllUsers">
             <span id="coinModalOpen">
@@ -52,7 +52,7 @@
            </div>
                  <img id="coinModalImg" onmouseout="this.src='{{asset('img/coin.svg')}}'" onmouseover="this.src='{{asset('img/coinHover.png')}}'" src="{{asset('img/coin.svg')}}">
             </span>
-            <a href="{{route('user.all',$item->id)}}">
+            <a href="{{route('user.user_editing',$item->id)}}">
                  <img onmouseout="this.src='{{asset('img/edit.svg')}}'" onmouseover="this.src='{{asset('img/editHover.png')}}'" src="{{asset('img/edit.svg')}}">
             </a>
             <span id="LockModalOpen">

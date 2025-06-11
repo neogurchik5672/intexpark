@@ -17,4 +17,9 @@ use App\Http\Controllers\TelegramController;
 */
 
 
-Route::post('/telegram/webhook', [TelegramController::class, 'handle']);
+Route::post('/telegram/webhook', [TelegramController::class, 'handle'])
+    ->withoutMiddleware([
+        \App\Http\Middleware\Header::class,
+        \App\Http\Middleware\Authenticate::class,
+        \App\Http\Middleware\VerifyCsrfToken::class
+    ]);

@@ -9,13 +9,14 @@ use App\Models\BuyRequest;
 use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
   public function index()
   {
     $query = Product::query()->get();
-    $user = User::first();
+    $user = Auth::user();
     return view('products.index', compact('query', 'user'));
   }
 
@@ -31,8 +32,7 @@ class ProductController extends Controller
       'desc' => 'required|string|max:255',
       'price' => 'required|integer|max:255000',
       'count' => 'required|integer|min:0|max:255',
-      'img' => 'image',
-      'mimes:jpeg,png,jpg,gif|max:10240',
+      'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
       'is_merch' => 'nullable|boolean',
     ]);
     $img = isset($request['img']) ? $request['img']->store('products', 'public') : null; //загрузка изображения
@@ -100,9 +100,6 @@ class ProductController extends Controller
 
     return back()->with('success', 'Товар успешно обновлен');
   }
-   public function auth()
-  {
-    return view('products.authcheck');
-  }
+  
   
 }

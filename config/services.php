@@ -34,7 +34,7 @@ return [
     'telegram' => [
     'bot' => env('TELEGRAM_BOT_NAME'), // Имя бота (без @)
     'client_id' => null,
-    'client_secret' => env('TELEGRAM_TOKEN'), // Токен бота
+    'bot_token' => env('TELEGRAM_BOT_TOKEN'),
     'redirect' => env('TELEGRAM_REDIRECT_URI'),
 ],
 
