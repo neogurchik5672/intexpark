@@ -143,7 +143,7 @@
     <div class="card-actions">
         <!-- Редактировать -->
         <a href="{{ route('admin.achievements.edit', $achievement->id) }}" class="btn-edit" data-id="{{ $achievement->id }}">
-            <img src="{{ asset('img/edit.svg') }}" alt="Редактировать" class="icon-default">
+            <img src="{{ asset('img/editWhite.svg') }}" alt="Редактировать" class="icon-default">
              <img src="{{ asset('img/edit_filled.svg') }}" alt="Редактировать" class="icon-hover" >
         </a>
 
