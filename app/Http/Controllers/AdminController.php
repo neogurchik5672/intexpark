@@ -21,7 +21,7 @@ class AdminController extends Controller
         return view('admin.transaction',compact('tra'));
     }
         public function newAdmin($id){
-            $user = Auth::user()->update(['role'=>'admin']);
+            $user = User::findOrFail($id)->update(['role'=>'admin']);
         return response()->json([
             'success'=>true,
         ]);
