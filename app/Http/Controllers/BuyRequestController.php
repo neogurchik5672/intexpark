@@ -39,12 +39,12 @@ class BuyRequestController extends Controller
         $product->save();
         $balance->save();
         $error = 'Товар приобретен';
-        return redirect()->action([ProductController::class,'index']);
 
         $achievementController = new CheckAchievementController;
         $achievementController->checkFirstPurchase();
         $achievementController->checkThreePurchase();
         $achievementController->checkIsFirstMerchPurchase();
+        return redirect()->action([ProductController::class,'index']);
     }
     
     public function show($id){
