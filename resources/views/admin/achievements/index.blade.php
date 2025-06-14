@@ -3,11 +3,11 @@
 @section('content')
 
 <!-- уведомление изменения достижения -->
-<!-- @if(session('success'))
+@if(session('success'))
     <div id="notification" class="centered-notification success">
         {{ session('success') }}
     </div>
-@endif -->
+@endif
 
 <div class="achievements-container">
 <div class="header-section">

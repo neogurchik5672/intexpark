@@ -45,14 +45,14 @@ class ProductController extends Controller
       'is_merch' => $request->has('is_merch') ? true : false,
     ]);
     // return redirect()->action([ProductController::class,'index']);
-    return back()->with('success', 'Товар успешно создан');
+    return back()->with('success', 'Товар  успешно «' . $events->title . '» создан');
   }
   public function destroy($id)
   {
     $product = Product::findOrFail($id); // Получаем пост по ID
     $product->delete();
 
-    return back()->with('success', 'Товар успешно удален');
+    return back()->with('success', 'Товар «' . $product->title . '» успешно удален');
     // return redirect()->action([ProductController::class,'index']);
   }
 
@@ -98,7 +98,7 @@ class ProductController extends Controller
 
     $product->update($data);
 
-    return back()->with('success', 'Товар успешно обновлен');
+    return back()->with('success', 'Товар «' . $product->title . '» успешно обновлен');
   }
   
   

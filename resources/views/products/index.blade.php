@@ -3,6 +3,14 @@
 @section('checkPage','mainLink')
 @section('checkPageAdaptive','mainLinkAdaptiveCheck')
 @section('content')
+
+<!-- уведомление -->
+@if(session('success'))
+    <div id="notification" class="centered-notification success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="banner">
     <img src="img/banner_icons/Sword.png" alt="" class="banner__image--sword">
     <img src="img/banner_icons/Chest.png" alt="" class="banner__image--chest">

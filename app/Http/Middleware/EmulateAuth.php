@@ -14,14 +14,14 @@
 //         // Проверяем, не авторизован ли уже пользователь
 //         if (!Auth::check()) {
 //             // Эмулируем авторизацию пользователя с ID=1 и role='admin'
-//             $user = User::find(1); // Или выберите другой ID для тестирования
+//             $user = User::find(15); // Или выберите другой ID для тестирования
 //             if (!$user) {
 //                 // Если пользователь не найден, создаем тестового
 //                 $user = User::create([
 //                     'name' => 'Test Admin',
 //                     'email' => 'admin@example.com',
 //                     'password' => bcrypt('password'),
-//                     'tg_id' => 'admin123',
+//                     'telegram_id' => 'admin123',
 //                     'role' => 'admin',
 //                     'balance' => 100,
 //                 ]);

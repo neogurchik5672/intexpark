@@ -32,6 +32,22 @@ button {
     --orange: #CD5602;
     --light_orange: #b3774c;
     --custom-gradient: linear-gradient(to bottom, #021F3F 8%, #044973 50%, #23BDCA 100%);
+       --zheltyy: #fdbc15;
+    --t-siniy: #021f3f;
+    --fioletovyy: #944ba7;
+    --zelenyy: #41bd8f;
+    --belyy: #fff;
+    --s-zheltyy: #ffe479;
+    --t-zheltyy: #cd5602;
+    --goluboy: #23bdca;
+    --siniy: #085a7f;
+    --font-family: "Montserrat-Regular", "sans-serif";
+    --fon: linear-gradient(
+        180deg,
+        rgba(2, 31, 63, 1) 7.925131916999817%,
+        rgba(4, 73, 115, 1) 50%,
+        rgba(35, 189, 202, 1) 100%
+    );
 }
 
 @font-face {
@@ -48,6 +64,31 @@ button {
     font-family: 'Montserrat-Regular';
     src: url(../fonts/Montserrat-Regular.woff2) format("woff2");
 }
+/* стили для уведомления*/
+.centered-notification {
+    position: fixed;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    border-radius: 8px;
+    color: var(--t-siniy);
+    font-size: 16px;
+    background-color: var(--belyy);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 9999;
+    font-family: Montserrat-Bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    min-width: 250px;
+}
+
+.centered-notification.show {
+    opacity: 1;
+    visibility: visible;
+} 
 
 body {
     background: var(--custom-gradient);
