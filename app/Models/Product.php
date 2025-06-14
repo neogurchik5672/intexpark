@@ -17,7 +17,8 @@ class Product extends Model
         'count',
         'price',
         'count',
-        'is_merch'
+        'is_merch',
+        'is_one_time_purchase',
     ];
     public function cart()
     {
