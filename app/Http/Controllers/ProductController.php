@@ -43,8 +43,6 @@ class ProductController extends Controller
       'count' => 'required|integer|min:0|max:255',
       'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
       'is_merch' => 'nullable|boolean',
-      'is_one_time_purchase' => 'nullable|boolean',
-      'is_visible' => 'nullable|boolean',
     ]);
     $img = isset($request['img']) ? $request['img']->store('products', 'public') : null; //загрузка изображения
     $events = Product::create([
@@ -54,8 +52,6 @@ class ProductController extends Controller
       'price' => $request['price'],
       'count' => $request['count'],
       'is_merch' => $request->has('is_merch') ? true : false,
-      'is_one_time_purchase' => $request->has('is_one_time_purchase') ? true : false,
-      'is_visible' => $request->has('is_visible') ? true : false,
     ]);
     // return redirect()->action([ProductController::class,'index']);
     return back()->with('success', 'Товар успешно создан');
@@ -86,8 +82,6 @@ class ProductController extends Controller
       'count' => 'required|integer',
       'img' => 'nullable|image|mimes:jpeg,png,jpg,gif',
       'is_merch' => 'nullable|boolean',
-      'is_one_time_purchase' => 'nullable|boolean',
-      'is_visible' => 'nullable|boolean',
     ]);
 
     $data = [
@@ -96,8 +90,6 @@ class ProductController extends Controller
       'price' => $validate['price'],
       'count' => $validate['count'],
       'is_merch' => $request->has('is_merch') ? true : false,
-      'is_one_time_purchase' => $request->has('is_one_time_purchase') ? true : false,
-      'is_visible' => $request->has('is_visible') ? true : false,      
     ];
 
     // Обработка изображения

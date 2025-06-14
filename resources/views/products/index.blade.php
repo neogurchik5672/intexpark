@@ -73,24 +73,20 @@
 <form action="{{route('buyRequest.buy',$item->id)}}" method="post">
      @csrf
         @if (isset($item->cart->user_id) && $item->cart->user_id == $user->id)
-            <div class="modalka__button modalka__button--purchased" data-message="ПОЗДРАВЛЯЕМ, ТОВАР ОПЛАЧЕН! С тебя было списано {{ $item->price }} интекскоинов">
-                КУПЛЕНО
-            </div>
-        @elseif ($item->is_one_time_purchase && $item->history()->where('user_id', $user->id)->where('status', 'buy')->exists())
-            <div class="modalka__button modalka__button--disabled" data-message="Вы больше не можете приобрести данный товар">
-                КУПЛЕНО
-            </div>
+        <div class="modalka__button modalka__button--purchased" data-message="ПОЗДРАВЛЯЕМ, ТОВАР ОПЛАЧЕН! С тебя было списано {{ $item->price }} интекскоинов">
+            КУПЛЕНО
+        </div>
         @elseif ($item->History->where('status', 'buy')->isNotEmpty())
-            <div class="modalka__button modalka__button--purchased" data-message="ПОЗДРАВЛЯЕМ, ТОВАР ОПЛАЧЕН! С тебя было списано {{ $item->price }} интекскоинов">
-                КУПЛЕНО
-            </div>        
+        <div class="modalka__button modalka__button--purchased" data-message="ПОЗДРАВЛЯЕМ, ТОВАР ОПЛАЧЕН! С тебя было списано {{ $item->price }} интекскоинов">
+            КУПЛЕНО
+        </div>
         @elseif($user->balance < $item->price)
             <div class="modalka__button modalka__button--disabled" data-message="НЕДОСТАТОЧНО ИНТЕКСКОИНОВ. Невозможно оплатить товар">
                 НЕДОСТУПНО
             </div>
-        @elseif ($item->count < 1)
-            <div class="modalka__button modalka__button--disabled" data-message="Товар временно отсутствует на складе">
-            НЕТ В НАЛИЧИИ
+            @elseif ($item->count < 1)
+                <div class="modalka__button modalka__button--disabled" data-message="Товар временно отсутствует на складе">
+                НЕТ В НАЛИЧИИ
     </div>
     @else
     <button class="modalka__button modalka__button--buy">
