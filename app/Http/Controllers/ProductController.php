@@ -10,13 +10,22 @@ use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 
 class ProductController extends Controller
 {
   public function index()
   {
-    $query = Product::query()->get();
     $user = Auth::user();
+
+    if ($user && $user->role === 'admin') {
+        // Админ видит все товары
+        $query = Product::all();
+    } else {
+        // Пользователь видит только те товары, у которых is_visible = true
+        $query = Product::where('is_visible', true)->get();
+    }
+
     return view('products.index', compact('query', 'user'));
   }
 
@@ -34,6 +43,7 @@ class ProductController extends Controller
       'count' => 'required|integer|min:0|max:255',
       'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
       'is_merch' => 'nullable|boolean',
+      'is_visible' => 'nullable|boolean',
     ]);
     $img = isset($request['img']) ? $request['img']->store('products', 'public') : null; //загрузка изображения
     $events = Product::create([
@@ -43,6 +53,7 @@ class ProductController extends Controller
       'price' => $request['price'],
       'count' => $request['count'],
       'is_merch' => $request->has('is_merch') ? true : false,
+      'is_visible' => $request->has('is_visible') ? true : false,
     ]);
     // return redirect()->action([ProductController::class,'index']);
     return back()->with('success', 'Товар успешно создан');
@@ -73,6 +84,7 @@ class ProductController extends Controller
       'count' => 'required|integer',
       'img' => 'nullable|image|mimes:jpeg,png,jpg,gif',
       'is_merch' => 'nullable|boolean',
+      'is_visible' => 'nullable|boolean',
     ]);
 
     $data = [
@@ -81,6 +93,7 @@ class ProductController extends Controller
       'price' => $validate['price'],
       'count' => $validate['count'],
       'is_merch' => $request->has('is_merch') ? true : false,
+      'is_visible' => $request->has('is_visible') ? true : false,      
     ];
 
     // Обработка изображения
@@ -101,5 +114,16 @@ class ProductController extends Controller
     return back()->with('success', 'Товар успешно обновлен');
   }
   
+  public function toggleVisibility($id)
+  {
+      $product = Product::findOrFail($id);
+      $product->is_visible = !$product->is_visible;
+      $product->save();
+
+      return Response::json([
+          'success' => true,
+          'is_visible' => $product->is_visible
+      ]);
+  }
   
 }

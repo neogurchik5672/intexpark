@@ -207,3 +207,34 @@ document.querySelectorAll(".modal__file-input").forEach((input) => {
         }
     });
 });
+
+function toggleVisibility(itemId) {
+    const url = "/admin/product/toggle-visibility/" + itemId;
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': token,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            const icon = document.getElementById(`visibilityIcon-${itemId}`);
+            icon.src = data.is_visible ? ICON_VISIBLE : ICON_HIDDEN;
+        } else {
+            alert('Ошибка при изменении видимости');
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Произошла ошибка. Возможно истекло время сессии.');
+    });
+}
