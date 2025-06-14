@@ -86,6 +86,7 @@ Route::get('/admin/index',[AdminController::class,'index'])->name('admin.index')
 Route::get('/admin/products',[AdminController::class,'products'])->name('admin.products')->middleware('role:admin');
 Route::get('/admin/transaction',[AdminController::class,'transaction'])->name('admin.transaction')->middleware('role:admin');
 Route::put('/admin/newAdmin/{id}',[AdminController::class,'newAdmin'])->name('admin.newAdmin')->middleware('role:admin');
+Route::post('/admin/product/toggle-visibility/{id}', [ProductController::class, 'toggleVisibility'])->name('admin.product.toggleVisibility')->middleware('role:admin');
 Route::get('/events/create',[EventsController::class,'create'])->name('events.create')->middleware('role:admin');
 Route::post('/events/store',[EventsController::class,'store'])->name('events.store')->middleware('role:admin');
 Route::get('/user/index',[UserController::class,'index'])->name('user.index')->middleware('role:admin');

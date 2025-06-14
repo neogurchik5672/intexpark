@@ -1,4 +1,17 @@
 @extends('layouts.app')
+
+@section('scripts')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    <!-- Передаём пути к иконкам из Blade в JS -->
+    <script>
+        const ICON_VISIBLE = "{{ asset('img/admin_card/нав_товар.svg') }}";
+        const ICON_HIDDEN = "{{ asset('img/admin_card/обыч_товар.svg') }}";
+    </script>
+
+    <script src="{{ asset('js/admin-shop.js') }}"></script>
+@endsection
+
 @section('content')
 
 <!-- уведомление изменения достижения -->
@@ -25,6 +38,15 @@
                             src="{{ $item->img !== null ? Storage::url($item->img) : asset('storage/products/default.png') }}"
                             alt="{{ $item->title }}">
                         <div class="shop__card-actions">
+                            <button type="button" 
+                                onclick="toggleVisibility({{ $item->id }})" 
+                                title="Показывать/Скрывать"
+                                id="visibilityButton-{{ $item->id }}">
+                                <img class="shop__card-action-icon" 
+                                    src="{{ $item->is_visible ? asset('img/admin_card/нав_товар.svg') : asset('img/admin_card/обыч_товар.svg') }}" 
+                                    alt="Показывать/Скрывать"
+                                    id="visibilityIcon-{{ $item->id }}">    
+                                </button>
                             <a href="javascript:void(0)" onclick="openModal('modalEdit-{{ $item->id }}')"
                                 title="Редактировать">
                                 <img class="shop__card-action-icon" src="{{ asset('img/admin_card/edit-2.svg') }}"
@@ -120,6 +142,13 @@
                                     <span class="modal__checkbox-box"></span>
                                 </label>
                             </div>
+                            <div class="modal__checkbox-wrapper">
+                                <label class="modal__checkbox-label">Разовая покупка</label>
+                                <label class="modal__checkbox-control">
+                                    <input type="checkbox" name="is_one_time_purchase" value="1" class="modal__checkbox">
+                                    <span class="modal__checkbox-box"></span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -197,6 +226,14 @@
                                         <span class="modal__checkbox-box"></span>
                                     </label>
                                 </div>
+                                <div class="modal__checkbox-wrapper">
+                                    <label class="modal__checkbox-label">Разовая покупка</label>
+                                    <label class="modal__checkbox-control">
+                                        <input type="checkbox" name="is_one_time_purchase" value="1" 
+                                            {{ $item->is_one_time_purchase ? 'checked' : '' }} class="modal__checkbox">
+                                        <span class="modal__checkbox-box"></span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -234,6 +271,7 @@
                                 <p>{{ $item->price }}</p>
                                 <img src="{{ asset('img/коин.svg') }}" alt="" class="intexcoin">
                                 <p>Мерч: <strong>{{ $item->is_merch ? 'Да' : 'Нет' }}</strong></p>
+                                <p>Разовая покупка: <strong>{{ $item->is_one_time_purchase ? 'Да' : 'Нет' }}</strong></p>
                             </div>
                         </div>
                     </div>
