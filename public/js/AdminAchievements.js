@@ -151,15 +151,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Показываем уведомление по центру
-//     window.addEventListener('DOMContentLoaded', function () {
-//         const notification = document.getElementById('notification');
-//         if (notification) {
-//             notification.classList.add('show');
+    window.addEventListener('DOMContentLoaded', function () {
+        const notification = document.getElementById('notification');
+        if (notification) {
+            notification.classList.add('show');
 
-//             // Скрываем через 3 секунды
-//             setTimeout(() => {
-//             notification.classList.remove('show');
-//         }, 3000);
-//     }
-// });
+            // Скрываем через 3 секунды
+            setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+});
 });

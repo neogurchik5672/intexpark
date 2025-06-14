@@ -220,7 +220,7 @@ document.querySelectorAll(".modal__file-input").forEach((input) => {
 });
 });
 
-function toggleVisibility(itemId) {
+function toggleVisibility(itemId,itemName) {
     const url = "/admin/product/toggle-visibility/" + itemId;
     const token = document.querySelector('meta[name="csrf-token"]').content;
 
@@ -241,6 +241,13 @@ function toggleVisibility(itemId) {
         if (data.success) {
             const icon = document.getElementById(`visibilityIcon-${itemId}`);
             icon.src = data.is_visible ? ICON_VISIBLE : ICON_HIDDEN;
+             // Показываем разные сообщения в зависимости от статуса
+            // Показываем уведомление с названием товара
+            showNotification(
+                data.is_visible
+                    ? `Товар "${itemName}" стал видимым`
+                    : `Товар "${itemName}" скрыт`
+            );
         } else {
             alert('Ошибка при изменении видимости');
         }
@@ -249,4 +256,29 @@ function toggleVisibility(itemId) {
         console.error('Ошибка:', error);
         alert('Произошла ошибка. Возможно истекло время сессии.');
     });
+}
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+
+    if (notification) {
+        notification.textContent = message;
+        notification.classList.add('show');
+
+        // Скрываем через 3 секунды
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    } else {
+        // Если нет элемента (например, его не рендерит Blade), создаём временный
+        const tempNotification = document.createElement('div');
+        tempNotification.id = 'notification';
+        tempNotification.className = 'centered-notification success show';
+        tempNotification.textContent = message;
+        document.body.appendChild(tempNotification);
+
+        setTimeout(() => {
+            tempNotification.classList.remove('show');
+            setTimeout(() => tempNotification.remove(), 300); // полное удаление после анимации
+        }, 3000);
+    }
 }

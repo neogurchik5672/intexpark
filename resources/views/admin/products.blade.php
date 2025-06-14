@@ -14,10 +14,10 @@
 
 @section('content')
 
-<!-- уведомление изменения достижения -->
+<!-- уведомление-->
 @if(session('success'))
     <div id="notification" class="centered-notification success">
-        {{ session('success') }}
+        
     </div>
 @endif
 
@@ -39,7 +39,7 @@
                             alt="{{ $item->title }}">
                         <div class="shop__card-actions">
                             <button type="button" 
-                                onclick="toggleVisibility({{ $item->id }})" 
+                                onclick="toggleVisibility({{ $item->id }}, '{{ addslashes($item->title) }}')" 
                                 title="Показывать/Скрывать"
                                 id="visibilityButton-{{ $item->id }}">
                                 <img class="shop__card-action-icon" 
