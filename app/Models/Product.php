@@ -19,6 +19,7 @@ class Product extends Model
         'count',
         'is_merch',
         'is_one_time_purchase',
+        'is_visible'=>'boolean',
     ];
     public function cart()
     {

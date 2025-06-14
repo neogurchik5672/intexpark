@@ -47,7 +47,7 @@ class CheckAchievementController extends Controller
                 'achievement_id' => $achievement->id,
             ]);
 
-            $this->addIntexCoinUser();
+            $user->addIntexcoinUser($achievement);
             return true;
         }
 
@@ -76,7 +76,7 @@ class CheckAchievementController extends Controller
                 'achievement_id' => $achievement->id,
             ]);
 
-            $this->addIntexCoinUser();
+            $user->addIntexcoinUser($achievement);
             return true;
         }
         return false;
@@ -105,7 +105,7 @@ class CheckAchievementController extends Controller
                 'achievement_id' => $achievement->id,
             ]);
 
-            $this->addIntexCoinUser();
+            $user->addIntexcoinUser($achievement);
             return true;
         }
 
@@ -134,7 +134,7 @@ class CheckAchievementController extends Controller
                 'achievement_id' => $achievement->id,
             ]);
             
-            $this->addIntexCoinUser();
+            $user->addIntexcoinUser($achievement);
             return true;
         }
 
@@ -165,7 +165,7 @@ class CheckAchievementController extends Controller
                 'achievement_id' => $achievement->id,
             ]);
 
-            $this->addIntexCoinUser();
+            $user->addIntexcoinUser($achievement);
             return true;
         }
 
