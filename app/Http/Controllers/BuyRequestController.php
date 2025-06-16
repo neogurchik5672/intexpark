@@ -18,8 +18,7 @@ class BuyRequestController extends Controller
         $query = Product::query()->get();
         $buy = BuyRequest::query()->get();
         return view('buyRequests.index', compact('query','buy'));
-    }
-
+      }
     public function buy(Product $product){ //при покупке изменяется баланс,продукт записывается в историю и добавляется в лист ожидания
         $query = Product::query()->get();
         $balance = Auth::user();
@@ -27,15 +26,6 @@ class BuyRequestController extends Controller
         $price = Product::find($product->id);
         $cart = Cart::query()->where('product_id',$product->id);
         $cart->delete();
-
-        // Проверка на разовую покупку
-        if ($product->is_one_time_purchase && History::where('user_id', $user->id)
-            ->where('product_id', $product->id)
-            ->where('status', 'buy')
-            ->exists()) {
-            return redirect()->back()->with('error', 'Вы уже приобрели этот товар и не можете купить его снова.');
-        }
-
         $buy = BuyRequest::create([
             'user_id' => $user->id,
             'product_id' => $product->id,

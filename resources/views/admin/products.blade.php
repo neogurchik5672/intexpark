@@ -142,13 +142,6 @@
                                     <span class="modal__checkbox-box"></span>
                                 </label>
                             </div>
-                            <div class="modal__checkbox-wrapper">
-                                <label class="modal__checkbox-label">Разовая покупка</label>
-                                <label class="modal__checkbox-control">
-                                    <input type="checkbox" name="is_one_time_purchase" value="1" class="modal__checkbox">
-                                    <span class="modal__checkbox-box"></span>
-                                </label>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -226,14 +219,6 @@
                                         <span class="modal__checkbox-box"></span>
                                     </label>
                                 </div>
-                                <div class="modal__checkbox-wrapper">
-                                    <label class="modal__checkbox-label">Разовая покупка</label>
-                                    <label class="modal__checkbox-control">
-                                        <input type="checkbox" name="is_one_time_purchase" value="1" 
-                                            {{ $item->is_one_time_purchase ? 'checked' : '' }} class="modal__checkbox">
-                                        <span class="modal__checkbox-box"></span>
-                                    </label>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -271,7 +256,6 @@
                                 <p>{{ $item->price }}</p>
                                 <img src="{{ asset('img/коин.svg') }}" alt="" class="intexcoin">
                                 <p>Мерч: <strong>{{ $item->is_merch ? 'Да' : 'Нет' }}</strong></p>
-                                <p>Разовая покупка: <strong>{{ $item->is_one_time_purchase ? 'Да' : 'Нет' }}</strong></p>
                             </div>
                         </div>
                     </div>
