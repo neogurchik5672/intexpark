@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content')
 
+<!-- уведомление при получении достижения -->
+<!-- @if(session('success'))
+    <div id="notification" class="centered-notification success">
+        {{ session('success') }}
+    </div>
+@endif -->
+
 <!-- Пользователь/история -->
 <div class="bodyUser">
     <div class="show">

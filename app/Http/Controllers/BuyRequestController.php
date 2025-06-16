@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\BuyRequest;
@@ -38,7 +39,9 @@ class BuyRequestController extends Controller
         $product->count -= 1;
         $product->save();
         $balance->save();
-        $error = 'Товар приобретен';
+        // $error = 'Товар приобретен';
+        // Уведомление о покупке
+        Session::flash('success', 'Поздравляем! Товар «' . $product->title . '» успешно куплен!');
 
         $achievementController = new CheckAchievementController;
         $achievementController->checkFirstPurchase();

@@ -14,10 +14,10 @@
 
 @section('content')
 
-<!-- уведомление-->
+<!-- уведомление -->
 @if(session('success'))
     <div id="notification" class="centered-notification success">
-        
+        {{ session('success') }}
     </div>
 @endif
 

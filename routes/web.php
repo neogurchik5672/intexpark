@@ -62,12 +62,12 @@ Route::get('/user/all/{id}',[UserController::class,'all'])->name('user.all');
 
 Route::post('/user/addAvatar/{$id}',[UserController::class,'all'])->name('user.addAvatar');
 // Админка
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('role:admin')->group(function () {
     Route::resource('achievements', AchievementController::class)->only([
         'index', 'create', 'store', 'edit', 'update', 'destroy'
     ]);
 });
-// Страница ачивок
+// Страница достижений
 Route::get('/achievements', function () {
     $achievements = \App\Models\Achievement::all();
     $user = auth()->user(); // или получить пользователя как-то иначе

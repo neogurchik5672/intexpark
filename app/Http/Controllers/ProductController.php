@@ -54,7 +54,7 @@ class ProductController extends Controller
       'is_merch' => $request->has('is_merch') ? true : false,
     ]);
     // return redirect()->action([ProductController::class,'index']);
-    return back()->with('success', 'Товар  успешно «' . $events->title . '» создан');
+    return back()->with('success', 'Товар «' . $events->title . '» успешно  создан');
   }
   public function destroy($id)
   {

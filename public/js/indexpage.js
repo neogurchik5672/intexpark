@@ -1,3 +1,36 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const notification = document.getElementById('notification');
+
+    // Если уведомление есть — покажем его
+    if (notification && notification.textContent.trim() !== '') {
+        notification.classList.add('show');
+
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                notification.textContent = ''; // очищаем текст
+            }, 300);
+        }, 3000);
+    }
+});
+
+// Для динамических уведомлений
+function showNotification(message, type = 'success') {
+    const notification = document.getElementById('notification');
+
+    if (notification) {
+        notification.textContent = message;
+        notification.className = 'centered-notification'; // сброс
+        notification.classList.add(type, 'show');
+
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                notification.textContent = ''; // очищаем текст
+            }, 300);
+        }, 3000);
+    }
+}
 // Получаем элементы для анимации бликов
 const rect1 = document.getElementById('rect1');
 const rect2 = document.getElementById('rect2');
@@ -33,14 +66,14 @@ function runAnimation() {
 runAnimation();
 
 // Поиск товаров в магазине
-document.getElementById('shopSearch').addEventListener('input', function() {
-    const term = this.value.toLowerCase();
-    document.querySelectorAll('.shop__card').forEach(card => {
-        const name = card.getAttribute('data-name').toLowerCase();
-        // Показываем/скрываем карточки в зависимости от поискового запроса
-        card.style.display = name.includes(term) ? 'block' : 'none';
-    });
-});
+// document.getElementById('shopSearch').addEventListener('input', function() {
+//     const term = this.value.toLowerCase();
+//     document.querySelectorAll('.shop__card').forEach(card => {
+//         const name = card.getAttribute('data-name').toLowerCase();
+//         // Показываем/скрываем карточки в зависимости от поискового запроса
+//         card.style.display = name.includes(term) ? 'block' : 'none';
+//     });
+// });
 
 // Функция для открытия модального окна
 function openModal(id) {

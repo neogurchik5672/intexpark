@@ -1,5 +1,36 @@
 // Убедимся, что скрипт выполняется после загрузки DOM
 document.addEventListener('DOMContentLoaded', function () {
+
+    // const notification = document.getElementById('notification');
+    // Если уведомление есть — покажем его
+    // if (notification && notification.textContent.trim() !== '') {
+    //     notification.classList.add('show');
+
+    //     setTimeout(() => {
+    //         notification.classList.remove('show');
+    //         setTimeout(() => {
+    //             notification.textContent = ''; // очищаем текст
+    //         }, 300);
+    //     }, 3000);
+    // }
+    // Для динамических уведомлений
+// function showNotification(message, type = 'success') {
+//     const notification = document.getElementById('notification');
+
+//     if (notification) {
+//         notification.textContent = message;
+//         notification.className = 'centered-notification'; // сброс
+//         notification.classList.add(type, 'show');
+
+//         setTimeout(() => {
+//             notification.classList.remove('show');
+//             setTimeout(() => {
+//                 notification.textContent = ''; // очищаем текст
+//             }, 300);
+//         }, 3000);
+//     }
+// }
+
     // Модальное окно для истории покупок
     const history = document.querySelector('.history');
     const modalMenuHistory = document.getElementById('modalMenuHistory');

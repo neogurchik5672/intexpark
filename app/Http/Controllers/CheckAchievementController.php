@@ -7,6 +7,7 @@ use App\Models\UserAchievement;
 use Illuminate\Support\Facades\Auth;
 use App\Models\History;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 
 class CheckAchievementController extends Controller
 {
@@ -48,6 +49,9 @@ class CheckAchievementController extends Controller
             ]);
 
             $user->addIntexcoinUser($achievement);
+            // Записываем сообщение в сессию
+            // Session::flash('success', "Поздравляем! Вы получили достижение: «{$achievement->name}»");
+
             return true;
         }
 
@@ -77,6 +81,7 @@ class CheckAchievementController extends Controller
             ]);
 
             $user->addIntexcoinUser($achievement);
+            // Session::flash('success', "Поздравляем! Вы получили достижение: «{$achievement->name}»");
             return true;
         }
         return false;
@@ -106,6 +111,7 @@ class CheckAchievementController extends Controller
             ]);
 
             $user->addIntexcoinUser($achievement);
+            // Session::flash('success', "Поздравляем! Вы получили достижение: «{$achievement->name}»");
             return true;
         }
 
@@ -135,6 +141,7 @@ class CheckAchievementController extends Controller
             ]);
             
             $user->addIntexcoinUser($achievement);
+            // Session::flash('success', "Поздравляем! Вы получили достижение: «{$achievement->name}»");
             return true;
         }
 
@@ -166,6 +173,7 @@ class CheckAchievementController extends Controller
             ]);
 
             $user->addIntexcoinUser($achievement);
+            // Session::flash('success', "Поздравляем! Вы получили достижение: «{$achievement->name}»");
             return true;
         }
 
