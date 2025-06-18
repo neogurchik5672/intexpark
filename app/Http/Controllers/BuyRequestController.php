@@ -1,0 +1,59 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\BuyRequest;
+use App\Models\User;
+use App\Models\History;
+use App\Models\Cart;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\CheckAchievementController;
+use Illuminate\Support\Facades\Auth;
+
+class BuyRequestController extends Controller
+{
+    public function index(Product $product){
+        $query = Product::query()->get();
+        $buy = BuyRequest::query()->get();
+        return view('buyRequests.index', compact('query','buy'));
+      }
+    public function buy(Product $product){ //при покупке изменяется баланс,продукт записывается в историю и добавляется в лист ожидания
+        $query = Product::query()->get();
+        $balance = Auth::user();
+        $user = Auth::user();
+        $price = Product::find($product->id);
+        $cart = Cart::query()->where('product_id',$product->id);
+        $cart->delete();
+        $buy = BuyRequest::create([
+            'user_id' => $user->id,
+            'product_id' => $product->id,
+        ]); 
+                $history = History::create([
+            'user_id' => $user->id,
+            'product_id' => $product->id,
+        ]); 
+        $balance->balance = intval($balance->balance) - intval($price->price);
+        $product->count -= 1;
+        $product->save();
+        $balance->save();
+        $error = 'Товар приобретен';
+        
+        $achievementController = new CheckAchievementController;
+        $achievementController->checkFirstPurchase();
+        $achievementController->checkThreePurchase();
+        $achievementController->checkIsFirstMerchPurchase();
+        return redirect()->action([ProductController::class,'index']);
+    }
+    
+    public function show($id){
+        $show = BuyRequest::findOrFail($id);
+        return view('buyRequests.show', compact('show'));
+      }
+      public function create(Request $request,$id){
+$buyRequest = BuyRequest::findOrFail($id);
+    $buyRequest->update(['status' => 1]);
+    return redirect()->action([BuyRequestController::class,'index']);
+      }
+}

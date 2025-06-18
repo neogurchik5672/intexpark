@@ -1,0 +1,1240 @@
+* {
+   
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.img{
+    width: 400px;
+}
+a,
+li {
+    text-decoration: none;
+    list-style: none;
+    color: var(--color2);
+}
+
+button {
+    border: none;
+    text-transform: uppercase;
+}
+
+:root {
+    --index: calc(1vw + 1vh);
+
+    --color1: #FAC53B;
+    --color2: #fff;
+    --color3: #021F3F;
+    --color4: #41BD8F;
+    --color5: #944BA7;
+    --main_yellow: #FDBC15;
+    --yellow_use: #FFE479;
+    --blue: #085A7F;
+    --custom-gradient: linear-gradient(to bottom, #021F3F 8%, #044973 50%, #23BDCA 100%);
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(../fonts/Montserrat-Bold.woff2);
+}
+
+@font-face {
+    font-family: Montserrat-Black;
+    src: url(../fonts/Montserrat-Black.woff2);
+}
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url(../fonts/Montserrat-Regular.woff2);
+}
+
+body {
+    background: var(--custom-gradient);
+    background-attachment: fixed;
+    background-size: cover;
+
+    font-family: Montserrat-Regular;
+    font-size: 30px;
+    color: var(--color2);
+    
+}
+/* ------------------------------------------------------------- */
+
+
+/* Общие стили для account, user_view, user_editing */
+.coins {
+    color: var(--color2);
+    text-align: left;
+    font-family: "Montserrat-Regular", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    position: relative;
+}
+.achievement-outline, .history-outline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main_yellow);
+    width: 50.375rem;
+    height: 7.75rem;
+    border-radius: 58px;
+    position: absolute;
+}
+.achievement-outline{
+    z-index: 1;
+}
+.history-outline{
+    top: -18px; 
+}
+.achievement-outline{
+    top: -36px;
+}
+.achievement, .history {
+    display: flex;
+    position: relative;
+    width: 47.5rem;
+    height: 5.75rem;
+    border-radius: 46px;
+    background-color: var(--main_yellow);
+    border: 5px solid #CD5602;
+    box-shadow: 3px 3px #FFE479;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family);
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+.history{
+    cursor: pointer;
+}
+.achievement span, .history span {
+    align-items: center;
+    color: #021F3F;
+    font-size: 3.25rem;
+    font-weight: regular;
+    font-family: Montserrat-Black;
+    letter-spacing: 5px;
+}
+
+/*Для анимации*/
+.glow-rect {
+    position: absolute;
+    background-color: #FFE479;
+    transform: rotate(-30deg);
+    opacity: 1;
+}
+#rect1 {
+    width: 49px;
+    height: 223px;
+    top: -58.06px;
+    left: 3.96px;
+}
+#rect2 {
+    width: 15px;
+    height: 223px;
+    top: -58.06px;
+    left: 67.69px;
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(-400px) rotate(30deg);
+    }
+    100% {
+        transform: translateX(800px) rotate(30deg);
+    }
+}
+@keyframes moveLeft {
+    0% {
+        transform: translateX(800px) rotate(30deg);
+    }
+    100% {
+        transform: translateX(-400px) rotate(30deg);
+    }
+}
+.move-right {
+    animation: moveRight 1.2s linear forwards;
+}
+.move-left {
+    animation: moveLeft 1.4s linear forwards;
+}
+
+/*Блок с достижениями*/
+.achievements-container, .myHistory {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+.achievements-container{
+    margin-top: 200px;
+}
+.achievements-scroll-wrapper {
+    width: 1636px;
+    border: 10px solid var(--main_yellow);
+    border-radius: 50px;
+    padding: 96px 30px 20px;
+    max-height: 510px;
+}
+.achievements-scroll-wrapper-inner {
+    max-height: 380px; /* Уменьшаем высоту, учитывая padding */
+    overflow-y: auto;
+}
+.achievements-grid {
+    margin-right: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 38px;
+}
+.achievement-card {
+    position: relative;
+    /* Важно для позиционирования дочерних абсолютных элементов */
+    background: var(--blue);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 27px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.achievement-item {
+    display: flex;
+    flex-grow: 1;
+}
+.achievement-coins {
+    position: absolute;
+    bottom: 20px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--color2);
+    font-family: Montserrat-Regular, sans-serif;
+    font-size: 14px;
+}
+.coin-icon {
+    width: 30px;
+    height: 30px;
+}
+.achievement-img {
+    width: 90px;
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+}
+.achievement-info {
+    flex-grow: 1;
+}
+.achievement-info h3 {
+    margin: 0 0 8px 0;
+    color: var(--color2);
+    font-family: var(--font-family);
+    font-family: Montserrat-Regular;
+}
+.achievement-info p {
+    white-space: pre-line;
+    margin: 0;
+    margin-right: 17%;
+    color: var(--color2);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+main {
+    margin-top: 220px;
+}
+.achievement-icon {
+    flex-shrink: 0;
+    margin-right: 10px;
+    /* Было, например, 15px — теперь меньше */
+}
+
+/*Стили для скроллбара*/
+.achievements-scroll-wrapper-inner::-webkit-scrollbar {
+    width: 37px;
+}
+.achievements-scroll-wrapper-inner::-webkit-scrollbar-track {
+    background: var(--color3);
+    border-radius: 20px;
+}
+.achievements-scroll-wrapper-inner::-webkit-scrollbar-thumb {
+    background: var(--blue);
+    border-radius: 20px;
+    /* Делаем бегунок визуально уже с помощью border */
+    border: 7px solid transparent;
+    background-clip: padding-box; /* чтобы цвет фона был только внутри */
+}
+.achievements-scroll-wrapper-inner::-webkit-scrollbar-thumb:hover {
+    border: 7px solid transparent;
+    background-clip: padding-box;
+}
+/* ------------------------------------------------------------- */
+
+
+/* стили для страницы пользователя (account) */
+.show {
+    display:block;
+}
+.test{
+    color: black;
+}
+.userHeader{
+    border:10px solid #FDBC15;    
+    border-radius: 50px;
+    width: 1636px;
+    padding: 50px 0 0 0;
+}
+.bodyUser{
+    margin-top: 160px;
+    display: flex;
+    justify-content: center;
+}
+.avatar{
+    width: 260px;
+    height: 260px;
+    border: 10px solid white;
+    border-radius: 50%;
+    background: var(--custom-gradient);
+    position: absolute; 
+    transform: translate(160px,-130px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userValue{
+    display: flex;
+    margin-left: 28.375rem;
+    justify-content: space-between;
+    width: 990px;
+}
+.userValue a{
+    opacity: 20%;
+}
+.valueInputsOuter{
+    display: flex;
+    justify-content: center;
+}
+.valueInputs{   
+    margin-top: 50px; 
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: space-between;
+    width: 45rem;
+}
+.inputsUser{
+    margin: 0 10px;    
+    background-color: #085A7F;
+    width: auto;
+    padding: 10px 40px;
+    border-radius: 15px;
+    border:3px solid #23BDCA;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-weight: 900;
+}
+.inputsUser img{
+    width: 45px;
+    height: 45px;   
+    margin-left: 15px;
+}
+/* ------------------------------------------------------------- */
+
+/* стили для модалки истории покупок и списка достижений*/
+.modalBody{
+    width: 100%;
+}
+.titleModalMenu{
+    display: flex;
+    justify-content: center ;
+    color:#021F3F;
+    font-weight: 600;
+}
+.priceHistory{
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    margin-right: 20px;
+}
+.titleHistory{    
+    display: flex;
+    align-items: center;
+}
+
+
+.modalMenuHistory, .modalMenuAddAchivement {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(2, 31, 63, 0.8); 
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.flexClose {
+    width: 944px;
+    height: auto;
+    padding: 10px;
+    background-color: white;
+    border-radius: 70px;
+    opacity: 1; 
+    overflow: auto;
+}
+.closeModalMenu {
+    cursor: pointer;
+    float: right;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.mainModalMenu {
+    padding: 20px;
+}
+.titleModalMenu {
+    font-size: 2.1875rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.itemHistory {
+    color: #044973;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    /* border-bottom: 1px solid #eee; */
+}
+.left, .right {
+    display: flex;
+    align-items: center;
+}
+.priceHistory img {
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+}
+.dateHistory, .priceHistory{
+    color: #021F3F;
+    font-size: 1.875rem;
+}
+/* ------------------------------------------------------------- */
+
+/* стили для кнопок админа на страницах пользователя (user_view) */
+.adminButtons{
+    display: flex;
+    margin-left: 45%;
+    width: 888px;
+    justify-content: space-between;
+}
+.adminButtonsEdit, .adminButtonsSave, .adminButtonsAddAchivement{
+    background: var(--color4);
+}
+.adminButtonsSave:hover, .adminButtonsExit:hover, .adminButtonsDelete:hover, .adminButtonsEdit:hover, .adminButtonsBlock:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+.adminButtonsBlock, .adminButtonsExit{
+    background: var(--color5);
+}
+.adminButtonsDelete{
+    background: #cd5602;
+}
+.adminButtonsEdit, .adminButtonsBlock, .adminButtonsDelete{
+    padding: 20px 50px;
+    border-radius: 70px;
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+/* ------------------------------------------------------------- */
+
+/* стили для страницы редактирования пользователя (user_editing) */
+.adminButtonsEditUser{
+    display: flex;
+    margin-left: 68%;
+    width: 462px;
+    justify-content: space-between;
+}
+.adminButtonsSave, .adminButtonsExit{
+    padding: 20px 48px;
+    border-radius: 70px;
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+.Union{
+    margin: 12px 0 12px;
+}
+.achievement-card-add{
+    display: flex;
+    border: 5px solid white;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.achievement-card-add:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.achievement-cart{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 35px;
+    height: 35px;
+}
+.achievement-cart:hover{
+    cursor: pointer;
+    background-image: url('../img/trashWhite-hover.svg');
+    background-repeat: no-repeat; 
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+.mainModalMenuHeader{
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 20px 0;
+}
+.titleModalMenuAchivementList{
+    font-family: var(--font-family);
+    font-size: 28.87px;
+    font-weight: bold;
+    color: var(--color3);
+    margin-bottom: 30px;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+.achievementSearch-list{
+    width: 380px;
+    height: 26px;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-family: var(--font-family);
+    font-size: 12px;
+    padding: 4px;
+    border: none; 
+    color: #23BDCA;
+    outline: none;  
+    border-bottom: 1px solid #23BDCA;
+}
+.achievementSearch-list:focus{
+    border-bottom: 1px solid #23BDCA;
+}
+.achievementSearch-list::placeholder {
+    color: #23BDCA;
+}
+.achievement-card-list {
+    background: white;
+    overflow: hidden;
+    padding: 27px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    margin: 0 10px 10px 0;
+}
+.achievement-card-list.selected {
+    background-color: white;
+    border: 2px solid #23BDCA;
+    border-radius: 30px;
+}
+.achievement-item-list {
+    display: flex;
+    align-items: center;
+    width: 800px;
+}
+.achievement-info-list{
+    display: flex;
+}
+.achievement-info-list h3 {
+    color: var(--color3);
+    font-family: var(--font-family);
+}
+.achievement-coins-list {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.coins-list {
+    color: var(--color3);
+    font-family: "Montserrat-Regular", sans-serif;
+    font-size: 21.5px;
+    font-weight: 400;
+}
+/* ------------------------------------------------------------- */
+
+/*Стили для скролл бара в модалке со списком ачивок */
+.achievement-list-scroll-container{
+    max-width: 860px;
+    max-height: 600px;
+    margin-left: 26px;
+    overflow-y: auto;
+}
+.achievement-list-scroll-container::-webkit-scrollbar {
+    width: 27.78px;
+}
+.achievement-list-scroll-container::-webkit-scrollbar-track {
+    background: #085A7F;
+    border-radius: 20px;
+}
+.achievement-list-scroll-container::-webkit-scrollbar-thumb {
+    background: #23BDCA;
+    border-radius: 20px;
+    /* Делаем бегунок визуально уже с помощью border */
+    border: 7px solid transparent;
+    background-clip: padding-box; /* чтобы цвет фона был только внутри */
+}
+.achievement-list-scroll-container::-webkit-scrollbar-thumb:hover {
+    border: 7px solid transparent;
+    background-clip: padding-box;
+}
+
+/*Кнопка внутри модалки*/
+.adminButtonsAddAchivement{
+    width: 386px;
+    padding: 20px 30px;
+    border-radius: 70px;
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.adminButtonsAddAchivement:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+#mainModalMenuAddAchivement{
+    width: 860px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* ------------------------------------------------------------- */
+
+/*Стили для js модалок */
+.custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 31, 63, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.custom-modal-content {
+    align-items: center;
+    background: white;
+    border-radius: 30px;
+    text-align: center;
+    font-family: var(--font-family);
+    width: 25%;
+    height: auto;
+    padding: 30px;
+}
+.custom-modal-content p {
+    color: #021F3F;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.modal-buttons {
+    display: flex;
+    gap: 1vw;
+    margin-top: 1.5%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 70px;
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+.modal-buttons button:hover {
+    opacity: 0.9;
+}
+/* ------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Для ноутбуков */
+@media (max-width: 1600px) {
+    /*Блок с достижениями*/
+    .achievements-scroll-wrapper {
+        width: 98%;
+        max-height: 500px;
+    }
+    .achievements-scroll-wrapper-inner {
+        max-height: 358px; 
+    }
+    .achievement-info h3 {
+        font-size: 2.2vw;
+    }
+    /* ------------------------------------------------------------- */
+
+    /* стили для страницы пользователя (account) */
+    .userHeader{  
+        width: 94vw;
+        padding: 50px 40px 0;
+    }
+    .bodyUser{
+        margin-top: 100px;
+    }
+    .avatar{
+        width: 230px;
+        height: 230px;
+        transform: translate(26px,-140px);
+    }
+    .Elixir{
+        width: 170px;
+        height: 170px;
+    }
+    .userValue{
+        margin-left: 260px;
+        width: 64vw;
+    }
+    .valueInputs{   
+        width: 750px;
+        margin-bottom: 70px;
+    }
+    /* ------------------------------------------------------------- */
+
+    /* стили для модалки истории покупок и списка достижений*/
+    .flexClose {
+        width: 80%;
+        padding: 10px;
+        border-radius: 50px;
+    }
+    /* ------------------------------------------------------------- */
+
+    /* стили для кнопок админа на страницах пользователя (user_view) */
+    .adminButtons{
+        margin-left: auto;
+        margin-right: 35px;
+        width: 820px;
+    }
+    /* ------------------------------------------------------------- */
+
+    /* стили для страницы редактирования пользователя (user_editing) */
+    .adminButtonsEditUser{
+        margin-left: auto;
+        margin-right: 35px;
+        width: 420px;
+    }
+    .achievement-cart{
+        top: 15px;
+        right: 10px;
+    }
+    .achievement-cart:hover{
+        top: 15px;
+        right: 10px;
+    }
+    .achievementSearch-list{
+        width: 340px;
+        /* margin-left: 20px; */
+    }
+    /* ------------------------------------------------------------- */
+  
+    #mainModalMenuAddAchivement{
+        width: 90%;
+    }
+    /* ------------------------------------------------------------- */
+
+    /*Стили для js модалок */
+    .custom-modal-content {
+        width: 40%;
+    }
+}
+/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Для планшетов */
+@media (max-width: 1024px) {
+    .achievement-outline{
+        width: 86%;
+        height: auto;
+        padding: 24px 4px;
+        border-radius: 70px;
+    }
+    .history-outline{
+        width: 84vw;
+        height: auto;
+        padding: 26px 4px;
+        border-radius: 100px;
+        top: -44px;
+    }
+    .achievement{
+        width: 94%;
+        height: 86px;
+        height: auto;
+        padding: 2px 0;
+    }
+    .history{
+        width: 92%;
+        height: auto;
+        padding: 2px 0;
+        border-radius: 80px;
+        text-align: center;
+    }
+    .achievement span, .history span {
+        font-size: 7vw;
+        letter-spacing: 2px;
+    }
+
+    /*Блок с достижениями*/
+    .achievements-container{
+        margin-top: 200px;
+    }
+    .achievements-scroll-wrapper {
+        width: 98%;
+        max-height: none;
+    }
+    .achievements-scroll-wrapper-inner {
+        max-height: none;
+        overflow-y: auto;
+    }
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        margin-right: 0;
+        gap: 20px;
+    }
+    /* ------------------------------------------------------------- */
+
+    /* стили для страницы пользователя (account) */
+    .userHeader{  
+        width: 92vw;
+        padding: 50px 40px 0;
+    }
+    .bodyUser{
+        margin-top: 100px;
+    }
+    .avatar{
+        width: 200px;
+        height: 200px;
+        transform: translate(20px,-130px);
+    }
+    .Elixir{
+        width: 150px;
+        height: 150px;
+    }
+    .userValue{
+        margin-left: 240px;
+        width: 50vw;
+    }
+    /* ------------------------------------------------------------- */
+
+    /* стили для модалки истории покупок и списка достижений*/
+    .flexClose {
+        width: 90%;
+        padding: 10px;
+        border-radius: 50px;
+    }
+    /* ------------------------------------------------------------- */
+
+    /* стили для кнопок админа на страницах пользователя (user_view) */
+    .adminButtons{
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        text-align: center;
+        margin-right: 10px;
+        gap: 10px;
+        width: 40%; 
+    }
+    /* ------------------------------------------------------------- */
+
+    /* стили для страницы редактирования пользователя (user_editing) */
+    .adminButtonsEditUser{
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        text-align: center;
+        margin-right: 10px;
+        gap: 10px;
+        width: 30%;
+    }
+    .mainModalMenuHeader{
+        margin: 0 10px 0;
+    }
+    .titleModalMenuAchivementList{
+        margin-bottom: 10px;
+    }
+    .achievementSearch-list{
+        width: 150px;
+        height: 26px;
+    }
+    .achievement-item-list {
+        display: flex;
+        align-items: center;
+        width: 60vw;
+    }
+    /* ------------------------------------------------------------- */
+
+    /*Стили для скролл бара в модалке со списком ачивок */
+    .achievement-list-scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    /*Кнопка внутри модалки*/
+    .adminButtonsAddAchivement{
+        width: 60%;
+    }
+    #mainModalMenuAddAchivement{
+        width: 90%;
+    }
+    /* ------------------------------------------------------------- */
+
+    /*Стили для js модалок */
+    .custom-modal-content {
+        width: 60%;
+    }
+}
+/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Для телефонов */
+@media (max-width: 576px) {
+    .achievement-outline{
+        width: 76%;
+        height: 100px;
+    }
+    .history-outline{
+        width: 94%;
+        height: 130px;
+        top: -38px;
+    }
+    .achievement{
+        width: 88%;
+        height: 70px;
+    }
+    .history{
+        width: 86%;
+        height: 100px;
+        text-align: center;
+    }
+    .achievement span, .history span {
+        font-size: 7vw;
+        letter-spacing: 1px;
+    }
+
+    /*Блок с достижениями*/
+    .achievements-container, .myHistory {
+        margin: 0 auto;
+        padding: 10px;
+    }
+    .achievements-container{
+        margin-top: 140px;
+    }
+    .achievements-scroll-wrapper {
+        width: 98%;
+        border: 8px solid var(--main_yellow);
+        border-radius: 44px;
+        padding: 80px 10px 20px;
+        max-height: none;
+    }
+    .achievements-scroll-wrapper-inner {
+        max-height: none;
+        overflow-y: auto;
+    }
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        margin-right: 0;
+        gap: 10px;
+    }
+    .achievement-card {
+        border-radius: 26px;
+        padding: 12px;
+    }
+    .achievement-coins {
+        bottom: 10px;
+        right: 18px;
+    }
+    .coin-icon {
+        width: 15px;
+        height: 15px;
+    }
+    .coins{
+        font-size: 3vw;
+    }
+    .achievement-img {
+        width: 60px;
+        width: 100%;
+        height: 60px;
+    }
+    .achievement-info h3 {
+        font-size: 5vw;
+    }
+
+    /*Стили для скроллбара*/
+    
+    /* ------------------------------------------------------------- */
+
+
+    /* стили для страницы пользователя (account) */
+    .userHeader{  
+        border:8px solid #FDBC15;  
+        border-radius: 44px;
+        width: 94vw;
+        padding: 50px 16px 0 ;
+    }
+    .bodyUser{
+        margin-top: 80px;
+    }
+    .user{
+        position: relative;
+    }
+    .avatar{
+        width: 120px;
+        height: 120px;
+        border: 10px solid white;
+        transform: translate(30px,-100px);
+    }
+    .Elixir{
+        width: 80px;
+        height: 80px;
+    }
+    .userValue{
+        margin-left: auto;
+        margin-right: 15%;
+        justify-content: center;
+        flex-direction: row-reverse;
+        width: 100px;
+    }
+    .userValue h2{
+        font-size: 6.3vw;
+    }
+    .userValue a{
+        display: none;
+    }
+    .valueInputs{   
+        margin-top: 10px; 
+        margin-bottom: 60px;
+        width: 450px;
+        justify-content: space-evenly;
+    }
+    .inputsUser{
+        margin: 0 5px; 
+        padding: 10px;
+        font-size: 6vw;
+    }
+    .inputsUser img{
+        width: 20px;
+        height: 20px;   
+        margin-left: 10px;
+    }
+    /* ------------------------------------------------------------- */
+
+    /* стили для модалки истории покупок и списка достижений*/
+    .priceHistory{
+        margin-right: 20px;
+    }
+    .titleHistory{    
+       font-size: 6vw;
+    }
+
+    .flexClose {
+        width: 90%;
+        padding: 10px;
+        border-radius: 50px;
+    }
+    .mainModalMenu {
+        padding: 10px;
+    }
+    .titleModalMenu {
+        font-size: 6vw;
+    }
+    .itemHistory {
+        width: 76%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+    }
+    .priceHistory img {
+        width: 20px;
+        height: 20px;
+        margin-left: 0px;
+    }
+    .dateHistory, .priceHistory{
+        font-size: 5vw;
+    }
+    /* ------------------------------------------------------------- */
+
+    /* стили для кнопок админа на страницах пользователя (user_view) */
+    .adminButtons{
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        text-align: center;
+        margin-right: 10px;
+        gap: 10px;
+        width: 70%; 
+    }
+    /* ------------------------------------------------------------- */
+
+    /* стили для страницы редактирования пользователя (user_editing) */
+    .adminButtonsEditUser{
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        text-align: center;
+        gap: 20px;
+        width: 60%;
+        margin-right: 10px;
+        margin-bottom: 30px;
+    }
+    .achievement-cart{
+        top: 12px;
+        right: 3px;
+    }
+    .achievement-cart:hover{
+        top: 12px;
+        right: 3px;
+    }
+    .mainModalMenuHeader{
+        flex-direction: column;
+        margin: 0 10px 0;
+    }
+    .titleModalMenuAchivementList{
+        font-size: 26px;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        /* margin-left: 10px; */
+    }
+    .achievementSearch-list{
+        width: 310px;
+        height: 26px;
+        /* margin-left: 20px; */
+    }
+    .achievement-card-list {
+        padding: 10px;
+        margin: 0 10px 10px 0;
+    }
+    .achievement-item-list {
+        display: flex;
+        align-items: center;
+        width: 60vw;
+    }
+    .achievement-info-list h3 {
+        font-size: 4vw;
+    }
+    .achievement-coins-list {
+        gap: 0px;
+    }
+    .coins-list {
+        font-size: 4vw;
+    }
+    /* ------------------------------------------------------------- */
+
+    /*Стили для скролл бара в модалке со списком ачивок */
+    .achievement-list-scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    /*Кнопка внутри модалки*/
+    .adminButtonsAddAchivement{
+        width: 86%;
+    }
+    #mainModalMenuAddAchivement{
+        width: 90%;
+    }
+    /* ------------------------------------------------------------- */
+
+    /*Стили для js модалок */
+    .custom-modal-content {
+        width: 80%;
+    }
+}
+/* ---------------------------------------------------------------------------------------------------------------------------------------------- */
+@media (max-width: 475px) {
+        .userValue h2 {
+        font-size: 6vw;
+        top: 0;
+        margin-top: -20px;
+        margin-bottom: 15px;
+    }
+}
+@media (max-width: 320px) {
+         .userValue {
+         margin-right: 0; 
+    }
+}
+
+@media(max-width:1024px){
+    .userValue h2{
+        font-size:25px;
+    }
+    .userValue{
+        margin-left:220px;
+    }
+}
+@media(max-width:700px){
+   
+    .userValue{
+        margin-left:20px;
+    } 
+    .userValue h2{
+        margin-top:90px;
+    }
+}
+@media(max-width:580px){
+        .userValue{
+        margin-left:100px;
+    } 
+    .userValue h2{
+        margin-top:50px;
+    }
+}
+@media(max-width:380px){
+    .userValue h2{
+    font-size:20px;
+    }
+        .userValue{
+        margin-left:80px;
+    } 
+}
+.div3 {
+  background: #ffffff;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+._1 {
+  display: flex;
+  flex-direction: row;
+  gap: 586px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 800px;
+  position: relative;
+}
+.div4 {
+  color: #021f3f;
+  text-align: left;
+  font-size: 30px;
+  font-weight: 400;
+  position: relative;
+}

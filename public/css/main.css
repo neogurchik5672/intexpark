@@ -1,0 +1,1152 @@
+/* Основной сброс стилей для всех элементов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Стили для ссылок и списков */
+a,
+li {
+    text-decoration: none;
+    list-style: none;
+    color: var(--color2);
+}
+
+/* Сброс стилей для кнопок */
+button {
+    border: none;
+    text-transform: uppercase;
+}
+
+/* Кастомные CSS переменные для цветов и размеров */
+:root {
+    --index: calc(1vw + 1vh); /* Динамическая единица измерения */
+
+    --color1: #FAC53B; /* Основной желтый */
+    --color2: #fff; /* Белый */
+    --color3: #021F3F; /* Темно-синий */
+    --color4: #41BD8F; /* Зеленый */
+    --color5: #944BA7; /* Фиолетовый */
+    --color6: #CD5602;
+    --main_yellow: #FDBC15;
+    --yellow_use: #FFE479;
+    --blue: #085A7F;
+
+    --custom-gradient: linear-gradient(to bottom, var(--color3) 8%, #044973 50%, #23BDCA 100%);
+}
+
+/* Подключение шрифтов */
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url(../fonts/Montserrat-Bold.woff2) format("woff2");
+}
+
+@font-face {
+    font-family: 'Montserrat-Black';
+    src: url(../fonts/Montserrat-Black.woff2) format("woff2");
+}
+
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url(../fonts/Montserrat-Regular.woff2) format("woff2");
+}
+
+/* Основные стили body */
+body {
+    background: var(--custom-gradient);
+    background-attachment: fixed;
+    background-size: cover;
+
+    overflow-x: hidden;
+
+    font-family: 'Montserrat-Regular';
+    font-size: 30px;
+    color: var(--color2);
+}
+
+/* Стили для баннера с анимацией */
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20.833vw; /* 400 */
+    height: 37.083vw; /* 712 */
+}
+
+.banner__title {
+    text-transform: uppercase;
+    font-family: 'Montserrat-Black';
+    font-size: 10.833vw; /* 208 */
+    z-index: 3;
+}
+.madalka__image{
+width:100%;
+height:100%;
+
+}
+
+.banner__descriptor {
+    text-transform: uppercase;
+    font-family: 'Montserrat-Black';
+    font-size: 1.823vw; /* 35 */
+    z-index: 3;
+}
+
+.banner__image--sword {
+    width: 18.125vw;
+    height: 19.063vw;
+    margin-top: -10.938vw;
+    margin-right: 57.552vw;
+    z-index: 1;
+}
+
+.banner__image--chest {
+    width: 16.979vw;
+    height: 14.792vw;
+    margin-top: -7.552vw;
+    margin-left: 58.333vw;
+    z-index: 1;
+}
+
+.banner__image--backpack {
+    width: 24.010vw;
+    height: 26.458vw;
+    margin-top: -8.333vw;
+    margin-right: 80.729vw;
+    z-index: 2;
+}
+
+.banner__image--map {
+    width: 25.417vw;
+    height: 22.292vw;
+    margin-top: -0.938vw;
+    margin-left: 79.688vw;
+    z-index: 2;
+}
+
+.banner__image--book {
+    width: 18.177vw;
+    height: 18.490vw;
+    margin-top: 10.938vw;
+    margin-right: 58.333vw;
+    z-index: 4;
+}
+
+.banner__image--compass {
+    width: 12.240vw;
+    height: 15.469vw;
+    margin-top: 6.771vw;
+    margin-left: 44.531vw;
+    z-index: 4;
+}
+
+/* Анимация плавающих элементов */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-0.521vw) /* -10 */;
+    }
+}
+
+/* Применение анимации к элементам баннера с разными задержками */
+.banner img {
+    position: absolute;
+    animation: float 3s ease-in-out infinite;
+    
+}
+
+/* Опционально: разные задержки */
+.banner__image--sword { animation-delay: 0s; }
+.banner__image--chest { animation-delay: 0.5s; }
+.banner__image--backpack { animation-delay: 1s; }
+.banner__image--map { animation-delay: 1.5s; }
+.banner__image--book { animation-delay: 0.5s; }
+.banner__image--compass { animation-delay: 1s; }
+
+/* Стили для заголовка магазина с эффектом бликов */
+.shop-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 62.5vw; /* 1200 */
+    margin: 0 auto;
+    padding: 1.042vw; /* 20 */
+}
+
+.shop-title {
+    display: flex;
+    position: relative;
+    width: 51.979vw; /* 998 */
+    height: 10.833vw; /* 208 */
+    border-radius: 7.813vw; /* 150 */
+    background-color: var(--main_yellow);
+    border: 0.521vw solid var(--color6);
+
+    outline: 1.823vw /* 35 */ solid var(--main_yellow);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family);
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.shop-title span {
+    color: var(--color3);
+    font-weight: regular;
+    font-family: 'Montserrat-Black';
+
+    font-size: 6.771vw; /* 130 */
+
+}
+
+.glow-rect {
+    position: absolute;
+    background-color: #ffe47990;
+    transform: rotate(-30deg);
+    opacity: 1;
+}
+
+#rect1 {
+    width: 2.552vw; /* 49 */
+    height: 37.656vw; /* 723 */
+    top: -6.146vw; /* -118 */
+    left: 0.156vw; /* 3 */
+}
+
+#rect2 {
+    width: 0.781vw; /* 15 */
+    height: 37.656vw; /* 723 */
+    top: -3.021vw; /* -58 */
+    left: -3.646vw; /* -70 */
+}
+
+/* Анимация для прямоугольников-бликов */
+@keyframes moveRight {
+    0% {
+        transform: translateX(-52.083vw) /* -1000 */ rotate(30deg);
+    }
+
+    100% {
+        transform: translateX(52.083vw) /* 1000 */ rotate(30deg);
+    }
+}
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(52.083vw) /* 1000 */ rotate(30deg);
+    }
+
+    100% {
+        transform: translateX(-52.083vw) /* -1000 */ rotate(30deg);
+    }
+}
+
+.move-right {
+    animation: moveRight 2.2s linear forwards;
+}
+
+.move-left {
+    animation: moveLeft 2.4s linear forwards;
+}
+
+/* каталог товаров */
+.index .shop {
+    margin-top: 100px;
+    padding: 8%;
+}
+
+.shop {
+    font-family: 'Montserrat-Bold';
+    text-transform: uppercase;
+}
+
+.shop__title-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4%;
+}
+
+.shop__title {
+    font-size: 5.36vw;
+    text-transform: uppercase;
+    font-family: 'Montserrat-Black';
+}
+
+.shop__search-input {
+    background-color: unset;
+    height: 60px;
+    width: auto;
+    width: 500px;
+    margin-right: 4.5%;
+    color: #1aa3af;
+    font-family: 'Montserrat-Regular';
+    font-size: 15px;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid var(--color2);
+    padding-top: 40px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.shop__search-input::placeholder {
+    color: white;
+}
+
+.shop__search-input:focus {
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+.shop__search-input:focus::placeholder {
+    color: white;
+    opacity: 0.5;
+}
+
+.shop__search-input:focus {
+    border-bottom: 2px solid #1aa3af;
+    padding-top: 38px;
+    color: #1aa3af;
+    box-shadow: none;
+}
+
+.shop__add-button {
+    width: 100%;
+    height: 219px;
+    border: 5px, solid, var(--color2);
+    border-radius: 30px;
+    background-color: unset;
+    margin: 0 -2%;
+    margin-bottom: 4%;
+    transition-duration: 0.277s;
+    transition-timing-function: ease;
+}
+
+.shop__add-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition-duration: 0.277s;
+    cursor: pointer;
+}
+
+.shop__add-button-icon {
+    pointer-events: none;
+}
+
+.shop__cards {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 1700px;
+    margin-right: 4%;
+    padding-right: 3%;
+    overflow-y: auto;
+    gap: 6%;
+}
+
+.shop__cards::-webkit-scrollbar {
+    width: 37px;
+}
+
+.shop__cards::-webkit-scrollbar-track {
+    background: var(--color3);
+    border-radius: 20px;
+}
+
+.shop__cards::-webkit-scrollbar-thumb {
+    background: var(--blue);
+    border-radius: 20px;
+    border: 7px solid transparent;
+    background-clip: padding-box;
+}
+
+.shop__cards::-webkit-scrollbar-thumb:hover {
+    border: 7px solid transparent;
+    background-clip: padding-box;
+}
+
+.shop__card {
+    width: calc(30% - 1%);
+    box-sizing: border-box;
+    padding: 15px;
+    margin-bottom: 1%;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+.shop__card-image-container {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    width: 100%;
+    padding-top: 100%;
+}
+
+.shop__card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.shop__card-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 22px;
+    z-index: 10;
+}
+
+.shop__card-actions button,
+.shop__card-actions a {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.shop__card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 0 10px 0;
+    font-size: 1.574vw;
+}
+
+.shop__card-button {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    width: auto;
+    height: auto;
+    padding: 4% 0;
+    font-size: 1.56vw;
+    font-family: 'Montserrat-bold';
+}
+
+.shop__card-button--yellow {
+    background-color: var(--main_yellow);
+    color: #000;
+    transition-duration: 0.277s;
+    transition-timing-function: ease;
+}
+
+.shop__card-button--yellow:hover {
+    background-color: var(--yellow_use);
+    color: #000;
+    transition-duration: 0.277s;
+}
+
+.shop__card-action-icon {
+    width: 35px;
+    height: 35px;
+}
+
+
+/* Стили для модального окна */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.modalka {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 732px;
+    width: 945px;
+    background-color: var(--color2);
+    border-radius: 70px;
+    gap: 40px;
+    color: var(--color3);
+    margin-top: 7%;
+    position: relative;
+    z-index: 1;
+}
+
+.modalka__image-wrapper {
+    width: calc(var(--index) * 12.1);
+    height:  calc(var(--index) * 12.1);
+    overflow: hidden;
+    border-radius: 58px;
+   
+}
+
+.modalka__image {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+  
+}
+
+.modalka__info {
+    display: flex;
+    justify-content: space-between;
+    width: 864px;
+}
+
+.modalka__product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 344px;
+}
+
+.modalka__product-name {
+    font-family: 'Montserrat-Bold';
+    font-size: 30px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    width: 335px;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.modalka__description {
+    font-family: 'Montserrat-Regular';
+    font-size: 22px;
+    margin-top: 30px;
+    height: auto;
+    white-space: nowrap;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.modalka__price p {
+    font-family: 'Montserrat-Bold';
+    font-size: 30px;
+}
+
+.modalka__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Стили для кнопок в модальном окне */
+.modalka__button {
+    color: var(--color3);
+    width: 864px;
+    height: 112px;
+    background-color: var(--color1);
+    border-radius: 5.208vw;
+    font-family: 'Montserrat-Bold';
+    font-size: 2.083vw;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+}
+
+.modalka__button:hover {
+    background-color: var(--color6);
+}
+
+.modalka__button--buy:hover {
+    background-color: var(--color6);
+}
+
+.modalka__button--purchased,
+.modalka__button--disabled {
+    color: var(--color2);
+    position: relative;
+}
+
+/* Состояния кнопок */
+.modalka__button--purchased {
+    background-color: var(--color5);
+}
+
+.modalka__button--disabled {
+    background-color: var(--color4);
+}
+
+.modalka__button--purchased::after,
+.modalka__button--disabled::after {
+    content: attr(data-message);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color2);
+    color: var(--color3);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 30px;
+}
+
+.modalka__button--purchased:hover::after,
+.modalka__button--disabled:hover::after {
+    opacity: 1;
+}
+
+/* Ноуты */
+@media (max-width: 1600px) {
+    .banner {
+        margin-top: 30vw;
+        height: 30vw;
+    }
+
+    .banner__title {
+        font-size: 8vw;
+    }
+
+    .banner__descriptor {
+        font-size: 1.5vw;
+    }
+
+    .banner__image--sword {
+        width: 15vw;
+        height: 16vw;
+        margin-right: 50vw;
+    }
+
+    .banner__image--chest {
+        width: 14vw;
+        height: 12vw;
+        margin-left: 50vw;
+    }
+
+    .banner__image--backpack {
+        width: 20vw;
+        height: 22vw;
+        margin-right: 70vw;
+    }
+
+    .banner__image--map {
+        width: 21vw;
+        height: 18vw;
+        margin-left: 70vw;
+    }
+
+    .banner__image--book {
+        width: 15vw;
+        height: 15vw;
+    }
+
+    .banner__image--compass {
+        width: 10vw;
+        height: 13vw;
+    }
+
+    .shop {
+        margin-top: 4vw;
+        padding: 4vw;
+    }
+
+    .shop-title {
+        width: 45vw;
+        height: 9vw;
+        border-radius: 6vw;
+    }
+
+    .shop-title span {
+        font-size: 5vw;
+    }
+
+    .shop__cards {
+        gap: 2% 5%;
+        max-height: none;
+        margin-right: 0;
+        padding-right: 0;
+    }
+
+    .shop__card {
+        width: calc(33.333% - 3.333%);
+        margin-bottom: 3%;
+    }
+
+    .shop__card-title {
+        font-size: 1.8vw;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .shop__card-button {
+        font-size: 1.8vw;
+        padding: 2% 0;
+    }
+
+    /* Модальное окно */
+    .modalka {
+        width: 65vw;
+        height: 80%;
+        padding: 4vw;
+        margin-top:7%;
+        gap: 2vw;
+    }
+
+    .modalka__image-wrapper {
+        width: 35vw;
+        height: 35vw;
+    }
+
+    .modalka__info {
+        display:flex;
+        height:90%;
+    }
+
+    .modalka__product-info {
+        margin-left:5%;
+    }
+
+    .modalka__product-name {
+        font-size: 2.5vw;
+        white-space: normal;
+    }
+
+    .modalka__description {
+        font-size: 1.8vw;
+        margin-top: 1.5vw;
+    }
+
+    .modalka__price p {
+        font-size: 2.5vw;
+    }
+
+    .modalka__button {
+        height: auto;
+        padding: 2vw 0;
+        font-size: 2vw;
+        border-radius: 3vw;
+    }
+
+    .modalka__button--purchased::after,
+    .modalka__button--disabled::after {
+        font-size: 1.8vw;
+    }
+}
+@media(max-width:1240px){
+    .modalka__button{
+        width: auto;
+        height: auto;
+        padding: 40px 50px;
+    }
+}
+/* Планшеты */
+@media (max-width: 1440px) {
+    
+    .shop__title {
+        font-size: 15vw;
+    }   
+
+    .shop__cards {
+        overflow-x: hidden;
+        height: 500px;
+    }
+
+    .shop__card {
+        width: calc(50% - 3%);
+        padding-right:0;
+        padding-left:0;
+    }
+
+    .shop__cards::-webkit-scrollbar {
+        display: none;
+        scrollbar-width: none;
+    }
+
+    .shop__card-image-container {
+        width: 100%;
+        height: auto;
+        padding-top: 100%;
+    }
+
+    .shop__card-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .shop__card-title {
+        font-size: 3vw;
+    }
+
+    .shop__card-button {
+        width: auto;
+        height: auto;
+        padding: 5% 0;
+        font-size: 3vw;
+    }
+
+    .shop__card-action-icon {
+        width: 90%;
+        height: auto;
+    }
+
+    .index .shop {
+        margin-top: 30px;
+        padding: 2.5%;
+    }
+
+    .modal__content {
+        padding: 2% 10%;        
+    }
+    .modal__body {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .modal__title {
+        font-size: 4vw;
+    }
+
+    .modal__left {
+        width: 100%;
+    }
+    
+    .modal__right {
+        width: 100%;
+    }
+
+    .modal__image-placeholder {
+        width: 400px;
+        height: auto;
+        margin-bottom: 2%;
+    }
+
+    .modal__label,
+    .modal__checkbox-label {
+        font-size: 2.5vw;
+    }
+
+    .modal__input,
+    .modal__textarea {
+        font-size: 3vw;
+    }  
+
+    .modal__textarea {
+        height: auto;
+    }
+
+    .modalka {
+        max-width: 768px;
+        width: auto;
+        padding: 10%;
+    }
+
+    .modalka__image-wrapper {
+          width: calc(var(--index) * 15);
+    height:  calc(var(--index) * 15);
+    }
+
+    .modalka__info {
+        width: auto;
+        gap: 4%;
+    }
+    
+    .modalka__footer{
+        width: 100%;
+    }
+    .modalka__button {
+        width: 100%;
+        padding: 3%;
+    }
+
+    .modalka__button {
+        font-size: 20px;
+        border-radius: 50px;
+        padding: 35px 30px;
+    }
+}
+@media (max-width: 768px) {
+    :root {
+        --index: calc(0.9vw + 0.9vh);
+    }
+
+    /* Модальное окно */
+    .modalka {
+        width: 90vw;
+        height: 85%;
+        padding: 5vw;
+        margin-top: 10%;
+        flex-direction: column;
+    }
+
+    .modalka__image-wrapper {
+        width: 50vw;
+        height: 50vw;
+        margin-bottom: 5vw;
+        margin-left:14%;
+        width:55vw;
+    }
+
+    .modalka__info {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .modalka__product-info {
+        width: 100%;
+        margin-top: 4vw;
+    }
+
+    .modalka__product-name {
+        font-size: 3.5vw;
+        width: 100%;
+    }
+
+    .modalka__description {
+        font-size: 2.8vw;
+        margin-top: 2vw;
+    }
+
+    .modalka__price p {
+        font-size: 3.5vw;
+    }
+    
+}
+/* Телефоны */
+@media (max-width: 576px) {
+    .shop__cards {
+        gap: 0 6%
+    }
+
+    .shop__title {
+        font-size: 15vw;
+    }
+
+    .shop__card-actions {
+        gap: 0;
+        right: 0;
+        top: 0;
+    }
+
+    .shop__card-action-icon {
+        width: 60%;
+        height: 60%;
+    }
+
+
+    .index .shop {
+        margin-top: 15px;
+        padding: 1.5%;
+    }
+
+    .banner {
+        margin-top: 55vw;
+    }
+
+    .banner__descriptor {
+        font-size: 3vw;
+    }
+    .banner__title {
+        font-size: 12vw;
+    }
+
+    .modal__content {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .modal__title {
+        font-size: 5vw;
+        margin-bottom: 3%;
+    }
+
+    .modal__left {
+        width: 100%;
+    }
+    
+    .modal__right {
+        width: 100%;
+    }
+
+    .modal__title {
+        font-size: 6vw;
+        margin-bottom: 6%;
+    }
+
+    .modal__label {
+        font-size: 4vw;
+    }
+
+    .modal__left,
+    .modal__right {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .modal__body {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    .modal__image-wrapper {
+        max-width: 100%;
+            
+    height:  calc(var(--index) * 15);
+    }
+
+    .modal__image-label {
+        width: 100%;
+    }
+
+    .modal__image-preview {
+        max-width: 100%;
+        max-height: 200px;
+        margin: auto;
+    } 
+
+    .modal__image-placeholder {
+        width: auto;
+        height: 200px;
+        max-width: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal__file-input {
+        position: absolute;
+        opacity: 0;
+        width: 200px;
+        height: 200px;
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .modal__input,
+    .modal__textarea {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .modal__textarea {
+        height: 100px;
+    }
+
+    .modal__checkbox-label {
+        font-size: 3.5vw;
+    }
+
+    .modal__button {
+        width: 100%;
+        font-size: 4vw;
+    }
+    
+    .modal__image-overlay {
+        max-height: 100%;
+    }
+        
+    .modalka {
+        width: 100%;
+        height: auto;
+        min-height: 400px;
+        border-radius: 30px;
+        padding: 20px;
+        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modalka__image-wrapper {
+        display: flex;
+        width: 70%;
+        height: auto;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        
+    }
+
+    .modalka__image {
+        width: 100%;
+        height: 100%;
+        max-width: 500px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .modalka__info {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .modalka__product-info {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .modalka__product-name {
+        font-size: 18px;
+        width: 100%;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+
+    .modalka__description {
+        font-size: 14px;
+        margin-top: 10px;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+
+    .modalka__price {
+        gap: 5px;
+    }
+
+    .modalka__price p {
+        font-size: 18px;
+    }
+
+    .modalka__button {
+        height: auto;
+        font-size: 20px;
+        border-radius: 50px;
+    }
+
+    .modalka__button--purchased::after,
+    .modalka__button--disabled::after {
+        font-size: 16px;
+        padding: 0 10px;
+    }
+}

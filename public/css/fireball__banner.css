@@ -1,0 +1,165 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat-Black';
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 6.771vw;
+}
+
+.banner__descriptor {
+    font-size: 4.063vw;
+    z-index: 3;
+}
+
+.banner__title {
+    font-size: 5.938vw;
+    margin-top: 6.25vw;
+    z-index: 3;
+}
+
+.big-fireball-left {
+    width: 36.719vw;
+    height: 38.958vw;
+    margin-right: 57.708vw;
+    z-index: 1;
+}
+
+.big-fireball-right {
+    width: 36.719vw;
+    height: 38.958vw;
+    margin-left: 58.854vw;
+    z-index: 1;
+}
+
+.middle-fireball-right {
+    width: 22.396vw;
+    height: 25.156vw;
+    margin-top: 11.458vw;
+    margin-left: 66.406vw;
+    z-index: 2;
+}
+
+.middle-fireball-left {
+    width: 28.073vw;
+    height: 29.271vw;
+    margin-top: 11.458vw;
+    margin-right: 63.958vw;
+    z-index: 4;
+}
+
+.little-fireball-left {
+    width: 16.979vw;
+    height: 18.646vw;
+    margin-top: 21.458vw;
+    margin-right: 58.854vw;
+    z-index: 5;
+}
+
+.little-fireball-right {
+    width: 19.792vw;
+    height: 20.99vw;
+    margin-top: 20.833vw;
+    margin-left: 58.333vw;
+    z-index: 5;
+}
+
+/* Общие стили для анимаций */
+.banner img {
+    position: absolute;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+/* Анимации для больших огненных шаров */
+.big-fireball-left, .little-fireball-left {
+    animation-name: swayLeft;
+}
+
+.big-fireball-right, .little-fireball-right {
+    animation-name: swayRight;
+}
+
+/* Анимации для средних огненных шаров */
+.middle-fireball-left {
+    animation-name: swayRightWithWobble;
+}
+
+.middle-fireball-right {
+    animation-name: swayLeftWithWobble;
+}
+
+/* Ключевые кадры для анимаций */
+@keyframes swayLeft {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    30% {
+        transform: rotate(-5deg);
+    }
+    70% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes swayRight {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    30% {
+        transform: rotate(5deg);
+    }
+    70% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes swayLeftWithWobble {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    15% {
+        transform: rotate(-2deg);
+    }
+    30% {
+        transform: rotate(5deg);
+    }
+    45% {
+        transform: rotate(-2deg);
+    }
+    70% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes swayRightWithWobble {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    15% {
+        transform: rotate(2deg);
+    }
+    30% {
+        transform: rotate(-5deg);
+    }
+    45% {
+        transform: rotate(2deg);
+    }
+    70% {
+        transform: rotate(0deg);
+    }
+}
