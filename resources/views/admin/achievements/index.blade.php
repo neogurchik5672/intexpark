@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('scripts')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    <!-- Передаём пути к иконкам из Blade в JS -->
+    <script>
+        const ICON_HIDDEN = "{{ asset('img/admin_card/обыч_событие.svg') }}";
+        const ICON_VISIBLE = "{{ asset('img/admin_card/нав_событие.svg') }}";
+    </script>
+
+    <script src="{{ asset('/js/AdminAchievements.js') }}"></script>
+@endsection
+
 @section('content')
 
 <!-- уведомление изменения достижения -->
@@ -141,6 +153,18 @@
     
     <!-- Кнопки действия -->
     <div class="card-actions">
+
+        <!-- Кнопка Скрыть/показать -->
+        <button type="button" 
+            onclick="toggleAchievementVisibility({{ $achievement->id }})" 
+            title="Показывать/Скрывать"
+            id="visibilityButton-{{ $achievement->id }}">
+            <img class="shop__card-action-icon" 
+                src="{{ $achievement->is_visible ? asset('img/admin_card/обыч_событие.svg') : asset('img/admin_card/обыч_событие.svg') }}" 
+            alt="Показывать/Скрывать"
+            id="visibilityIcon-{{ $achievement->id }}">    
+        </button>
+
         <!-- Редактировать -->
         <a href="{{ route('admin.achievements.edit', $achievement->id) }}" class="btn-edit" data-id="{{ $achievement->id }}">
             <img src="{{ asset('img/editWhite.svg') }}" alt="Редактировать" class="icon-default">
@@ -183,6 +207,6 @@
 <link href="{{ asset('/css/AdminAchievements.css') }}" rel="stylesheet">
 @endsection
 
-@section('scripts')
+{{-- @section('scripts')
 <script src="{{ asset('/js/AdminAchievements.js') }}"></script>
-@endsection
+@endsection --}}

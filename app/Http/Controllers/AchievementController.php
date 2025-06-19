@@ -88,4 +88,16 @@ public function update(Request $request, Achievement $achievement)
     // Перенаправляем обратно
     return redirect()->route('admin.achievements.index')->with('success', 'Достижение «' . $achievement->name . '» изменено');
 }
+
+public function toggleVisibility($id)
+{
+    $achievement = Achievement::findOrFail($id);
+    $achievement->is_visible = !$achievement->is_visible;
+    $achievement->save();
+
+    return response()->json([
+        'success' => true,
+        'is_visible' => $achievement->is_visible
+    ]);
+}
 }

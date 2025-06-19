@@ -11,7 +11,7 @@ class Achievement extends Model
      protected $table = 'achievements';
 
      protected $fillable = [
-        'name', 'description', 'intexcoin', 'image',  'required_count'
+        'name', 'description', 'intexcoin', 'image',  'required_count', 'is_visible'
     ];
 
     public function users() // users() — метод, который показывает, какие пользователи получили эту ачивку.

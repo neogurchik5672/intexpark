@@ -73,6 +73,10 @@ Route::get('/achievements', function () {
     $user = auth()->user(); // или получить пользователя как-то иначе
     return view('achievements.index', compact('achievements', 'user'));
 });
+// Маршрут для изменения видимости ачивки
+Route::post('/admin/achievement/toggle-visibility/{id}', [AchievementController::class, 'toggleVisibility'])
+    ->name('admin.achievement.toggleVisibility')->middleware('role:admin');
+    
 //Страницы пользователя(+редактирование)
 Route::get('/user/account',[UserController::class,'account'])->name('user.account');
 Route::get('/user/user_view/{id}',[UserController::class,'user_view'])->name('user.user_view')->middleware('role:admin');
